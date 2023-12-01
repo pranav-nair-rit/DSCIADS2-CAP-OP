@@ -1,0 +1,1104 @@
+Comment,MLTD
+TODO cont feat names no longer required only number; move to infer number of cont feats from model_builder and batch_yielder,Yes
+TODO: check whether model_builder is necessary here,No
+TODO model.default_collection only in BaseModel class,No
+TODO Lida Xu please re-write the CNN model,Yes
+"\""\""\"" || TODO: This test fails due to the random state not being properly fixed ||  || def test_hyperband(): ||     model; param_dist; X; y; rng = setup() ||     search = HyperbandSearchCV(model; param_dist; random_state=rng) ||     search.fit(X; y) ||  ||     # results = pd.DataFrame(search.cv_results_) ||     expected_params = { ||         'bootstrap': False; ||         'criterion': 'entropy'; ||         'max_depth': None; ||         'max_features': 7; ||         'min_samples_leaf': 2; ||         'min_samples_split': 2; ||         'n_estimators': 81 ||     } ||  ||     # assert(results.shape[0] == 186) TODO: sort out what the expected n_i and r_i values are ||     assert(search.best_params_ == expected_params) || \""\""\""",Yes
+TODO: feature translate should out of this main program for better compatible with keras and estimator model,Yes
+TODO: convert model to Functional or Sequential so that can be saved as h5 model,Yes
+"\""\""\""Deploy Slim models across multiple clones and replicas. ||  || # TODO(sguada) docstring paragraph by (a) motivating the need for the file and || # (b) defining clones. ||  || # TODO(sguada) describe the high-level components of model deployment. || # E.g. \""each model deployment is composed of several parts: a DeploymentConfig; || # which captures A; B and C; an input_fn which loads data.. etc ||  || To easily train a model on multiple GPUs or across multiple machines this || module provides a set of helper functions: `create_clones`; || `optimize_clones` and `deploy`. ||  || Usage: ||  ||   g = tf.Graph() ||  ||   # Set up DeploymentConfig ||   config = slim.DeploymentConfig(num_clones=2; clone_on_cpu=True) ||  ||   # Create the global step on the device storing the variables. ||   with tf.device(config.variables_device()): ||     global_step = slim.create_global_step() ||  ||   # Define the inputs ||   with tf.device(config.inputs_device()): ||     images; labels = LoadData(...) ||     inputs_queue = slim.data.prefetch_queue((images; labels)) ||  ||   # Define the optimizer. ||   with tf.device(config.optimizer_device()): ||     optimizer = tf.train.MomentumOptimizer(FLAGS.learning_rate; FLAGS.momentum) ||  ||   # Define the model including the loss. ||   def model_fn(inputs_queue): ||     images; labels = inputs_queue.dequeue() ||     predictions = CreateNetwork(images) ||     slim.losses.log_loss(predictions; labels) ||  ||   model_dp = slim.deploy(config; model_fn; [inputs_queue]; optimizer=optimizer) ||  ||   # Run training. ||   slim.learning.train(model_dp.train_op; my_log_dir; ||                       summary_op=model_dp.summary_op) ||  || The Clone namedtuple holds together the values associated with each call to || model_fn: ||   * outputs: The return values of the calls to `model_fn()`. ||   * scope: The scope used to create the clone. ||   * device: The device used to create the clone. ||  || DeployedModel namedtuple; holds together the values needed to train multiple || clones: ||   * train_op: An operation that run the optimizer training op and include ||     all the update ops created by `model_fn`. Present only if an optimizer ||     was specified. ||   * summary_op: An operation that run the summaries created by `model_fn` ||     and process_gradients. ||   * total_loss: A `Tensor` that contains the sum of all losses created by ||     `model_fn` plus the regularization losses. ||   * clones: List of `Clone` tuples returned by `create_clones()`. ||  || DeploymentConfig parameters: ||   * num_clones: Number of model clones to deploy in each replica. ||   * clone_on_cpu: True if clones should be placed on CPU. ||   * replica_id: Integer.  Index of the replica for which the model is ||       deployed.  Usually 0 for the chief replica. ||   * num_replicas: Number of replicas to use. ||   * num_ps_tasks: Number of tasks for the `ps` job. 0 to not use replicas. ||   * worker_job_name: A name for the worker job. ||   * ps_job_name: A name for the parameter server job. ||  || TODO(sguada): ||   - describe side effect to the graph. ||   - what happens to summaries and update_ops. ||   - which graph collections are altered. ||   - write a tutorial on how to use this. ||   - analyze the possibility of calling deploy more than once. ||  ||  || \""\""\""",Yes
+TODO: This should be done in model's postprocess function ideally.,Yes
+TODO replace with database model,Yes
+TODO Move to test_role_model.py,Yes
+TODO explore impact of scaling on model performance,Yes
+TODO: check that model is loading from .h5 correctly,Yes
+TODO: add auxiliary classifiers to model,Yes
+TODO: evaluate the model,Yes
+TODO: save the best model,Yes
+TODO: Change the model name to train different models,Yes
+TODO: We could estimate covariance of Y using a hierarchy of corex models!,No
+FIXME: pre-train the model,Yes
+"\""\""\""An implementation of the overfitting test for the Transformer model. ||  || A simple test; which often signifies bugs in the implementation of a model; is the overfitting test. To that end; the || considered model is trained and evaluated on the same tiny dataset; which it should be able to overfit easily. || Therefore; the final model should yield very high probabilities for the desired target values. If this is not the case; || however; then there is probably something wrong with the tested model and\/or its implementation. ||  || TODO: explain a bit more || \""\""\""",Yes
+TODO Keras models to detect whether an image is present,Yes
+FIXME: exclude accented characters for model 6?,Yes
+FIXME: do unknown word model stuff here.,Yes
+FIXME: re-estimate unknown word model?,Yes
+TODO FIXME: change it to ADE20K dataset and pretrained model,Yes
+"\""\""\"" || CommandLine: ||     python ~\/code\/netharn\/netharn\/fit_harn.py __doc__ ||  || Notes: ||     when profiling ensure CUDA_LAUNCH_BLOCKING=1 ||  || Notes: ||     to use; your training session must have the concept of: ||         * epochs ||         * batch_size ||         * xpu ||         * train \/ validation datasets ||  ||     or better yet: ||         * a model ||         * a criterion ||         * an optimizer ||  || TODO: ||     [ ] - output \""glance\"" curves to disk ||     [x] - move logs to a logs folder. Keep a single master log in the root ||     [ ] - Why didnt the best_snapshot.pt get saved in the most recent yolo run? ||  || Example: ||     >>> import netharn as nh ||     >>> size = 3 ||     >>> max_epoch = 10 ||     >>> datasets = { ||     >>>     'train': nh.data.ToyData2d(size=size; border=1; n=256; rng=0); ||     >>>     'vali': nh.data.ToyData2d(size=size; border=1; n=128; rng=1); ||     >>> } ||     >>> hyper = { ||     >>>     # --- Data First ||     >>>     'datasets'    : datasets; ||     >>>     'nice'        : 'demo'; ||     >>>     'workdir'     : ub.ensure_app_cache_dir('netharn\/demo'); ||     >>>     'loaders'     : {'batch_size': 64}; ||     >>>     'xpu'         : nh.XPU.cast('auto'); ||     >>>     # --- Algorithm Second ||     >>>     'model'       : (nh.models.ToyNet2d; {}); ||     >>>     'optimizer'   : (nh.optimizers.SGD; { ||     >>>         'lr': 0.0001 ||     >>>     }); ||     >>>     'criterion'   : (nh.criterions.CrossEntropyLoss; {}); ||     >>>     #'criterion'   : (nh.criterions.FocalLoss; {}); ||     >>>     'initializer' : (nh.initializers.KaimingNormal; { ||     >>>         'param': 0; ||     >>>     }); ||     >>>     'scheduler'   : (nh.schedulers.ListedLR; { ||     >>>         'points': {0: .0001; 2: .01; 5: .015; 6: .005; 9: .001}; ||     >>>         'interpolate': True; ||     >>>     }); ||     >>>     'dynamics'   : {'batch_step': 4}; ||     >>>     'monitor'     : (nh.Monitor; { ||     >>>         'max_epoch': max_epoch; ||     >>>     }); ||     >>> } ||     >>> harn = FitHarn(hyper) ||     >>> harn.config['use_tqdm'] = 1 ||     >>> harn.initialize(reset='delete') ||     >>> harn.run() || \""\""\""",No
+"\""\""\"" || Notes: ||     when profiling ensure CUDA_LAUNCH_BLOCKING=1 ||  || Notes: ||     to use; your training session must have the concept of: ||         * epochs ||         * batch_size ||         * xpu ||         * train \/ validation datasets ||  ||     or better yet: ||         * a model ||         * a criterion ||         * an optimizer ||  || TODO: ||     [ ] - output \""glance\"" curves to disk ||     [x] - move logs to a logs folder. Keep a single master log in the root ||     [ ] - Why didnt the best_snapshot.pt get saved in the most recent yolo run? ||  || Notes: ||     In the following example we demonstrate how to use netharn to train a model ||     to solve a toy problem. ||  ||     In this toy problem; we do not extend the nh.FitHarn object; so we are ||     using the default behavior of ``run_batch``. The default ``on_batch``; and ||     ``on_epoch`` do nothing; so only loss will be the only measurement of ||     performance. ||  ||     For further examples please see the examples directory. These example show ||     how to extend nh.FitHarn to measure performance wrt a particular problem. ||     The MNIST and CIFAR examples are the most simple. The YOLO example is more ||     complex.  The IBEIS example depends on non-public data \/ software; but can ||     still be useful to look at.  Its complexity is more than CIFAR but less ||     than YOLO. ||  || CommandLine: ||     xdoctest netharn.fit_harn __doc__:0 ||     xdoctest netharn.fit_harn __doc__:0 --progiter ||  || Example: ||     >>> import netharn as nh ||     >>> hyper = nh.HyperParams(**{ ||     >>>     # ================ ||     >>>     # Environment Components ||     >>>     'workdir'     : ub.ensure_app_cache_dir('netharn\/tests\/demo'); ||     >>>     'nice'        : 'demo'; ||     >>>     'xpu'         : nh.XPU.cast('auto'); ||     >>>     # workdir is a directory where intermediate results can be saved ||     >>>     # nice symlinks <workdir>\/fit\/nice\/<nice> -> ..\/runs\/<hashid> ||     >>>     # XPU auto select a gpu if idle and VRAM>6GB else a cpu ||     >>>     # ================ ||     >>>     # Data Components ||     >>>     'datasets'    : {  # dict of plain ol torch.data.Dataset instances ||     >>>         'train': nh.data.ToyData2d(size=3; border=1; n=256; rng=0); ||     >>>         'vali': nh.data.ToyData2d(size=3; border=1; n=128; rng=1); ||     >>>         'test': nh.data.ToyData2d(size=3; border=1; n=128; rng=1); ||     >>>     }; ||     >>>     'loaders'     : {'batch_size': 64}; # DataLoader instances or kw ||     >>>     # ================ ||     >>>     # Algorithm Components ||     >>>     # Note the (cls; kw) tuple formatting ||     >>>     'model'       : (nh.models.ToyNet2d; {}); ||     >>>     'optimizer'   : (nh.optimizers.SGD; { ||     >>>         'lr': 0.0001 ||     >>>     }); ||     >>>     # focal loss is usually better than nh.criterions.CrossEntropyLoss ||     >>>     'criterion'   : (nh.criterions.FocalLoss; {}); ||     >>>     'initializer' : (nh.initializers.KaimingNormal; { ||     >>>         'param': 0; ||     >>>     }); ||     >>>     # these may receive an overhaul soon ||     >>>     'scheduler'   : (nh.schedulers.ListedLR; { ||     >>>         'points': {0: .0001; 2: .01; 5: .015; 6: .005; 9: .001}; ||     >>>         'interpolate': True; ||     >>>     }); ||     >>>     'monitor'     : (nh.Monitor; { ||     >>>         'max_epoch': 10; ||     >>>     }); ||     >>>     # dynamics are a config option that modify the behavior of the main ||     >>>     # training loop. These parameters effect the learned model. ||     >>>     'dynamics'   : {'batch_step': 4}; ||     >>> }) ||     >>> harn = nh.FitHarn(hyper) ||     >>> # non-algorithmic behavior configs (do not change learned models) ||     >>> harn.config['prog_backend'] = 'tqdm' ||     >>> if ub.argflag('--progiter'):  # I prefer progiter (I may be biased) ||     ...     harn.config['prog_backend'] = 'progiter' ||     >>> # start training. ||     >>> harn.initialize(reset='delete') ||     >>> harn.run()  # note: run calls initialize it hasn't already been called. ||     >>> # xdoc: +IGNORE_WANT ||     RESET HARNESS BY DELETING EVERYTHING IN TRAINING DIR ||     Symlink: ...tests\/demo\/fit\/runs\/demo\/keyeewlr -> ...tests\/demo\/fit\/nice\/demo ||     .... already exists ||     .... and points to the right place ||     Initializing tensorboard (dont forget to start the tensorboard server) ||     Model has 824 parameters ||     Mounting ToyNet2d model on CPU ||     Initializing model weights ||      * harn.train_dpath = '...tests\/demo\/fit\/runs\/demo\/keyeewlr' ||      * harn.nice_dpath  = '...tests\/demo\/fit\/nice\/demo' ||     Snapshots will save to harn.snapshot_dpath = '...tests\/demo\/fit\/runs\/demo\/keyeewlr\/torch_snapshots' ||     dont forget to start: ||         tensorboard --logdir ...tests\/demo\/fit\/nice ||     === begin training === ||     epoch lr:0.001 \u2502 vloss: 0.1409 (n_bad_epochs=00; best=0.1409): 100%|\u2588| 10\/10 [00:01<00:00;  9.95it\/s]  0:00<?; ?it\/s] ||     train x64 \u2502 loss:0.147 \u2502: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 8\/8 [00:00<00:00; 130.56it\/s] ||     vali x64 \u2502 loss:0.140 \u2502: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4\/4 [00:00<00:00; 342.04it\/s] ||     test x64 \u2502 loss:0.140 \u2502: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4\/4 [00:00<00:00; 342.92it\/s] ||     <BLANKLINE> ||     Maximum harn.epoch reached; terminating ... ||     <BLANKLINE> ||     training completed ||     current lrs: [0.001] ||     harn.train_dpath = '...tests\/demo\/fit\/runs\/demo\/keyeewlr' ||     harn.nice_dpath  = '...tests\/demo\/fit\/nice\/demo' ||     view tensorboard results for this run via: ||         tensorboard --logdir ...tests\/demo\/fit\/nice ||     exiting fit harness. || \""\""\""",No
+"\""\""\"" || The examples\/cifar.py is probably the most clear example of what netharn is and || what it's trying to do \/ not do. ||  || The basic idea is make an object that inherits from nh.FitHarn. This is our || harness object. It will contain the hyperparameters as well as the learning || state. All the training loop boilerplate has already been written in the parent || class; so all our child class needs to do is: define `prepare_batch` (not || usually needed) and `run_batch`. Code to measure and record performance should || be placed in `on_batch` and `on_epoch`. ||  || The `train` function is our main entry point. It reads parameters from the || command line to override defaults. It then consructs the `HyperParams` object || and constructs an instance of `CIFAR_FitHarn` and calls `harn.run()`. ||  || This begins the training process. At a high level the harness will load the || data using torch DataLoaders; and call `run_batch` when it needs to compute the || model outputs and loss based on the input data. The returned loss is used to || update the model weights if `harn.tag === 'train'`; for validation; test; and || calibration (todo) datasets the loss is simply recorded. ||  || After `run_batch` finishes the `on_batch` function is called; where you can || optionally return a dict of scalars to log as measurements for this batch (note || loss is always recorded; so we need not return it here; but loss components may || be useful). A similar thing happens in `on_epoch`; where you should return || metrics about the entire dataset. ||  || The training harness manages the fit directory structure based on a hash of the || hyperparameters; the creation of algorithm component instance (e.g. model; || optimizer); initializing model weights; restarting from the most recent epoch; || updating the learning rates; various training loop boilerplate details; || checking divergence; reporting progress; handling differences between train; || validation; and test sets. In short; netharn handles the necessary parts and || let the developer focus on the important parts. || \""\""\""",No
+TODO: might be good to check for multiple model exports at this time,Yes
+TODO: if pretrained is another netharn model; then we should read that,Yes
+"\""\""\"" || WIP ||  || This file should contain classes (that behave like torch models); but they || implement the learning of classical learning algorithms like SVM and || RandomForest. ||  || Deep networks are amazing at learning features. However; I don't think it's || very useful to use linear logicstic regression as a classifier. In many cases I || think an SVM or a RandomForest might produce a superior classification model; || but this has yet to be shown. ||  || TODO: ||     - [ ] Classical Abstract API ||     - [ ] Integration with the FitHarn ||         - [ ] How do we swap netharn's backprop+SGD with sklearn's SVM and RandomForest fit methods? ||         - [ ] Netharn needs a \""classical\"" implementation of \""run\"". ||             - [ ] Simply use the data loader to load the data ||             - [ ] Defaults should encourage use with deep features. ||     - [ ] RandomForest ||     - [ ] SVM || \""\""\""",No
+TODO: missing model_equivalent_rules; rule importances,Yes
+TODO: Functionality to automatically download CoNLL models,Yes
+''' || Test action recognition on || (1) a video; (2) a folder of images; (3) or web camera. ||  || Input: ||     classes: data_proc\/classes.csv # TODO: change this to a config file ||     model: model\/trained_classifier.pickle ||  || Output: ||     result video:    output\/${video_name}\/video.avi ||     result skeleton: output\/${video_name}\/skeleton_res\/XXXXX.txt ||     visualization by cv2.imshow() in img_displayer || ''',Yes
+TODO finish codes of loading models from local file here.,Yes
+"\""\""\""Deploy Slim models across multiple clones and replicas. ||  || # TODO(sguada) docstring paragraph by (a) motivating the need for the file and || # (b) defining clones. ||  || # TODO(sguada) describe the high-level components of model deployment. || # E.g. \""each model deployment is composed of several parts: a DeploymentConfig; || # which captures A; B and C; an input_fn which loads data.. etc ||  || To easily train a model on multiple GPUs or across multiple machines this || module provides a set of helper functions: `create_clones`; || `optimize_clones` and `deploy`. ||  || Usage: ||  ||   g = tf.Graph() ||  ||   # Set up DeploymentConfig ||   config = model_deploy.DeploymentConfig(num_clones=2; clone_on_cpu=True) ||  ||   # Create the global step on the device storing the variables. ||   with tf.device(config.variables_device()): ||     global_step = slim.create_global_step() ||  ||   # Define the inputs ||   with tf.device(config.inputs_device()): ||     images; labels = LoadData(...) ||     inputs_queue = slim.data.prefetch_queue((images; labels)) ||  ||   # Define the optimizer. ||   with tf.device(config.optimizer_device()): ||     optimizer = tf.train.MomentumOptimizer(FLAGS.learning_rate; FLAGS.momentum) ||  ||   # Define the model including the loss. ||   def model_fn(inputs_queue): ||     images; labels = inputs_queue.dequeue() ||     predictions = CreateNetwork(images) ||     slim.losses.log_loss(predictions; labels) ||  ||   model_dp = model_deploy.deploy(config; model_fn; [inputs_queue]; ||                                  optimizer=optimizer) ||  ||   # Run training. ||   slim.learning.train(model_dp.train_op; my_log_dir; ||                       summary_op=model_dp.summary_op) ||  || The Clone namedtuple holds together the values associated with each call to || model_fn: ||   * outputs: The return values of the calls to `model_fn()`. ||   * scope: The scope used to create the clone. ||   * device: The device used to create the clone. ||  || DeployedModel namedtuple; holds together the values needed to train multiple || clones: ||   * train_op: An operation that run the optimizer training op and include ||     all the update ops created by `model_fn`. Present only if an optimizer ||     was specified. ||   * summary_op: An operation that run the summaries created by `model_fn` ||     and process_gradients. ||   * total_loss: A `Tensor` that contains the sum of all losses created by ||     `model_fn` plus the regularization losses. ||   * clones: List of `Clone` tuples returned by `create_clones()`. ||  || DeploymentConfig parameters: ||   * num_clones: Number of model clones to deploy in each replica. ||   * clone_on_cpu: True if clones should be placed on CPU. ||   * replica_id: Integer.  Index of the replica for which the model is ||       deployed.  Usually 0 for the chief replica. ||   * num_replicas: Number of replicas to use. ||   * num_ps_tasks: Number of tasks for the `ps` job. 0 to not use replicas. ||   * worker_job_name: A name for the worker job. ||   * ps_job_name: A name for the parameter server job. ||  || TODO(sguada): ||   - describe side effect to the graph. ||   - what happens to summaries and update_ops. ||   - which graph collections are altered. ||   - write a tutorial on how to use this. ||   - analyze the possibility of calling deploy more than once. ||  ||  || \""\""\""",Yes
+TODO(Przemek): implement loading a model,Yes
+"\""\""\"" || detector.py is an out-of-the-box windowed detector || callable from the command line. ||  || By default it configures and runs the Caffe reference ImageNet model. || Note that this model was trained for image classification and not detection; || and finetuning for detection can be expected to improve results. ||  || The selective_search_ijcv_with_python code required for the selective search || proposal mode is available at ||     https:\/\/github.com\/sergeyk\/selective_search_ijcv_with_python ||  || TODO: || - batch up image filenames as well: don't want to load all of them into memory || - come up with a batching scheme that preserved order \/ keeps a unique ID || \""\""\""",Yes
+TODO: mistake: the model name should be selected_tfidf,Yes
+TODO: move to tensorflow model?,Yes
+TODO AND WARNING: this is a hotfix so that copying works for trained models.,Yes
+TODO I could make NetWrapper more flexible allowing to preprocess the batch before giving it to the model!,Yes
+TODO: aside from the name; DTNNModel is unmodified. May need modification like GraphConvModel did.,Yes
+TODO: aside from the name; DAGModel is unmodified. May need modification like GraphConvModel did.,Yes
+TODO: aside from the name; MPNNModel is unmodified. May need modification like GraphConvModel did.,Yes
+TODO: If you want to use this function; please update it according to model_regression(),Yes
+TODO: build model or load pre-trained model,Yes
+"\""\""\""Module dedicated to extraction of Model Based Metafeatures. ||  || Todo: ||     * Implement metafeatures. ||     * Improve documentation. || \""\""\""",Yes
+TODO 11\/11\/2018 continue and compare with statsmodels result,Yes
+TODO: Integrate this with the logic of the MultiPlanarUNet.models,Yes
+TODO: model type.,No
+TODO add evaluation; model checkpointing; tensorboard,Yes
+@TODO Just play them for now; RNN model prediction later,Yes
+@todo integrate Frontend and Model to that workflow,Yes
+_model_ext = @Todo: dense(numpy\/pk.gz) or sparse => gt...?,Yes
+TODO: add ensemble models as last-step models (voting; ensembles; etc),Yes
+TODO: Implement score function for all models; including clustering,Yes
+TODO: this needs to be replaced by the one in Model_Builder,Yes
+TODO: Find a meaningful way (metric) to notify the user of model score.,Yes
+TODO: This is exactly the same as in single_model so you might,Yes
+TODO: EVERYTHING below here is the same as in single_model.,No
+TODO: LSTMModel needs to be reimplemented,Yes
+TODO Replace this part with SavedModel,Yes
+FIXME: However the fix requires a refactoring of ALL the models to deal with their session internaly.,Yes
+TODO: Fix multiple-learn on commented-out models (Issue #619).,Yes
+FIXME this is essentially the ModelBuilder.build_model,Yes
+TODO need model file,Yes
+TODO use model number as input and return only one model at a time; e.g. default: model=1,Yes
+TODO consider multiple models,Yes
+# TODO: Add default model weights to models\/weights\/ and import them here  #,Yes
+TODO Every model must return a layer named 'logits',Yes
+TODO: Improve. If only tf.keras.clone_model(model) worked.,Yes
+TODO Finish implementing loading in and initializing a Model object from a stored description,Yes
+TODO REMOVE when implemnting live model prediction,Yes
+TODO refactor second part of if statement when implementing live model prediction,Yes
+TODO move model stuff from lpi to analysis.base,Yes
+FIXME: get the answer from the PyTorch model here,Yes
+model.load_state_dict(torch.load(jt_config.model_load)) # TODO,No
+Test model (TODO: this is an ugly and brittle line),Yes
+TODO Create Pipeline; init model; predict on fake dataset; save predictions; save model,Yes
+TODO load saved model; predict on same dataset; compare predictions to saved ones,Yes
+TODO: throw error if given model does not exist (instead of returning empty vectors),Yes
+TODO: What is the standard file path of the models?,No
+TODO: Do not crash when the asked model is not one of the trained models,Yes
+TODO: Cache the model in the process memory; it's quite hard as the RQ,Yes
+TODO: Switch to the pure Defect model; as it's better in this case.,Yes
+TODO: Support modeling fix time at filing time or at assignment time,Yes
+TODO: Support modeling fix time for a subset of bugs (e.g. regressions only),Yes
+TODO: Support modeling fix time with different number of quantiles,Yes
+''' || TODO:   ||     This needs to become something that can measure performance of the  ||     randomized ModelAverage method since thresholding the output there is  ||     appropriate. || ''',Yes
+TODO make type of model dependent on input param,No
+TODO Assert the convergence of the model at the end by reading the,Yes
+TODO Currently assumes we're on slug. Need to package up the model and,Yes
+TODO: Complete the mixture of expert model: verify from if self.options['name'] == 'MixExp': (predict),Yes
+TODO : choice of the surrogate model experts to be used,Yes
+TODO : add factory to get proper surrogate model object,Yes
+TODO : MOE should be a true 'surrogate model' object,Yes
+TODO: should we add leaf surrogate models options?,No
+TODO(take-cheeze) Investigate why onnx.checker.check_model succeed,Yes
+TODO how to pass seasonal frequency for ARIMA model,No
+TODO add more constructor\/fit options from statsmodels,Yes
+TODO: This seems sepcific to agents. Refactor this out of base_model.py,Yes
+TODO: change this to search for the model_init.py based on the,Yes
+TODO but this must be done with my own Model Classifier at the loss selection,Yes
+TODO : #TODO : Regress should be in the model,Yes
+"save_path = FLAGS.ckpt_dir + \""model.ckpt\"" #TODO temp remove==>only save checkpoint for each epoch once.",Yes
+assign_pretrained_word_embedding(sess; vocabulary_index2word; vocab_size; model;FLAGS.word2vec_model_path2;model.Embedding2) #TODO,No
+TODO: BELOW IS NOT THE CASE IF MODEL IS NN - SETTING THE GLOBAL RANDOM SEED DOES SOMETHING,Yes
+TODO: Check :attr:`module_name`'s library_helper for :attr:`model_initializer` for a default `hyperparameter` list,Yes
+TODO: Create `Keras` key based on compiled model architecture; which is far more accurate,Yes
+TODO: Grab all '__hh' attrs from `model.layers` - `load_model` fucks with '<kernel\/bias>_initializer',Yes
+TODO: After setting `self.model` to result of `load_model`; revert the '__hh' attrs to saved values,Yes
+TODO: Model's `get_config()` returns the final learning rate; rather than the initial one; so experiment description,Yes
+TODO: Add `model` here; with a `TranslateTrace` decorator; and document it below,Yes
+model=None;  # TODO: May need to pass `model` from `set_experiment_guidelines`,Yes
+"@TranslateTrace(\""model\""; (\""model_initializer\""; \""model_init_params\""))  # TODO: Add when tested with `Mirror`",Yes
+TODO: When `TranslateTrace` added document `model` below with expectation that if `model`,Yes
+TODO: ... given; (`model_initializer`; `model_init_params`) should not be; and vice versa,No
+TODO: `model` (Class instance; default=None);,No
+"TODO: `model_initializer`\/`model_init_params` docstring types += \""default=None\""",No
+self._model_original = model  # TODO: Add for `TranslateTrace`,No
+TODO: Check here if callable; and using a `Trace`d model\/model_initializer,Yes
+TODO: determine num input channels from model or input data,Yes
+TODO: This won't work with layers shared between models\/messy layers,Yes
+TODO add a pretrained model?,No
+@TODO replace tensorflow to pytorch model,Yes
+"\""\""\"" || Layers for voxelmorph model ||  || TODO: clean up and join with neuron.layers || \""\""\""",Yes
+TODO: This is wrong. We'd want to use the PCA model fit on training data,Yes
+TODO: edge model,Yes
+"\""\""\"" || detector.py is an out-of-the-box windowed detector || callable from the command line. ||  || By default it configures and runs the Caffe reference ImageNet model. || Note that this model was trained for image classification and not detection; || and finetuning for detection can be expected to improve results. ||  || The selective_search_ijcv_with_python code required for the selective search || proposal mode is available at ||     https:\/\/github.com\/sergeyk\/selective_search_ijcv_with_python ||  || TODO: || - batch up image filenames as well: don't want to load all of them into memory || - come up with a batching scheme that preserved order \/ keeps a unique ID || \""\""\""",No
+"\""\""\""Deploy Slim models across multiple clones and replicas. ||  || # TODO(sguada) docstring paragraph by (a) motivating the need for the file and || # (b) defining clones. ||  || # TODO(sguada) describe the high-level components of model deployment. || # E.g. \""each model deployment is composed of several parts: a DeploymentConfig; || # which captures A; B and C; an input_fn which loads data.. etc ||  || To easily train a model on multiple GPUs or across multiple machines this || module provides a set of helper functions: `create_clones`; || `optimize_clones` and `deploy`. ||  || Usage: ||  ||   g = tf.Graph() ||  ||   # Set up DeploymentConfig ||   config = model_deploy.DeploymentConfig(num_clones=2; clone_on_cpu=True) ||  ||   # Create the global step on the device storing the variables. ||   with tf.device(config.variables_device()): ||     global_step = slim.create_global_step() ||  ||   # Define the inputs ||   with tf.device(config.inputs_device()): ||     images; labels = LoadData(...) ||     inputs_queue = slim.data.prefetch_queue((images; labels)) ||  ||   # Define the optimizer. ||   with tf.device(config.optimizer_device()): ||     optimizer = tf.train.MomentumOptimizer(FLAGS.learning_rate; FLAGS.momentum) ||  ||   # Define the model including the loss. ||   def model_fn(inputs_queue): ||     images; labels = inputs_queue.dequeue() ||     predictions = CreateNetwork(images) ||     slim.losses.log_loss(predictions; labels) ||  ||   model_dp = model_deploy.deploy(config; model_fn; [inputs_queue]; ||                                  optimizer=optimizer) ||  ||   # Run training. ||   slim.learning.train(model_dp.train_op; my_log_dir; ||                       summary_op=model_dp.summary_op) ||  || The Clone namedtuple holds together the values associated with each call to || model_fn: ||   * outputs: The return values of the calls to `model_fn()`. ||   * scope: The scope used to create the clone. ||   * device: The device used to create the clone. ||  || DeployedModel namedtuple; holds together the values needed to train multiple || clones: ||   * train_op: An operation that run the optimizer training op and include ||     all the update ops created by `model_fn`. Present only if an optimizer ||     was specified. ||   * summary_op: An operation that run the summaries created by `model_fn` ||     and process_gradients. ||   * total_loss: A `Tensor` that contains the sum of all losses created by ||     `model_fn` plus the regularization losses. ||   * clones: List of `Clone` tuples returned by `create_clones()`. ||  || DeploymentConfig parameters: ||   * num_clones: Number of model clones to deploy in each replica. ||   * clone_on_cpu: True if clones should be placed on CPU. ||   * replica_id: Integer.  Index of the replica for which the model is ||       deployed.  Usually 0 for the chief replica. ||   * num_replicas: Number of replicas to use. ||   * num_ps_tasks: Number of tasks for the `ps` job. 0 to not use replicas. ||   * worker_job_name: A name for the worker job. ||   * ps_job_name: A name for the parameter server job. ||  || TODO(sguada): ||   - describe side effect to the graph. ||   - what happens to summaries and update_ops. ||   - which graph collections are altered. ||   - write a tutorial on how to use this. ||   - analyze the possibility of calling deploy more than once. ||  ||  || \""\""\""",No
+TODO model.Embedding. assign this value to our embedding variables of our model.,Yes
+from model.bert_model import BertModel # TODO TODO TODO test whether pretrain can boost perofrmance with other model,Yes
+TODO test basic ml model\uFFFF,Yes
+TODO test basic spark model\uFFFF,Yes
+TODO: if we set regularization for the model to be sufficiently high; the,Yes
+TODO: add model_io check,Yes
+TODO: This should be done in model's postprocess,Yes
+todo: refactor the model such that it is less state sensitive,Yes
+TODO move the model load and the converter creation in a method called on init; but after the arg parsing,Yes
+TODO Remove this hacky fix when we move them to the same models,Yes
+TODO Currently any models which have a list input will not contain the main model,Yes
+train the model:  TODO - fix the ugly if statements and put this in the arguments of the script,Yes
+TODO - check prev argument for the model,Yes
+"\""\""\""Deploy Slim models across multiple clones and replicas. ||  || # TODO(sguada) docstring paragraph by (a) motivating the need for the file and || # (b) defining clones. ||  || # TODO(sguada) describe the high-level components of model deployment. || # E.g. \""each model deployment is composed of several parts: a DeploymentConfig; || # which captures A; B and C; an input_fn which loads data.. etc ||  || To easily train a model on multiple GPUs or across multiple machines this || module provides a set of helper functions: `create_clones`; || `optimize_clones` and `deploy`. ||  || Usage: ||  ||     g = tf.Graph() ||  ||     # Set up DeploymentConfig ||     config = model_deploy.DeploymentConfig(num_clones=2; clone_on_cpu=True) ||  ||     # Create the global step on the device storing the variables. ||     with tf.device(config.variables_device()): ||         global_step = slim.create_global_step() ||  ||     # Define the inputs ||     with tf.device(config.inputs_device()): ||         images; labels = LoadData(...) ||         inputs_queue = slim.data.prefetch_queue((images; labels)) ||  ||     # Define the optimizer. ||     with tf.device(config.optimizer_device()): ||         optimizer = tf.train.MomentumOptimizer(FLAGS.learning_rate; FLAGS.momentum) ||  ||     # Define the model including the loss. ||     def model_fn(inputs_queue): ||         images; labels = inputs_queue.dequeue() ||         predictions = CreateNetwork(images) ||         slim.losses.log_loss(predictions; labels) ||  ||     model_dp = model_deploy.deploy(config; model_fn; [inputs_queue]; ||                                    optimizer=optimizer) ||  ||     # Run training. ||     slim.learning.train(model_dp.train_op; my_log_dir; ||                                             summary_op=model_dp.summary_op) ||  || The Clone namedtuple holds together the values associated with each call to || model_fn: ||     * outputs: The return values of the calls to `model_fn()`. ||     * scope: The scope used to create the clone. ||     * device: The device used to create the clone. ||  || DeployedModel namedtuple; holds together the values needed to train multiple || clones: ||     * train_op: An operation that run the optimizer training op and include ||         all the update ops created by `model_fn`. Present only if an optimizer ||         was specified. ||     * summary_op: An operation that run the summaries created by `model_fn` ||         and process_gradients. ||     * total_loss: A `Tensor` that contains the sum of all losses created by ||         `model_fn` plus the regularization losses. ||     * clones: List of `Clone` tuples returned by `create_clones()`. ||  || DeploymentConfig parameters: ||     * num_clones: Number of model clones to deploy in each replica. ||     * clone_on_cpu: True if clones should be placed on CPU. ||     * replica_id: Integer.  Index of the replica for which the model is ||             deployed.  Usually 0 for the chief replica. ||     * num_replicas: Number of replicas to use. ||     * num_ps_tasks: Number of tasks for the `ps` job. 0 to not use replicas. ||     * worker_job_name: A name for the worker job. ||     * ps_job_name: A name for the parameter server job. ||  || TODO(sguada): ||     - describe side effect to the graph. ||     - what happens to summaries and update_ops. ||     - which graph collections are altered. ||     - write a tutorial on how to use this. ||     - analyze the possibility of calling deploy more than once. ||  ||  || \""\""\""",Yes
+"fwd_params = [v for v in tf.all_variables() if v.name.startswith(self.model_scope + \""\/\"" + var_scope)]  # TODO",Yes
+"params = [v for v in tf.all_variables() if v.name.startswith(self.model_scope + \""\/\"" + var_scope)]  # TODO",Yes
+TODO Move to model.py,Yes
+TODO: check whether the model is QuartzNet,Yes
+TODO: Make sure this doesn't load a previous trained model!,Yes
+TODO: Replace with ps.ls.model?,Yes
+TODO: dont use _model as model,Yes
+TODO: do not use _model as model,Yes
+TODO : revise ModelData docstring :: Attributes,Yes
+TODO : revise ModelData docstring :: Examples,Yes
+TODO: integrate into VoxelModelCache,Yes
+TODO Check model dtype,Yes
+TODO: fix model path later!,Yes
+TODO: Chunk and NER model + NER config,Yes
+TODO: Train new model!,Yes
+TODO: replace this with segmentation_models' FPN,Yes
+TODO: enable users to run model with older incompatible Pfam DB versions?,Yes
+TODO: use the splits and average the results?? instead of picking best model...,Yes
+TODO: Load saved model.,Yes
+TODO: Model Precision,No
+TODO FIX AND ADD MODEL NAME TO SUPERVISED!,Yes
+# TODO elif 'Priors' in model_folder: #                print 'Processi           print 'Processing Robotics priors model: '; path_to_neighbors,Yes
+ONLY FOR FAST TESTING !!:   model_name = MOBILE_ROBOT#STATIC_BUTTON_SIMPLEST#'pushingButton3DAugmented' #TODO REMOVE-testing  model_name = MOBILE_ROBOT,No
+TODO create folder for experiment and models,Yes
+A future enhancement TODO for running on multiple GPU: CUDA_VISIBLE_DEVICES=2;3 python main.py   and then also model = torch.nn.DataParallel(model; device_ids=[0;1]).cuda(),Yes
+TODO: load best model before predicting states,Yes
+"TODO: use load_metadata in utils.modelIO + don't just use \""specs.json\""",Yes
+"model_name=\""all_comb_model_%d\"" % config.impact_k; # TODO update name",Yes
+TODO have a Model.logger to prefix all logs with model name,Yes
+FIXME: it should be more general (MAIN model compt.),Yes
+TODO: Model here,No
+"\""\""\""   || #TODO: || class HopfieldModel(LatentModel): ||      ||     def __init__(self; nvis; nhid): ||         self.layers = {} ||         self.layers['visible'] = layers.IsingLayer(nvis) ||         self.layers['hidden'] = layers.GaussianLayer(nhid) ||          ||         self.params = {} ||         self.params['weights'] = numpy.random.normal(loc=0.0; scale=1.0; size=(self.layers['visible'].len; self.layers['hidden'].len)).astype(dtype=numpy.float32) ||         self.params['bias'] = numpy.ones_like(self.layers['visible'].loc)   ||  ||  || class HookeMachine(LatentModel): ||      ||     def __init__(self; nvis; nhid; vis_type='gauss'; hid_type='expo'):    ||         assert vis_type.lower() in ['gauss'; 'ising'] ||         assert hid_type.lower() in ['expo'; 'bern'] ||          ||         self.layers = {} ||         self.layers['visible'] = layers.get(vis_type)(nvis) ||         self.layers['hidden'] = layers.get(hid_type)(nhid) ||          ||         self.params = {} ||         self.params['weights'] = numpy.random.normal(loc=0.0; scale=1.0; size=(self.layers['visible'].len; self.layers['hidden'].len)).astype(dtype=numpy.float32) ||         self.params['bias'] = numpy.ones_like(self.layers['hidden'].loc)   ||         self.params['T'] = numpy.ones(1; dtype=numpy.float32) ||                  ||         self.deriv = {} ||         self.deriv['weights'] = numpy.zeros_like(self.params['weights']) ||         self.deriv['bias'] = numpy.zeros_like(self.params['bias']) ||         self.params['T'] = numpy.zeros_like(self.params['T']) ||          ||         self.set_vis(numpy.zeros_like(self.layers['visible'].loc)) ||          ||     def set_vis(self; vis): ||         self.vis = vis ||         self.diff = (self.params['weights'].T - vis).T ||         self.squared_dist = numpy.sum(self.diff ** 2; axis=0) ||         self.layers['hidden'].update_params(self.params['bias'] + self.squared_dist \/ (2 * self.params['T'])) ||         self.energy = -numpy.sum(numpy.log(self.layers['hidden'].partition_function()))         ||          ||     def visible_conditional_params(self; hid): ||         total = numpy.sum(hid) ||         loc = numpy.dot(self.params['weights']; hid) \/ total ||         scale = self.params['T'] \/ total * numpy.ones_like(self.layers['visible'].loc) ||         return (loc; scale) ||          ||     def update_visible_params(self; hid): ||         self.layers['visible'].update_params(*self.visible_conditional_params(hid)) ||          ||     def derivatives(self; vis; key): ||         self.update_hidden_params(vis) ||         hidden_mean = self.layers['hidden'].mean() ||         if key == 'bias': ||             # del H(v; k) \/ del b ||             return hidden_mean ||         elif key == 'weights': ||             # del H(v; k) \/ del W ||             return (self.difference(vis) * hidden_mean.T) \/ self.params['T'] ||         elif key == 'T': ||             # del H(v;k) \/ del T ||             return numpy.dot(hidden_mean.T; self.squared_distance(vis)) ||         else: ||             raise ValueError('unknown key: {}'.format(key)) ||     \""\""\""",Yes
+TODO: move resampling into the model class so that it can be alternated with gibbs,Yes
+TODO: should import the State class from model.py,Yes
+TODO; start with 10 random models; evaluate them,Yes
+TODO print p values for binomial model,Yes
+TODO: Write a bit about the models used in this text field,No
+TODO optimize LR https:\/\/github.com\/flairNLP\/flair\/blob\/master\/resources\/docs\/TUTORIAL_8_MODEL_OPTIMIZATION.md,Yes
+TODO Figure out how nested model config options will work,No
+TODO load model graph into model class called by click,No
+TODO: for all models types; train a single model on the whole dataset,Yes
+TODO: it's worth to switch back to the correct preprocess_input when InceptionResNetV2 model is re-trained,Yes
+TODO: model.add? or x= ...,No
+"\""\""\"" || Adapt acoustic models using maximum-likelihood linear regression. ||  || This module implements single-class mean and variance adaptation using || MLLR as described in M.J.F. Gales & P.C. Woodland; \\\""Mean and Variance || Adaptation within the MLLR Framework\\\""; Computer Speech and Language; || vol. 10; pp 249-264. ||  || TODO: Multiple regression classes. || \""\""\""",Yes
+"\""\""\""Probability models for species substitution. ||  || Implements base class :class:`SubstitutionModel`; || which can be extended to allow for development of new || lambda tables. An example of such an extension; || :class:`RadiusModel`; is also implemented. ||  || Todo: ||     * Allow for parallelism in lambda table calculations ||       by implementing a `sub_probs` abstractmethod ||       that :meth:`SubstitutionModel.gen_lambda` uses; ||       if available. ||  || \""\""\""",Yes
+# TODO Change to call remote model,Yes
+TODO: auto-modeling by custom config (get_model(**config)); defaults to {},Yes
+TODO: model tunning; pass layers and other config to get custom models,Yes
+TODO: introduce exception in case of model failure to predict,Yes
+TODO: This report should be constructed based on sales order line model; not supplier mode.,No
+TODO clarify difference between local path and url to download model,Yes
+todo: should save tpot model here,Yes
+todo: the top models (including one model type with mutliple,Yes
+todo: combinations of model params).,No
+todo: combinations of model params).,Yes
+TODO extract MLE and std of model here.,Yes
+"\""\""\""Deploy Slim models across multiple clones and replicas. ||  || To easily train a model on multiple GPUs or across multiple machines this || module provides a set of helper functions: `create_clones`; || `optimize_clones` and `deploy`. ||  || Usage: ||  ||   g = tf.Graph() ||  ||   # Set up DeploymentConfig ||   config = model_deploy.DeploymentConfig(num_clones=2; clone_on_cpu=True) ||  ||   # Create the global step on the device storing the variables. ||   with tf.device(config.variables_device()): ||     global_step = slim.create_global_step() ||  ||   # Define the inputs ||   with tf.device(config.inputs_device()): ||     images; labels = LoadData(...) ||     inputs_queue = slim.data.prefetch_queue((images; labels)) ||  ||   # Define the optimizer. ||   with tf.device(config.optimizer_device()): ||     optimizer = tf.train.MomentumOptimizer(FLAGS.learning_rate; FLAGS.momentum) ||  ||   # Define the model including the loss. ||   def model_fn(inputs_queue): ||     images; labels = inputs_queue.dequeue() ||     predictions = CreateNetwork(images) ||     slim.losses.log_loss(predictions; labels) ||  ||   model_dp = model_deploy.deploy(config; model_fn; [inputs_queue]; ||                                  optimizer=optimizer) ||  ||   # Run training. ||   slim.learning.train(model_dp.train_op; my_log_dir; ||                       summary_op=model_dp.summary_op) ||  || The Clone namedtuple holds together the values associated with each call to || model_fn: ||   * outputs: The return values of the calls to `model_fn()`. ||   * scope: The scope used to create the clone. ||   * device: The device used to create the clone. ||  || DeployedModel namedtuple; holds together the values needed to train multiple || clones: ||   * train_op: An operation that run the optimizer training op and include ||     all the update ops created by `model_fn`. Present only if an optimizer ||     was specified. ||   * summary_op: An operation that run the summaries created by `model_fn` ||     and process_gradients. ||   * total_loss: A `Tensor` that contains the sum of all losses created by ||     `model_fn` plus the regularization losses. ||   * clones: List of `Clone` tuples returned by `create_clones()`. ||  || DeploymentConfig parameters: ||   * num_clones: Number of model clones to deploy in each replica. ||   * clone_on_cpu: True if clones should be placed on CPU. ||   * replica_id: Integer.  Index of the replica for which the model is ||       deployed.  Usually 0 for the chief replica. ||   * num_replicas: Number of replicas to use. ||   * num_ps_tasks: Number of tasks for the `ps` job. 0 to not use replicas. ||   * worker_job_name: A name for the worker job. ||   * ps_job_name: A name for the parameter server job. ||  || TODO(sguada): ||   - describe side effect to the graph. ||   - what happens to summaries and update_ops. ||   - which graph collections are altered. ||   - write a tutorial on how to use this. ||   - analyze the possibility of calling deploy more than once. ||  ||  || \""\""\""",Yes
+TODO: model_ids,No
+TODO: error if object not in invariant_inputs or model.probes,No
+TODO: document important attributes (e.g. keras_model),No
+TODO Add argument to skip modelling.,Yes
+TODO Move auxiliary model functions to `models\/auxiliary.py`,Yes
+Todo: support for sklearn linear models,No
+TODO: Here; we should be able to add these 2 new lists to DataDict so that they can be used in model.plot().,No
+"\""\""\"" || trainer.py: Contains the code implementation of the main worker of mi-prometheus. || This worker in particular is called the `episodic trainer` and will take care of training || a specified model on a specified problem for a given number of episodes (among other adjustable || parameters). ||  || #TODO: Enhance this description and documentation. ||  || \""\""\""",No
+nir_model = copy.deepcopy(model) # TODO: change to load only the part that we want,Yes
+TODO: add following info: associated featuresets; models,No
+Initialize model (TODO: do i really need this?),No
+Initialize model (TODO: really necessary?),No
+TODO Marcin: Load model from path,Yes
+TODO (johngiorgi): make model checkpointing a config param,Yes
+TODO (johngiorgi): consider introduction a new function; create_model(),Yes
+TODO (johngiorgi): need to clear the models after each fold,Yes
+TODO (johngiorgi): I need to name the models based on their dataset folder,Yes
+TODO (johngiorgi): https:\/\/machinelearningmastery.com\/dropout-regularization-deep-learning-models-keras\/,No
+TODO (johngiorgi) add verbosity parameter for printing model summary,Yes
+TODO (johngiorgi): fix some of the test_model_attributes_after_creation_of_model tests,Yes
+TODO (johngiorgi): Read about spacys models; choose the most,No
+TODO: change to the following statement with new models,Yes
+TODO (johngiorgi): add a dummy model fixture,Yes
+TODO: compute betas for linear SKLL models?,Yes
+TODO: fix actor model,Yes
+TODO(ahundt) consider making image_model_weights shared vs separate configurable,Yes
+Quite good kfold; best hyperparams from 2018-04 2000 model hyperopt run TODO(ahundt) add details from kfold run,No
+TODO(ahundt) it seems set_trainable_layers in grasp_model.py has a bug?,Yes
+lead to NaNs in some models (resnet50).  TODO(tucker): fix it.,Yes
+TODO(rishabhagarwal): Hack for loading a model trained on cloud machine.,Yes
+TODO(yovadia): Figure out why save_model() wants to serialize ModelOptions.,Yes
+"r\""\""\""Reader for the format provided by SIGTYP 2020 Shared Task. ||  || More information on the format is available here: ||   https:\/\/sigtyp.github.io\/st2020.html ||  || Example: || -------- ||  Clone the GitHub data to ST2020_DIR. Then run: ||  ||  > ST2020_DIR=... ||  > python3 sigtyp_reader_main.py --sigtyp_dir ${ST2020_DIR}\/data \\ ||     --output_dir ${OUTPUT_DIR} ||  ||  The above will create \""train.csv\""; \""dev.csv\"" and \""test_blinded.csv\"" files ||  converted from the format provided by SIGTYP. Our models should be able to ||  injest these csv files. Along each of the above files; an accompanying ||  \""data_train_*.json.gz\"" file is generated that contains metainformation on ||  various features and their values. ||  || TODO: || ----- || Following needs to be done: ||   - Latitude and longitude need to be on a point on a unit sphere? Keep as is ||     and add three further columns for (x;y;z)? ||   - Country codes are *several*. ||   - Other types of SOMs. ||   - Use BaseMap for visualizations? || \""\""\""",No
+TODO(ddjohnson) Move common layers out of `edge_supervision_models`.,Yes
+FIXME: anything to check or copy from other model_opt?,Yes
+"\""\""\""Export \/ Import of generic python models. ||  || This module defines generic filesystem format for python models and provides utilities || for saving and loading to and from this format. The format is self contained in a sense || that it includes all necessary information for anyone to load it and use it. Dependencies || are either stored directly with the model or referenced via a conda environment. ||  || The convention for pyfunc models is to have a predict method or function with the following || signature ||  || predict(data: pandas.DataFrame) -> pandas.DataFrame ||  || This convention is relied upon by other mlflow components. ||  || Pyfunc model format is defined as a directory structure containing all required data; code and || configuration: ||  || .\/dst-path\/ ||     .\/MLmodel - config ||     <code> - any code packaged with the model (specified in the conf file; see below) ||     <data> - any data packaged with the model (specified in the conf file; see below) ||     <env>  - conda environment definition (specified in the conf file; see below) ||  || It must contain MLmodel file in its root with \""python_function\"" format with the following || parameters: ||  ||    - loader_module [required]: ||          Python module that can load the model. Expected as module identifier ||           e.g. ``mlflow.sklearn``; it will be imported via importlib.import_module. ||          The imported module must contain function with the following signature: ||  ||               load_pyfunc(path: string) -> <pyfunc model> ||  ||          The path argument is specified by the data parameter and may refer to a file or directory. ||  ||    - code [optional]: ||         relative path to a directory containing the code packaged with this model. ||         All files and directories inside this directory are added to the python path ||         prior to importing the model loader. ||  ||    - data [optional]: ||          relative path to a file or directory containing model data. ||          the path is passed to the model loader. ||  ||    - env [optional]: ||          relative path to an exported conda environment. If present this environment ||          should be activated prior to running the model. ||  || Example: ||  || ``` || >tree example\/sklearn_iris\/mlruns\/run1\/outputs\/linear-lr || \u251C\u2500\u2500 MLmodel || \u251C\u2500\u2500 code || \u2502\u00A0\u00A0 \u251C\u2500\u2500 sklearn_iris.py || \u2502\u00A0\u00A0 || \u251C\u2500\u2500 data || \u2502\u00A0\u00A0 \u2514\u2500\u2500 model.pkl || \u2514\u2500\u2500 mlflow_env.yml ||  || >cat example\/sklearn_iris\/mlruns\/run1\/outputs\/linear-lr\/MLmodel || python_function: ||   code: code ||   data: data\/model.pkl ||   env: mlflow_env.yml ||   main: sklearn_iris ||  || ``` || Todo: || * Get default conda_env of the project. || \""\""\""",No
+"\""\""\"" || This module imports contents from CloudPickle in a way that is compatible with the || ``pickle_module`` parameter of PyTorch's model persistence function: ``torch.save`` || (see https:\/\/github.com\/pytorch\/pytorch\/blob\/692898fe379c9092f5e380797c32305145cd06e1\/torch\/ || serialization.py#L192). It is included as a distinct module from :mod:`mlflow.pytorch` to avoid || polluting the namespace with wildcard imports. ||  || Calling ``torch.save(...; pickle_module=mlflow.pytorch.pickle_module)`` will persist PyTorch model || definitions using CloudPickle; leveraging improved pickling functionality such as the ability || to capture class definitions in the \""__main__\"" scope. ||  || TODO: Remove this module or make it an alias of CloudPickle when CloudPickle and PyTorch have || compatible pickling APIs. || \""\""\""",Yes
+TODO: Tech debt. Refactor search code into common utils; tracking server; and model,Yes
+TODO: move this to a specific mlflow.statsmodels.tsa flavor? Time series models,Yes
+todo: tf2 change ludwig.Model not be subclass of tensorflow.keras Model class?,Yes
+model.close_session()  # todo tf2 code clean -up,Yes
+TODO tf2: currently no clear way to set model graph,Yes
+todo refactoring: maybe replace the self.model_definition paramter,Yes
+TODO: support loading other model types based on definition,Yes
+TODO: Input shape should be determined by combination of model + scan.,Yes
+TODO: build child models,Yes
+TODO: Construct this from built child models,Yes
+TODO: build the model,Yes
+TODO: fit the model,Yes
+"\""\""\""Abstract model classes. ||  || TODO: more info... ||  || \""\""\""",No
+"\""\""\""Common already-made models. ||  || TODO: more info... ||  || \""\""\""",No
+TODO: recursively build this model's args,Yes
+TODO: DiscreteModel (for poisson etc)\uFFFF,No
+TODO: but will have to SAMPLE from model and compute prob multiple times?,No
+TODO: and should use mean model; not sampling,Yes
+TODO: should return built_model; mean_model,Yes
+TODO: i feel like BaseLayer should have everything BaseModel has;,No
+TODO: so the values are the sampled values? so self.built_model.sample()?,Yes
+TODO: need to account for the jacobian if input is a BaseModel,Yes
+TODO: should inherit layer? model?,Yes
+TODO: should inherit layer? model?  Layer; I think.,Yes
+TODO: recurse down the model; setting param._session = sess for each parameter,Yes
+TODO: ensure x data shape matches model._ph['x'] shape (only if fit),Yes
+TODO: restore_best_weights? using save_model and load_model?,Yes
+"\""\""\""Models. ||  || Models are objects which take Tensor(s) as input; perform some computation on  || those Tensor(s); and output probability distributions. ||  || TODO: more... ||  || * :func:`.Model` || * :func:`.ContinuousModel` || * :func:`.DiscreteModel` || * :func:`.CategoricalModel` || * :func:`.save_model` || * :func:`.load_model` ||  || ---------- ||  || \""\""\""",No
+"\""\""\"" || Models are objects which take Tensor(s) as input; perform some computation || on those Tensor(s); and output probability distributions. ||  || TODO: more... ||  || * :class:`.Model` || * :class:`.ContinuousModel` || * :class:`.DiscreteModel` || * :class:`.CategoricalModel` ||  || ---------- ||  || \""\""\""",No
+TODO: update with better model for testing (currently ~85% on testing; ~99% on training),Yes
+@todo the loading of the model and prediction functions should be within a class that is initialized by starting a,Yes
+TODO: init function for saved model,Yes
+'' ||     ----- TODO ----- ||  || [ ] Match the perspective via camera height estimation (with camera || calibration) || [ ] WHY IS IT SO UGLY???! || [ ] Thread it! || [x] Random positioning of the gate || [x] Boundaries definition for the gate (relative to the mesh's size) || [x] Compute the center of the gate || [ ] Compute the presence of the gate in the image frame || [?] Compute the distance to the gate || [ ] Camera calibration (use the correct parameters) || [x] Project on transparent background || [x] Overlay with background image || [ ] Model the camera distortion || [ ] Apply the distortion to the OpenGL projection || [ ] Histogram equalization of both images (hue; saturation; luminence ?...) || [ ] Motion blur (shader ?) || [ ] Anti alisasing (shader ?) || [ ] Ship it! ||  || ''',No
+by default; use_cache is false (for older pre-trained models TODO: remove in version 0.4),Yes
+make compatible with serialized models (TODO: remove),Yes
+TODO check if this is necessary is this method is called before prepare_for_model,Yes
+TODO: think about moving this to model_eval mtry function,Yes
+TODO save models and stats,Yes
+# TODO loop over all the models?,Yes
+TODO is it possible to get to this return if you are in develop_model_mode?,Yes
+TODO This might change as deploy no longer trains a model,Yes
+TODO should this timestamp a model name automatically? (for example 2017-04-26_01.33.55_random_forest.pkl),Yes
+TODO keeping these column names as part of the saved model avoids all the hassle of dropping grain and other,Yes
+TODO factor model here?,Yes
+TODO refactor this to take an arbitrary number of models rather than just a linear and random forest,Yes
+TODO This will not work without a linear and random forest model for now until the base function is refactored,Yes
+TODO this is broken - it might look like tools.plot_roc(models=[random_forest; linear; knn]),Yes
+TODO put TrainedSupervisedModel into advanced class and compare how it feels with the linear_regression(),Yes
+TODO because these now all return TSMs it will be additionally slow by all the factor models.,Yes
+TODO Could these be trained separately then after the best is found; train the factor model and add to TSM?,Yes
+TODO should the factor model be either 1) optional or 2) separate?,Yes
+TODO add approx to model,Yes
+TODO: add notebooks for each models : PoissonReg; CoxPartial; Hawkes; that illustrates simulation and inference of the models; and compares solvers for each models,Yes
+TODO: write callback for model save,Yes
+TODO: set check_hash to True on final model,Yes
+TODO: check it is implemented. The model cannot be loaded when they are present.,Yes
+TODO change for model to deployment version,Yes
+TODO This exists so that models can set up default values,Yes
+TODO: seems like we should store args.model to restore it after this loading,No
+TODO: what's model_name?,Yes
+TODO: The logger is define a bit later (needs the model name) - change this to a log message ?,Yes
+TODO: test this for tacotron models,Yes
+TODO: fix optimizer init; model.cuda() needs to be called before,Yes
+FIXME: can trim the model,Yes
+TODO(rbharath): config and model_params overlap significantly. Maybe just,No
+TODO(rbharath): This is a hack based on fact that multi-tasktype models,No
+"FIXME: Signature of \""fit\"" incompatible with supertype \""Model\""",Yes
+"FIXME: Return type \""None\"" of \""fit\"" incompatible with return type \""float\"" in supertype \""Model\""",Yes
+TODO: This test is a little awkward. The Smiles2Vec model awkwardly depends on a dataset_file being available on disk. This needs to be cleaned up to match the standard model handling API.,Yes
+TODO: change this to your bert model and tokenizer used in pytorch-transformer,Yes
+TODO: Do a better job of guessing defaults from the model,Yes
+TODO: ensure that the number of models is only 2,Yes
+TODO: once we make ScoreVisualizer and ModelVisualizer pass through,No
+TODO: parametrize with models when unittest dependency removed,Yes
+TODO: parametrize with models when unittest dependency removed (new test case),Yes
+TODO: is this how sklearn stores all centers in the model?,Yes
+TODO: honestly this was done because it was only in the statsmodels,No
+TODO. learn feature normalization and store it as a layer in the model,Yes
+TODO. check that model specs are coherent,Yes
+TODO. get rid of from_model_pt,Yes
+TODO: add support for torch.hub models directly in docopt,Yes
+TODO: in pyannote.audio.train.model,Yes
+FIXME add support for pretrained model with different specs,Yes
+"\""\""\"" || Simulate Artificial Data || ======================== ||  || From package Scanpy (https:\/\/github.com\/theislab\/scanpy). || Written in Python 3 (compatible with 2). || Copyright 2016-2017 F. Alexander Wolf (http:\/\/falexwolf.de). ||      || Simulate stochastic dynamic systems to model gene expression dynamics and || cause-effect data. ||  || TODO || ---- || Beta Version. The code will be reorganized soon. || \""\""\""",No
+TODO: add conv models,No
+@TODO: add model grads support and visualization,Yes
+TODO - Add storage bucket name field in django models,Yes
+"TODO should we use \""generator\"" or \""metamodel\"" in the name of",Yes
+TODO: For now; the model are trained for a specific dataset (because of the maxLength which define the,Yes
+TODO: Put a limit size (ex: 3GB for the modelDir),Yes
+We need to restore the model length because of the textData associated and the vocabulary size (TODO: Compatibility mode between different maxLength),Yes
+TODO(Mark) Make the language configurable and based on a model attribute.,Yes
+TODO: Use modelforge to save the model,Yes
+TODO: assert that only on first recursion lvl `parent_model` can be None,Yes
+TODO: if possible; give a warning if model is already fitted (acceptable in case of custom experimentation;,Yes
+TODO add test about initializing a model from a run given a parameter distribution - also,Yes
+fixme str(model) might contain (...),No
+TODO: if possible; give a warning if model is already fitted (acceptable,Yes
+TODO: Make this robust against an adversarial model namer,Yes
+TODO some sanity checks on config_dict (e.g. whether the model is actually a model; etc),Yes
+todo: load & return model blob,Yes
+TODO Implement project_out on PCAModel,Yes
+TODO the model needs to be able to generate it's jacobian.,Yes
+TODO Implement project_out on SimilarityModel,Yes
+TODO: better document what a linear model does.,No
+TODO: give a description of what it means to be a PCA model,No
+TODO: give a description of what it means to be a Similarity Model,No
+TODO: this bit of logic should to be transferred down to PCAModel,Yes
+Register useful parameters and objects useful for model instantiation #TODO: do proper testing on this part,Yes
+TODO Find a way to verify if the model natively supports sample_weight,Yes
+TODO: replace rnnsearch with model_cls.name,Yes
+TODO: switch back to nkjp when model config is updated,Yes
+# TODO: add multi_model stuff!,Yes
+TODO: make sure newer models are trained with mul=1,Yes
+TODO: make sure newer models are trained with diff_ratio=0.5,Yes
+TODO: old models do not have the init attribute; thus create it,Yes
+FIXME: these old models don't have the online attribute set; so we,Yes
+TODO: old models have underscores at some variable names; thus rename,Yes
+TODO: old models have a 'hid_init' instead of an 'init' attribute,Yes
+"TODO: this is another place can be simplified by \""model-before-preprocess\"" reorganization",Yes
+Todo: add static version of model.predict_subset_classes; use here,Yes
+TODO break out EncoderConfig to allow use without populating options for full translation model,Yes
+TODO: At the moment LHUC is RNN specific. We should support other models as well.,Yes
+TODO: make this configurable in the model; separately per target factor.,Yes
+TODO(ohta): Remove this workaround when `number` field is added to `TrialModel`.,Yes
+TODO: support using pretrained model.,Yes
+TODO: How do we strip the arg checking from Model?,No
+TODO: We should return also h_n e.g. for seq2seq models,Yes
+TODO: Which settings should we expose via Model.visualize?,No
+TODO: input \/ output types for model?,No
+TODO: Generalize this to be able to use other model classes like Transformer,Yes
+TODO: pass to dual model too,No
+TODO (T36875783): instantiate a langauge model,Yes
+TODO (T40938917): Allow loading of multiple rescoring models,Yes
+TODO: (T41818693) Map translation model vs LM model differences,No
+TODO: model ensemble,Yes
+"\""\""\"" || The hyphenation\/syllabification algorithm is based on the typical syllable structure model of onset\/nucleus\/coda. || TODO: Add hypothesized IPA transcription || \""\""\""",Yes
+TODO and add:  ['latin_text_perseus'; 'latin_treebank_perseus'; 'latin_text_latin_library'; 'phi5'; 'phi7'; 'latin_proper_names_cltk'; 'latin_models_cltk'; 'latin_pos_lemmata_cltk'; 'latin_treebank_index_thomisticus'; 'latin_lexica_perseus'; 'latin_training_set_sentence_cltk'; 'latin_word2vec_cltk'; 'latin_text_antique_digiliblt'; 'latin_text_corpus_grammaticorum_latinorum'; 'latin_text_poeti_ditalia'],Yes
+TODO: This is a weak check for the models actually being downloaded and valid,Yes
+TODO: Use ``models_dir`` var from below and make self. or global to module,Yes
+TODO: Check all 4 types of model reading on cpu w\/ enough memory,Yes
+TODO: Check; this probably loads model a second time,Yes
+TODO: Decide whether to drop repos w\/o models,Yes
+FIXME res.model.InterceptFlag,Yes
+- spec.model_base: [optional] base string for C lookup function; FIXME: should not be necessary,Yes
+TODO \u5F53\u524D\u7684\u5B9E\u73B0\u4F1A\u5BFC\u81F4\u4E4B\u540E\u7684processor\u9700\u8981\u77E5\u9053model\u8F93\u51FA\u7684output\u7684key\u662F\u4EC0\u4E48,No
+TODO \u8FD9\u91CC\u53EF\u80FD\u4F1A\u9047\u5230\u95EE\u9898\uFF0C\u4E07\u4E00\u7528\u6237\u5728model\u5185\u90E8\u4FEE\u6539\u4E86prediction\u7684device\u5C31\u4F1A\u6709\u95EE\u9898,No
+todo \u53C2\u8003fairseq\u7684FairseqModel\u7684\u5199\u6CD5,No
+TODO make way that the model and the criterion are also passed as parameter with introspection thingy as the optimizer,No
+TODO Load model expected size from the actual model,Yes
+TODO best model is not saved if epoch = 1,Yes
+TODO: make different functions for different models,Yes
+TODO: make different functions for different VGG models,Yes
+"\""\""\""Script to train highres3dnet model. ||  || The input CSV must have two columns: ||     1. filepaths of features ||     2. filepaths of corresponding labels ||  || TODO || ---- || - Make this script more general. Ideally; one could drop in their model and ||     loss function. || - Move some common methods (eg; i\/o) to dedicated modules. || - Dice coefficient for class 1 (brainmask) is sometimes NaN. || - Input of 1 * 128**3 is too large for 1080ti. This seems to be related to the ||     `input_fn` used. || - Remove pandas as a dependency. Make pure python reader that accepts CSV or ||     TSV as input. || \""\""\""",Yes
+"\""\""\""Example script to train model. ||  || The input CSV must have two columns: ||     1. filepaths of features ||     2. filepaths of corresponding labels ||  || TODO || ---- || - Dice coefficient for class 1 (brainmask) is sometimes NaN. This occurs when ||     Dice should be zero. || - Input of 1 * 128**3 is too large for 1080ti to train HighRes3DNet. It is OK ||     for MeshNet. This issue seems to be related to the `input_fn` used. || \""\""\""",Yes
+TODO: add priors from existing Keras model.,Yes
+TODO: can we test if the model is compiled? We lose the optimizer,Yes
+TODO: if we can load weights after compiling model; load the most recent,Yes
+TODO add permissions for all comicmodels and registrationRequest,Yes
+TODO: This class should derive from ComicModelAdmin and not from GuardedModelAdmin,Yes
+TODO: Add some model tests,Yes
+TODO: This class is mostly duplicate from evaluation\/models.py.,No
+TODO patient only images? Propose model change,No
+TODO: Find a better way to support SavedModel. Exposing private attributes is,Yes
+TODO include default_model & example.txt under resources\/,Yes
+todo save model to iteration_0 folder as bin_model,Yes
+todo major sophisticated automatic execution (check what is missing e.g. bin_model),Yes
+TODO download non-packaged [example_entity_model](https:\/\/github.com\/Rostlab\/nalaf\/blob\/develop\/nalaf\/data\/example_entity_model),No
+"raise ValueError(\""Model is not persisted; so training must be performed\"") # TODO is this true?",No
+TODO This is the desired implementation; but the graphs are altered by the model to have duplicated reversed,No
+"TODO (wardlt): Consider making \""num_*_features\"" funcs to simplify making a MEGNet model",Yes
+TODO: check if the xml adheres to slicer execution model,Yes
+TODO: check if the xml adheres to slicer execution model xml schema,Yes
+TODO: check if xml adheres to slicer execution model xml schema,Yes
+FIXME: Code to save and restore the model if Training is skipped,Yes
+"\""\""\"" visualise.py ||  || Visualises the output from training a classifier. ||  || Supports both binary and multi class classifiers. ||  || Use cases: ||  - Visualising the output from training a model ||  - Viewing the output from running batch predictions on a dataset ||  || TODO: Order confusion matrix by most popular class to least popular class || TODO: Output file format in HTML. Always print to the screen. || TODO: Visualisation function should be different from function the output metrics || TODO: Wrap in a Visualiser interface for use in Surround || TODO: Support multiple ground truth and prediction columns || TODO: Add flag to output file with incorrect records. True by default. || TODO: Rename module to visualise_classifier.py ||  || TODO: Add a flag to set probability thresholds || TODO: Add a flag that describes each aspect of the generated report in human readable terminology ||  || \""\""\""",Yes
+TODO: this should be the same for every model; given that you pass a config??,No
+TODO: Fix bc it writes in the same folder several models,Yes
+TODO: Fix to load the correct models,Yes
+TODO: to train parts of the model in different device,Yes
+# TODO: to train parts of the model in different device,Yes
+"\""\""\"" || Classes for representing and processing probabilistic information. ||  || The L{FreqDist} class is used to encode X{frequency distributions}; || which count the number of times that each outcome of an experiment || occurs. ||  || The L{ProbDistI} class defines a standard interface for X{probability || distributions}; which encode the probability of each outcome for an || experiment.  There are two types of probability distribution: ||  ||   - X{derived probability distributions} are created from frequency ||     distributions.  They attempt to model the probability distribution ||     that generated the frequency distribution. ||   - X{analytic probability distributions} are created directly from ||     parameters (such as variance). ||  || The L{ConditionalFreqDist} class and L{ConditionalProbDistI} interface || are used to encode conditional distributions.  Conditional probability || distributions can be derived or analytic; but currently the only || implementation of the C{ConditionalProbDistI} interface is || L{ConditionalProbDist}; a derived distribution. ||  || The L{ProbabilisticMixIn} class is a mix-in class that can be used to || associate probabilities with data classes (such as C{Token} or || C{Tree}). ||  || @group Frequency Distributions: FreqDist || @group Derived Probability Distributions: ProbDistI; MLEProbDist; ||     LidstoneProbDist; LaplaceProbDist; ELEProbDist; HeldoutProbDist; ||     CrossValidationProbDist || @group Analyitic Probability Distributions: UniformProbDist || @group Conditional Distributions: ConditionalFreqDist; ||     ConditionalProbDistI; ConditionalProbDist || @group Probabilistic Mix-In: ProbabilisticMixIn || @sort: FreqDist; ProbDistI; MLEProbDist; LidstoneProbDist; LaplaceProbDist;  ||     ELEProbDist; HeldoutProbDist; CrossValidationProbDist; UniformProbDist; ||     ConditionalFreqDist; ConditionalProbDistI; ConditionalProbDist ||  || @todo: Better handling of log probabilities. || \""\""\""",Yes
+TODO use Model 4 scoring instead of Model 5,Yes
+TODO - last_model :=,No
+TODO: adjust regexp for different models,Yes
+"\""\""\""Temporary hack for decoding mtf_transformer models. ||  || This is a transformer implementation in regular TensorFlow which is || checkpoint-compatible with MtfTransformer for eval\/inference. ||  || The purpose of this model is to run inference on MtfTransformer models. || We are working on native decoding in MtfTransformer which will be faster and || cleaner. ||  || TODO(noam): Remove once we can decode in mtf. || \""\""\""",Yes
+TODO serialize the entire tfidf model. We'll need it later  to create a sparseMatrixSimilarity object,Yes
+"\""\""\"" || Latent Dirichlet Allocation (LDA) in Python; using all cores to parallelize and || speed up model training. ||  || The parallelization uses multiprocessing; in case this doesn't work for you for || some reason; try `LdaModel` which is an equivalent; but more straightforward and || single-core implementation. ||  || FIXME wiki timings ||  || This module allows both LDA model estimation from a training corpus and inference of topic || distribution on new; unseen documents. The model can also be updated with new documents || for online training. ||  || The core estimation code is based on the `onlineldavb.py` script by M. Hoffman [1]_; see || **Hoffman; Blei; Bach: Online Learning for Latent Dirichlet Allocation; NIPS 2010.** ||  || The algorithm: ||  || * is **streamed**: training documents may come in sequentially; no random access required; || * runs in **constant memory** w.r.t. the number of documents: size of the ||   training corpus does not affect memory footprint; can process corpora larger than RAM; and || * is **distributed**: makes use of a cluster of machines; if available; to ||   speed up model estimation. ||  || .. [1] http:\/\/www.cs.princeton.edu\/~mdhoffma || \""\""\""",No
+FIXME : Meant to work for LDAModel; LdaVowpalWabbit right now. Make it work for others.,Yes
+TODO: replace fit_lda_post with appropriate ldamodel functions; if possible.,Yes
+TODO create show_topic in HdpModel and then test,Yes
+TODO: this is duplication of code in LdaModel. Refactor.,Yes
+TODO: this method is somewhat similar to the one in LdaModel. Refactor if possible.,Yes
+TODO: This method is very similar to the one in LdaModel. Refactor.,Yes
+TODO: Allow passing in full model path and only require one argument,Yes
+TODO: Unset this once we don't want to support models previous models.,Yes
+TODO: Remove this once we're not supporting models trained with thinc <6.9.0,Yes
+TODO: fix load model,Yes
+TODO: Multiply by the number of dimensions so it scales the number of models,Yes
+TODO: fix broken model here,Yes
+TODO: finish the tests once the main model is ready,Yes
+TODO: should support parallelization at the model level,Yes
+TODO: discuss how to standardize data for different model types,Yes
+class Attachment(models.Model):  TODO,No
+TODO for API use; pred_model and dim_reducer must be validated here again,Yes
+TODO: Where to set this? Or; is this the same as Estimator.model_dir?,Yes
+todo: recompute model,No
+TODO: we can do this automatically when setting up the models by having,Yes
+TODO: remove self.testing condition because model.summarize() is wiping out the weights,Yes
+TODO - refector this function to accept model_name; instance; parent so it makes more sense,Yes
+todo: without passing model it fails for missing best weights,Yes
+TODO currently no support for vertical model parallel,Yes
+Todo: required argument `model` is not used,Yes
+todo: enabled since internally we wrap the model for optimizer step; this should be fixed,Yes
+todo: think about better way without need to dump model to drive,Yes
+todo: seems it does not work with quantized models - it returns 0.0,Yes
+TODO: is there a better way than accessing trainer through model -> trainer?,Yes
+TODO: disallow None pipeline (modify model selection case handling),Yes
+TODO save model,No
+TODO see openai baselines; model.py;  _mlp is so clean,No
+TODO turn on save\/load model mode,Yes
+TODO hack and set the eval model location inside info_space,Yes
+TODO eval call using eval_model_prepath,Yes
+TODO: incorporate into heuristic models,Yes
+TODO: I don't like the redundancy here; i.e.; the model class is a key in,Yes
+TODO: FrameModel needs to have a metaclass that knows how to map extractors,Yes
+TODO: Move this into Model,Yes
+TODO: This is used in analyze.extractor and model.frame. Can it be,No
+TODO: I'm not sure the model module package is the appropriate place for this;,Yes
+TODO: Remove import when statsmodels updates #18264,Yes
+"\""\""\"" || Model Zoos. || TODO add shape size for each layer || \""\""\""",Yes
+TODO ? link_vectors_to_models(self.vocab),No
+TODO ? link_vectors_to_models(self.vocab) depr?,No
+TODO: handle base model,Yes
+"\""\""\"" || Todo: cross-check the F-value with stats model || \""\""\""",No
+## TODO: intercept for all models,Yes
+"\""\""\"" || Simple Gaussian Mixture model plotting example ||  || TODO: use the faithful dataset || \""\""\""",Yes
+TODO store the best model in a variable named 'clf',Yes
+FIXME in 1.2: parameter 'normalize' should be removed from linear models,Yes
+TODO - DSG - transform data into model ready data. Must return list; where each element is an example.,Yes
+TODO - DSG - load model from disk to memory,Yes
+Todo score accumulation to check if this model is better than the saved one,Yes
+combine column headers into one list #TODO: this is probably not neccessary as lists are combined at modelling,Yes
+TODO: Estimate likelihood of jghj datasetjgj; given the model,Yes
+TODO: maybe due to the initial embedding that has to be done; all inputs are given when defining the model;,Yes
+TODO: maybe do not execute this line in the training model to save computation ? Maybe it wouldnt be executed anyway ?,Yes
+TODO sample_posterior_predictive_w is currently only work for model with,No
+TODO: cache bn for the same `meta_model` and `variational`.,Yes
+TODO: Model based FS (random forest variable importance; ...); RFE,No
+FIXME: irrespective of PyListModel check; this might\/should always,No
+TODO: Implement filtering on the model,Yes
+This is a simple implementation of Kipf & Welling's Semi-Supervised Classificaton with Graph Convolutional Networks in ICLR 2017; which propose a simple yet efficient model that extends convolutional neual network from the grid structured data we all familiar and like to graphs; like social network and knowledge graph. It starts from the framework of spectral graph convolutions and makes reasonable simplifications to achieve both faster training and higher prediction accuracy. It also achieves start-of-the-art classification results on a number of graph datasets like CORA; etc. \/TODO: elaborate.,No
+TODO: loading model emb only work for genernal Embedding; not for ExternalEmbedding,No
+"\""\""\""01. Predict depth from a single image with pre-trained Monodepth2 models || =========================================================================== ||  || TODO || \""\""\""",No
+TODO: should use model instead of self.model,Yes
+TODO replace this speedup implementation with nni.compression.torch.ModelSpeedup,Yes
+TODO: how to get the actual model?,No
+TODO: replace with actual models,Yes
+TODO(ekl): move to rllib\/models dir,Yes
+TODO: Have a separate model catalogue for bandits,Yes
+TODO(sven): Add once ModelV1 is deprecated and we no longer cause circular,Yes
+TODO(sven): Move `add_layer_norm` into ModelCatalog as,Yes
+TODO: (sven) allow for having a default model config over many,Yes
+TODO: (sven) move to models\/utils.py,Yes
+TODO: (sven) hack; but works for `target_[q_]?model`.,Yes
+TODO: modelpar currently broken on synthetic-sanity_check.yaml,No
+TODO: arguments won't be saved in keras export model,Yes
+todo: add test that use the same random seed with two models: a static chain,Yes
+TODO: This feature seems to be a normalized version of the,No
+TODO: If the categorical attributes are considered; this feature is,No
+''' || Todo: || - Add categorical features || - Add method to FoldYielder to import other data into correct format; e.g. csv; root || - Make HEPAugFoldYielder able to augment targets as well || ''',Yes
+TODO Decide how to handle missing features when deprocessing matrix data,Yes
+FIXME we do this because context.feature is set dynamically in EE testing,Yes
+TODO: check if stride of 2 causes alignment issues if the featuremap,Yes
+TODO: add assert to varify feature map sizes match what's in config,Yes
+TODO: If this is not true; the feature slicing should be differnet in the network building.,Yes
+TODO: How to trim the auxiliary features? Align left or center?,Yes
+TODO : add more feature with downsample?,Yes
+FIXME: proper representation for arbitrary features,Yes
+TODO: decompose postag into individual morphological features,Yes
+FIXME: split features in multiple attributes,Yes
+"\""\""\"" || WIP ||  || This file should contain classes (that behave like torch models); but they || implement the learning of classical learning algorithms like SVM and || RandomForest. ||  || Deep networks are amazing at learning features. However; I don't think it's || very useful to use linear logicstic regression as a classifier. In many cases I || think an SVM or a RandomForest might produce a superior classification model; || but this has yet to be shown. ||  || TODO: ||     - [ ] Classical Abstract API ||     - [ ] Integration with the FitHarn ||         - [ ] How do we swap netharn's backprop+SGD with sklearn's SVM and RandomForest fit methods? ||         - [ ] Netharn needs a \""classical\"" implementation of \""run\"". ||             - [ ] Simply use the data loader to load the data ||             - [ ] Defaults should encourage use with deep features. ||     - [ ] RandomForest ||     - [ ] SVM || \""\""\""",Yes
+"\""\""\"" || Proof-of-concept for porting mmcv DataContainer concept to netharn. Depending || on how well this works these features might be useful as a standalone module or || to contribute to torch proper. ||  || References: ||     https:\/\/github.com\/open-mmlab\/mmcv\/blob\/master\/mmcv\/parallel\/data_container.py ||     https:\/\/github.com\/open-mmlab\/mmcv\/blob\/master\/mmcv\/parallel\/collate.py ||     https:\/\/github.com\/open-mmlab\/mmcv\/blob\/master\/mmcv\/parallel\/scatter_gather.py ||  || FIXME 0 dimension tensors || \""\""\""",Yes
+TODO: Add information about the number of prototype cells and the feature size,Yes
+FIXME: switch to layer.out_features?,Yes
+FIXME: switch to layer.in_features?,Yes
+FIXME  dict_key\u662Ffeature value;dict_value\u662Fsubspace-tree-root\u8282\u70B9,No
+TODO: check if stride of 2 causes alignment issues if the feature map,Yes
+TODO This is scaling samples. Perhaphs amend to give option to scale features as well.,Yes
+todo: this is not completed. feature dimension must be the same as training data,Yes
+todo: save features,Yes
+TODO HANDLE DIFFERENT DATASETS FEATURES AND FIX OTHER THINGS (RUN TO SEE),Yes
+TODO(rbharath): Untransform doesn't work properly for binary feature,Yes
+"\""\""\""Meta-feature extractor wrapper for MFE R package. ||  || This module is a wrapper to MFE package. MFE is a meta-feature extractor || package building in R. ||  || Example: ||     TODO ||         $ python example_google.py ||  || Todo: ||     * Create an simple example ||     * Create a method to extract meta-features from csv files ||     * You have to also use ``sphinx.ext.todo`` extension ||  || \""\""\""",No
+"\""\""\""EXtracts metafeatures from structured datasets. ||  || Todo: ||     More information here. || \""\""\""",Yes
+"\""\""\""Module dedicated to extraction of General Metafeatures. ||  || Todo: ||     - Implement all metafeatures. ||     - Improve documentation. ||  || References: ||     1. \""Towards Reproducible Empirical Research in Meta-Learning\""; ||         Rivolli et al. URL: https:\/\/arxiv.org\/abs\/1808.10406 || \""\""\""",No
+"\""\""\""Main module for extracting metafeatures from datasets. ||  || Todo: ||     - Improve documentation. ||     - Implement MFE class. || \""\""\""",Yes
+"\""\""\""Main module for extracting metafeatures from datasets. ||  || Todo: ||     * Improve documentation. ||     * Implement MFE class. || \""\""\""",Yes
+"\""\""\""Module dedicated to extraction of Information Theory Metafeatures. ||  || Todo: ||     * Implement metafeatures. ||     * Improve documentation. || \""\""\""",Yes
+"\""\""\""Module dedicated to extraction of Landmarking Metafeatures. ||  || Todo: ||     * Implement metafeatures. ||     * Improve documentation. || \""\""\""",Yes
+"\""\""\""Module dedicated to extraction of Statistical Metafeatures. ||  || Todo: ||     * Implement metafeatures. ||     * Improve documentation. || \""\""\""",Yes
+TODO Add a stop at convergence feature,Yes
+TODO: Maybe skip the FeatureUnion if `len(parents)==1` ?,Yes
+"\""\""\"" || Surfit || ====== ||  ||  || Create a surface image from CT volume ||  || This script consists of three main steps: ||  ||     1. Denoise ||     2. Feature Enhancement ||     3. Surface Generation ||  ||  || 1. Denoise || ********** || TODO ||  || 2. Feature Enahncement || ********************** || TODO ||  ||  || 3. Surface Generation || ********************* || TODO ||  ||  ||  ||  ||  || \""\""\""",No
+TODO: Should be using feature columns?,No
+"\""\""\"" || Batch sizes: 32 = 5GB memory; 128 = 17GB ||  || The \""read -1 expected ...\"" errors are harmless and come from Docker. See https:\/\/github.com\/horovod\/horovod\/issues\/503 || Running Docker in privileged mode (docker run --privileged) solves the issue. ||  || Dataset handling: Lots of empty lines; use dataset.filter() to eliminate those. || For now; just grab one sentence. || TODO: Combine two segments into a single example. https:\/\/github.com\/google-research\/electra\/blob\/master\/build_pretraining_dataset.py || TODO: Add zero-padding for shorter sequences ||  || nlp feature request: Select from dataset with arbitrary slices || `nlp` package tutorial: https:\/\/colab.research.google.com\/github\/huggingface\/nlp\/blob\/master\/notebooks\/Overview.ipynb || \""\""\""",Yes
+TODO write tests for feature extractor once class is written,Yes
+TODO this should have options for window_wize; features to exclude; and anything else.,Yes
+TODO: we can't handle modification features in,Yes
+TODO because we use the API Gateway; this feature is not longer needed.,Yes
+TODO: handle BindingFeatures and FragmentFeatures here,Yes
+TODO: make it so that question counts are removed in generating features,Yes
+(TODO): Perhaps create versions with different subsets of the features?,Yes
+TODO: don't use most frequent bigrams; look by class via feature selection,Yes
+TODO: add more external features like:,Yes
+TODO: Alternative features; to integreate in bug_features.py,Yes
+TODO: Try simply using all possible fields instead of extracting features manually.,Yes
+TODO: Actually implement feature importance visualization for multiclass problems.,Yes
+precision_nnz = 1. * np.count_nonzero(precision) \/ n_features # TODO: does this scaling make sense?,No
+TODO Remove assumption of fbank features,Yes
+TODO Confirm that the feature files exist. Create them if they don't.,Yes
+TODO Make this None and infer feature_type from dimension of NN input layer.,Yes
+TODO input checks on target and feature args,Yes
+TODO implement compatibility checks between metadata and task: e.g. for tsc; if features are present,Yes
+TODO include series-as-features transformers,Yes
+TODO refactor Tabularizer as series-as-features composition meta-estimator;,Yes
+TODO support sparse features,Yes
+1 TODO Preprocess data? norm? if RR interval; last 4 features are pre; post; local and global RR,Yes
+TODO export features;labels .csv?,No
+0) TODO if feature_Selection:,No
+feature usage # !TODO: Dangerous if max_depth is set to None; what happens then?,Yes
+TODO: Record the column features in train df,Yes
+TODO: Drop `suppress` - Was for `feature_engineer={}`,Yes
+TODO: Add `FeatureEngineer` method called after `inverse_transform` to format as DataFrame,Yes
+"\""\""\""This module defines mechanisms for managing an experiment's various datasets; and each datasets's || inputs; targets; and predictions. ||  || **Important Contents** ||  || In order to maintain the states of different datasets across all divisions of an experiment and || amid transformations that may be applied to the data via || :mod:`~hyperparameter_hunter.feature_engineering`; two main classes are defined herein: ||  || 1. :class:`BaseDataChunk`: ||  ||     * Logical separations between \""columns\"" of data for a given :class:`BaseDataset` ||     * Held and maintained by :class:`BaseDataset` and its descendants ||     * Three primary descendants of :class:`BaseDataChunk`: ||  ||         1. :class:`InputChunk`: Maintains a dataset's input data (and transformations) ||         2. :class:`TargetChunk`: Maintains a dataset's target data (and transformations) ||         3. :class:`PredictionChunk`: Maintains a dataset's predictions (and transformations) ||  ||     * Descendants of :class:`BaseDataChunk` should implement the eight \""on_<division>_<point>\"" ||       callback methods defined by :class:`~hyperparameter_hunter.callbacks.bases.BaseCallback` ||  ||         * Because :class:`BaseDataChunk` subclasses are isolated from the experiment; these methods ||           need not invoke their `super` methods; although they are allowed to if necessary ||  ||     * :class:`NullDataChunk` does nothing but mimic the normal :class:`BaseDataChunk` child structure ||  ||         * Used for :class:`BaseDataset` subclasses lacking a particular data chunk; such as: ||  ||             1) `TestDataset`'s `TargetChunk`; because the targets for a test dataset are unknown; or ||             2) `TrainDataset`'s `PredictionChunk`; because predictions are not made on training data ||  || 2. :class:`BaseDataset`: ||  ||     # TODO: ... ||  || **Dataset Attribute Syntax** ||  || The intricate subclass network bolstering the module's predominant :class:`BaseDataset` subclasses || may be intimidating at first; but don't worry; there's a shortcut. Follow these steps to ensure || proper syntax and a valid result when accessing data from a || :class:`~hyperparameter_hunter.experiments.CVExperiment`: ||  || 1. {`data_train`; `data_oof`; `data_holdout`; `data_test`} - Dataset attribute || 2. {`input`; `target`; `prediction`} - Data chunk || 3. [`T`] - Optional transformation || 4. {`d`; `run`; `fold`; `rep`; `final`} - Division; initial (`d`) or `final` data ||  || By stacking three values (four if following optional step \""3\"") from the above formula; you can || access all of the interesting stuff stored in the datasets from the comfort of your experiment or || :func:`~hyperparameter_hunter.callbacks.bases.lambda_callback`. ||  || Related || ------- || :mod:`hyperparameter_hunter.callbacks.bases` ||     This module defines the core callback method structure mirrored by :class:`BaseDataCore`. ||     Despite the strong logical connection to this module; it is important to remember that the only ||     actual connection between the two modules is in :mod:`hyperparameter_hunter.callbacks.wranglers` || :mod:`hyperparameter_hunter.callbacks.wranglers` ||     # TODO: ... Handlers for the `Dataset`s to invoke callback methods with required parameters ||     This module defines the callback classes that act as handlers for the descendants of ||     :class:`BaseDataset` || :mod:`hyperparameter_hunter.experiments` ||     # TODO: ... || \""\""\""",No
+"TODO: Should target wranglers addition be contingent on `kwargs[\""feature_engineer\""].steps",Yes
+TODO Add numbers in the final image to the feature channels.,Yes
+TODO: min_num_of_features -> init argument,Yes
+TODO: if wanna use time as a categorical feature,Yes
+hps_dict.update({'dqn_input_feature_len':(FLAGS.dec_hidden_dim+FLAGS.max_dec_steps)}) # TODO: more test on this; if wanna use time as a categorical feature,Yes
+TODO: a more flexible way to decide which feature maps to use,Yes
+TODO:  self.init_std\/ math.sqrt(float(dim))  #self.params['feature_dim'],No
+TODO: maybe replace numDownSlope instead with a different feature:,Yes
+mfcc_delta = librosa.feature.delta(mfcc; width=5; order=1)    TODO,Yes
+TODO Feature transform function.,Yes
+TODO gazetteer features,Yes
+Path to TODO file and feature cache:,No
+Check for features TODO: THIS NEEDS TO BE CHANGED!,Yes
+TODO: Avg feature importance foo all classifiers,Yes
+[BETA] - TODO: select features 'manually',Yes
+TODO: Look in to missing data ratios of disease-specific features,Yes
+Todo: try to discriminate the feature map,Yes
+TODO: Remove X% of the x_features,Yes
+TODO: Return the features that were removed,Yes
+TODO: FeatureUnion?,No
+TODO check the feature_map_shape_list is consistent with,Yes
+TODO: add more features,Yes
+TODO: This logic needs to be checked. See if it works with multiple features.,Yes
+TODO: extract prosodic features,Yes
+TODO: test the feature,Yes
+FIXME: change according to feature preprocessing. tip: for standardization; use,Yes
+TODO add more Baidu-style features here,No
+feature_np[index; length:] = 0  # TODO replace 0 by dict,Yes
+feature_copy[index; length:] = 0  # TODO replace 0 by dict,Yes
+TODO clean up all this to leverage built-in features of tokenizers,Yes
+TODO: add tests for the following once they return features not matrixes:,Yes
+TODO: Why are correlated features only pruned if the target is present?,Yes
+Todo: At the moment; scaling and feature reduction converts ints to floats,No
+todo: tests should include using custom (user speficied) features as well,Yes
+todo: change the feature_na_method!,Yes
+TODO: Optimize: When running multiple detectors feature extraction has to be done only once,Yes
+TODO: Implement feature extraction parts of Magpie in python.,Yes
+from rasterio.features import is_valid_geom #FIXME: wait for https:\/\/github.com\/mapbox\/rasterio\/issues\/1815 to be solved,Yes
+TODO: test this with invalid features.,Yes
+TODO: add following info: associated featuresets; models,Yes
+TODO: Custom features script handling,Yes
+TODO: Extract list of custom features from code,Yes
+TODO: terminology? feature or observation?,Yes
+FIXME: features? need to use extract from preprocess.py,Yes
+TODO: prepare for a future where tgt features are possible,Yes
+TODO: prepare for a future where tgt features are possible.,Yes
+TODO: support these blacklisted features.,Yes
+TODO: support these blacklisted features,Yes
+TODO maybe add scrollbar feature for one supply\/demand list,Yes
+TODO: Remove when FeatureHasher is implemented in PYPY,Yes
+todo: refactor to reuse SeuuqnceOutputFeature.postprocess_results,Yes
+todo tf2: hardcoding for a single output feature - need to generalize,Yes
+output_last_hidden[output_feature_name] = decoder_last_hidden  #todo tf2 do we need this long-term give the above,Yes
+set_feature(vocab_size=3);  # TODO fix,Yes
+bag_feature(vocab_size=3);  # TODO fix,Yes
+assert len(inputs.shape) == 2  # TODO: check correct inputs.shape as per sequence feature,Yes
+todo revisit to see if can use output feature.postprocess_results(),Yes
+todo tf2: encoder_obj should be passed to the sequenceinputfeature,Yes
+todo maybe move code from add_feature_data here,Yes
+TODO remove feature?,Yes
+TODO: provenence feature based on Rule.STATETRANS? but seems that it is the only option for the AMR!,Yes
+:TODO Add 6 low-level feature extraction,Yes
+TODO: save feature as np,Yes
+TODO: Subtract feature stats; run prediction,Yes
+TODO: Get RandomizedLogistic (auto feature selection) working in place of linear,Yes
+TODO Modify mu and sigma once feature scaling is built into the logistic regression,Yes
+TODO: features simulation isn't launch each time we call simulate,Yes
+TODO: check and correct also n_samples; n_features and cov_corr and features_scaling,Yes
+TODO: features simulation isn't launch each time we call simulate,No
+TODO rename image-features,Yes
+TODO: add scrolling feature (currently disabled),Yes
+Todo: generalize and move to features.core,No
+"'' || def load_pdbbind_molecules(paths; dir_name=\""fingerprints\""): ||   \""\""\""Load dataset fingerprints and return fingerprints. ||   \""\""\"" ||   # TODO(rbharath): This is a total kludge. Clean up later. ||   dir_name = \""targets\"" ||   molecules = {} ||   for dataset_path in paths: ||     pickle_dir = os.path.join(dataset_path; dir_name) ||     pickle_files = os.listdir(pickle_dir) ||     if len(pickle_files) == 0: ||       raise ValueError(\""No Pickle Files found to load molecules\"") ||     for pickle_file in pickle_files: ||       with gzip.open(os.path.join(pickle_dir; pickle_file); \""rb\"") as f: ||         contents = pickle.load(f) ||         smiles; fingerprints; scaffolds; mol_ids = ( ||             contents[\""smiles\""]; contents[\""features\""]; ||             None; None) ||         for mol in range(len(contents[\""smiles\""])): ||           molecules[smiles[mol]] = {\""fingerprint\"": fingerprints[mol]; ||                                     \""scaffold\"": None; ||                                     \""mol_id\"": None} ||   return molecules  || '''",No
+TODO: add pi_stack and cation_pi to feature_types (it's not trivial,No
+TODO: add pi_stack and cation_pi to feature_types (it's not trivial,Yes
+TODO: Allow the user to specify this feature,Yes
+TODO: Refactor MissingDataVisualizer to make use of new features.,Yes
+TODO: allow the user specified features to filter the dataset,Yes
+FIXME use feature.crop(mode='center'; fixed=duration) instead,Yes
+TODO: use new pytorch feature that handle sorting automatically,Yes
+@TODO: return the feature,No
+TODO: programmatically check wether these are indeed features (predict; correct),No
+TODO let the user choose the feature indices of interest,Yes
+TODO: this should use check_feature_type,No
+TODO: Is this correct or should I return np.hstack((features; 1)) as,Yes
+TODO: feature?,No
+TODO (nakago): test feature extraction behavior...,No
+TODO check if most_common feature really isn't that useful,No
+TODO: this code is very similar to features.onsets.peak_picking();,No
+TODO: inherit from features.Activations,Yes
+TODO: refactor this to use new feature.tempo functionality,Yes
+TODO: split the classes similar to madmom.features.onsets?,Yes
+TODO: split the classes similar to madmom.features.beats?,Yes
+TODO: Add some sort of check for duplicate feature names,Yes
+TODO: evaluate cases when len(unique(feature))==2,Yes
+TODO: check on the feature space approximation (V2),Yes
+TODO: extend support to other forms of Vectorization schemes - Feature Hashing,Yes
+TODO: weight tying? lexicon and all other features the RNN supports?!,No
+TODO: enable caching to reuse features and resume computation,Yes
+TODO: Not sure how this feature should work still...,Yes
+TODO: Is this made obsolete by the FeatureExtractor?,Yes
+TODO: Ensure only v2 Feature Columns are used.,Yes
+TODO: Deserialized embedding feature column behavior is the,No
+"\""\""\""Example script to train model. ||  || The input CSV must have two columns: ||     1. filepaths of features ||     2. filepaths of corresponding labels ||  || TODO || ---- || - Dice coefficient for class 1 (brainmask) is sometimes NaN. This occurs when ||     Dice should be zero. || - Input of 1 * 128**3 is too large for 1080ti to train HighRes3DNet. It is OK ||     for MeshNet. This issue seems to be related to the `input_fn` used. || \""\""\""",No
+TODO: in the future; multi-channel features should be supported.,Yes
+TODO implement separate test functions for each feature that is already implemented in test_generate,Yes
+TODO decorator that checks features,No
+TODO move to edge features,Yes
+TODO investigate features,Yes
+TODO this would be better written in the (entities) FeatureGenerator,Yes
+TODO the following is better written here; instead of the FeatureDictionary as originally written,Yes
+TODO Drop support for ignoring features,Yes
+TODO: For dense; cast to Conv1D size e.g. (1; out_features).,Yes
+TODO: Parse feature values to their real type here; e.g. parse ints or floats,Yes
+"\""\""\"" || Basic data classes for representing feature structures.  A X{feature || structure} is a mapping from feature names to feature values; where: ||  ||   - Each X{feature name} is a case sensitive string. ||   - Each X{feature value} can be a base value (such as a string); a ||     variable; or a nested feature structure. ||  || Feature structures are typically used to represent partial information || about objects.  A feature name that is not mapped to a value stands || for a feature whose value is unknown (I{not} a feature without a || value).  Two feature structures that represent (potentially || overlapping) information about the same object can be combined by || X{unification}.  When two inconsistent feature structures are unified; || the unification fails and returns C{None}. ||  || Features can be specified using X{feature paths}; or tuples of feature || names that specify path through the nested feature structures to a || value.  Feature structures may contain reentrant feature values.  A || X{reentrant feature value} is a single feature value that can be || accessed via multiple feature paths.  Unification preserves the || reentrance relations imposed by both of the unified feature || structures.  In the feature structure resulting from unification; any || modifications to a reentrant feature value will be visible using any || of its feature paths.  Feature structures may also contain X{cyclic || feature values}; i.e.; values that recursively contain themself. ||  || Feature structure variables are encoded using the L{nltk.sem.Variable} || class.  The variables' values are tracked using a X{bindings} || dictionary; which maps variables to their values.  When two feature || structures are unified; a fresh bindings dictionary is created to || track their values; and before unification completes; all bound || variables are replaced by their values.  Thus; the bindings || dictionaries are usually strictly internal to the unification process. || However; it is possible to track the bindings of variables if you || choose to; by supplying your own initial bindings dictionary to the || L{unify() <FeatStruct.unify>} method. ||  || When unbound variables are unified with one another; they become || X{aliased}.  This is encoded by binding one variable to the other. ||  || @todo: add a fail parameter to unify?  This would be a function that ||    would be called if unificaiton fails; it could either raise a ||    UnificationFailure error; or return a value.  How would this be ||    useful?  Well; one example is that it could be used to find a ||    \""diff\"" between two feature structures -- i.e.; a list of all ||    feature paths with different values.  Anyway; the old version had ||    it.  Ask steven why it was introduced? ||  || @todo: Figure out yaml support.  Do we need any? ||  || @todo: support for mutable feature structures? ||  || @todo: define __div__ for feature structures? ||  || relative to category; we don't define... ||   - .symbol (we're not a Nonterminal) ||   - .head() ||   - .feature_names(); .has_features() -- eh ||   - .to_yaml() and .from_yaml() ||   - parsing of cfgs.. ||  || \""\""\""",No
+TODO: Add FeatureProduction; with a better def. of __str__:,Yes
+Todo : can come up with more complicated features set for better performance.,Yes
+Todo : can come up with more complicated features set for better,No
+TODO: Support extract features from multiple layers,Yes
+TODO add a check for min_features; e.g. d<=3 & max_features as well,Yes
+TODO: failed due to sklearn uses 2 feature examples.,Yes
+TODO: formulate this on the basis of _FEATURE_MASK,Yes
+TODO document this feature or remove it,Yes
+TODO perhaps I can have two arguments: one to specify feature type (which determines the reader); and another,Yes
+TODO generate visualizations for each feature set as well as a comparative summary!,Yes
+TODO need to devise a way to avoid re-reading all the features from scratch every time.,Yes
+TODO if feature names are implemented; save them too,Yes
+TODO to achieve feature- or method-level parallization;,No
+TODO new feature: add additional metrics such as PPV,Yes
+TODO optimize the num features to select as part of grid search,Yes
+TODO: DynamicFeaturesAdder,Yes
+TODO: ShapeFeaturesAdder,Yes
+todo (tchaton) awaiting this feature to move upstream to DeepSpeed,Yes
+#TODO: add user features and concat here; use usergraph.extend,Yes
+TODO: MultiFeature class (like for minhash features),Yes
+TODO: Grabs features; builds an Extractor chain; can check db for,Yes
+TODO: MultiFeature class (like for minhash features),No
+TODO: Lazily compute unstored features when requested,Yes
+TODO: ExtractorChain.prune() that can take multiple features and tests,Yes
+TODO: return every frame of this feature shuffled,Yes
+TODO: tf\/idf on features,Yes
+TODO: nbits could be inferred from the feature,Yes
+TODO: Should I just expect input from the AutoCorrelation feature?,No
+TODO: Should I do a sub-database per feature; or organize the keys as,No
+TODO(rohanj): This is a hack to get around not depending on feature_column and,Yes
+FIXME: NOT WORKING. PLEASE FIX ME. There seem to be something wrong with the n-gram features.,Yes
+FIXME: the iris dataset has only 4 features!,Yes
+TODO: test also n_samples > n_features,Yes
+TODO: feature request OpenML.,Yes
+TODO: pass in a list of expected nominal features,Yes
+TODO: this should be `feature_names_in_` when we start having it,Yes
+TODO: Remove parametrization in 0.24 when None is removed for FeatureUnion,Yes
+TODO: also call _check_n_features(reset=False) in 0.24,Yes
+TODO: complexity is O(n_categorical_features * 255). Maybe this is,No
+TODO: add PolynomialFeatures if it moves to _polynomial.py,Yes
+"\""\""\"" || _import(\""data.sample\"") || _import(\""data.outliers\"") || _import(\""data.preprocess\"") || _import(\""data.preprocess.scaling\"") || _import(\""data.utils\"") || _import(\""data.discretization\"") || _import(\""data.continuization\"") || _import(\""data.filter\"") || _import(\""data.imputation\"") ||  || _import(\""feature\"") || _import(\""feature.construction\"") || _import(\""feature.construction.functionDecomposition\"") || _import(\""feature.construction.univariate\"") || _import(\""feature.discretization\"") || _import(\""feature.imputation\"") || _import(\""feature.scoring\"") || _import(\""feature.selection\"") ||  || _import(\""network\"") ||  || _import(\""stat\"") ||  || _import(\""statistics\"") || _import(\""statistics.estimate\"") || _import(\""statistics.contingency\"") || _import(\""statistics.distribution\"") || _import(\""statistics.basic\"") || _import(\""statistics.evd\"") ||  || _import(\""classification\"") || _import(\""classification.tree\"") ||  || _import(\""classification.rules\"") ||  || _import(\""classification.lookup\"") || _import(\""classification.bayes\"") || _import(\""classification.svm\"") || _import(\""classification.logreg\"") || _import(\""classification.knn\"") || _import(\""classification.majority\"") ||  || _import(\""tuning\"") ||  || _import(\""projection\"") || _import(\""projection.linear\"") || _import(\""projection.mds\"") || _import(\""projection.som\"") ||  || _import(\""ensemble\"") || _import(\""ensemble.bagging\"") || _import(\""ensemble.boosting\"") || _import(\""ensemble.forest\"") || _import(\""ensemble.stacking\"") ||  || _import(\""regression\"") || _import(\""regression.base\"") || _import(\""regression.earth\"") || _import(\""regression.lasso\"") || _import(\""regression.linear\"") || _import(\""regression.mean\"") || _import(\""regression.pls\"") || _import(\""regression.tree\"") ||  || _import(\""multitarget\"") || _import(\""multitarget.tree\"") ||  || _import(\""multilabel\"") || _import(\""multilabel.multibase\"") || _import(\""multilabel.br\"") || _import(\""multilabel.lp\"") || _import(\""multilabel.mlknn\"") || _import(\""multilabel.brknn\"") || _import(\""multilabel.mulan\"") ||  || _import(\""associate\"") ||  || _import(\""distance\"") ||  || _import(\""wrappers\"") ||  || _import(\""featureConstruction\"") || _import(\""featureConstruction.univariate\"") || _import(\""featureConstruction.functionDecomposition\"") ||  || _import(\""evaluation\"") || _import(\""evaluation.scoring\"") || _import(\""evaluation.testing\"") ||  || _import(\""clustering\"") || _import(\""clustering.kmeans\"") || _import(\""clustering.hierarchical\"") || _import(\""clustering.consensus\"") ||  || _import(\""misc\"") ||  || _import(\""utils\"") #TODO hide utils from the user || _import(\""utils.environ\"") || _import(\""utils.counters\"") || _import(\""utils.addons\"") || _import(\""utils.render\"") || _import(\""utils.serverfiles\"") ||  || _import_addons() || \""\""\""",No
+"\""\""\"" || Use DGLGraph || ============ ||  || In this tutorial; we introduce how to use our graph class -- ``DGLGraph``. || The ``DGLGraph`` is the very core data structure in our library. It provides the basic || interfaces to manipulate graph structure; set\/get node\/edge features and convert || from\/to many other graph formats. You can also perform computation on the graph || using our message passing APIs. (TODO: give a link here to the message passing doc) || \""\""\""",No
+TODO I duplicate some node features.,Yes
+TODO: all all the SGD features from PyTorch's SGD,No
+TODO implement this feature using MultiPointerTensor,Yes
+TODO: Avoid using undocumented feature,Yes
+todo: Optimizers do not yet support static graph feature.,Yes
+TODO: load pretrained embeddings to check sizes,No
+TODO: support training mode?,Yes
+TODO: Fix training parameter,Yes
+TODO Restore our CNN from trained data,Yes
+"\""\""\""TODO Implement controller ||  || Example request with tasks to the API: || { ||     'userId': 20; ||     'commandTemplate': 'CUDA_VISIBLE_DEVICES={CVD} train.py --task-id {TID}'; ||     'values': [ ||         {'hostname': 'galileo'; 'CVD': 0; 'TID': 'ps'}; ||         {'hostname': 'galileo'; 'CVD': 1; 'TID': 'worker'}; ||         {'hostname': 'galileo'; 'CVD': 1; 'TID': 'worker'}; ||         {'hostname': 'galileo'; 'CVD': 1; 'TID': 'worker'}; ||     ] || } || \""\""\""",Yes
+TODO: Run beam search whenever self.training is False so that we can get,Yes
+TODO(xhebraj) implement return of train\/test\/validation,Yes
+@todo only pick training images!!!,Yes
+TODO: cross-validations or at least train\/test split,Yes
+.conv(3; 3; 64; 1; 1; name='conv1_2'; trainable=True)     # TODO,No
+Needs to restore the other hyper-parameters\/states for training; (TODO xinlei) I have,No
+"\""\""\""An implementation of the overfitting test for the Transformer model. ||  || A simple test; which often signifies bugs in the implementation of a model; is the overfitting test. To that end; the || considered model is trained and evaluated on the same tiny dataset; which it should be able to overfit easily. || Therefore; the final model should yield very high probabilities for the desired target values. If this is not the case; || however; then there is probably something wrong with the tested model and\/or its implementation. ||  || TODO: explain a bit more || \""\""\""",No
+FIXME: for 'rest' to be able to contain parens; would need constraint,Yes
+TODO: need to put all trainable layer types here,Yes
+TODO: check for train_info.json in a few different places,Yes
+TODO: Use sliding windows so detection can be run and trained on,Yes
+TODO: find a better\/general way of handling training dynamics,Yes
+TODO: Remove the constraint that forces columns to be sorted,Yes
+''' || Test action recognition on || (1) a video; (2) a folder of images; (3) or web camera. ||  || Input: ||     classes: data_proc\/classes.csv # TODO: change this to a config file ||     model: model\/trained_classifier.pickle ||  || Output: ||     result video:    output\/${video_name}\/video.avi ||     result skeleton: output\/${video_name}\/skeleton_res\/XXXXX.txt ||     visualization by cv2.imshow() in img_displayer || ''',No
+X_train = X_train \/ 127.5 - 1.  #TODO,No
+FIXME stop and start training!!,Yes
+''' || * todo || * bcolz.set_nthreads(nthreads) || * bucket sampling ||  ||  || --- ||  || same bucket algorithm; with indexing: ||  || figure out the sizes required from each generation based on buckets (easy; any rounding issues; || drop from oldest generation) ||  || create a range(n) where n is the size of a generation.  shuffle.  remove head or tail until size. || [old version removed tail; but it doesn't matter] ||  || combine all (need to offset start index of each generation data] ||  || shuffle. ||  || --- ||  || old algo for validation set: || * no shuffling done on generation.  ie always the same last n of the generation data. || * any buckets < 1.0; threw away tail || * was shuffled before training ||  || --- ||  ||  || # XXX call samples -> observations (from self play). ||  ||  || # steps: ||  || init || ---- || * read summary file (gendata_summary.json); and validate against cache || * if no cache \/ summary file.  delete any spurious files.  Create. || * Validate existing files (md5sum). ||  ||  || sync || ---- || * check directory for any recent files. || * read new data; and preprocessed into numpy arrays (as generator) || * append numpy data to cache || * update the summary ||  ||  || create an indexer || ----------------- || * specify from buckets || * init: how to do this?  Should be a bunch of ranges; I guess. || * resample_data\/validation_data() both create a chunk indexer || * what about weightings?  Future step. ||  ||  || generator || --------- || * bcolz generator.  yields batches. ||  || * inputs: ||   * cache & chunk indexer ||  || * evaluation speed tests ||  ||  || callbacks || --------- || * before each epoch.  Idea is to keep epochs small (1 million) ||  ||  ||  ||  ||  || missing from train.py: ||  ||  ||     def verify_samples(self; sm): ||         # create a basestate ||         basestate = sm.new_base_state() ||  ||         counters = [Counter(); Counter()] ||         max_values = [{}; {}] ||         min_values = [{}; {}] ||         for s in self.samples: ||             basestate.from_list(decode_state(s.state)) ||             sm.update_bases(basestate) ||  ||             # get legals... ||             for ri in range(2): ||                 ls = sm.get_legal_state(ri) ||                 policy = s.policies[ri] ||                 for legal in ls.to_list(): ||                     found = False ||                     for ll; pp in policy: ||                         if ll == legal: ||                             max_values[ri][legal] = max(max_values[ri].get(legal; -1); pp) ||                             min_values[ri][legal] = min(max_values[ri].get(legal; 2); pp) ||                             found = True ||                             break ||                     assert found ||                     counters[ri][legal] += 1 ||  ||  ||  ||  ||  ||     def debug(self): ||         # good to see some outputs ||         for x in (10; 420; 42): ||             log.info('train input; shape: %s.  Example: %s' % (self.inputs.shape; self.inputs[x])) ||             for o in self.outputs: ||                 log.info('train output; shape: %s.  Example: %s' % (o.shape; o[x])) ||  ||  || # XXX add tests || class Buckets(object): ||     def __init__(self; bucket_def): ||         self.bucket_def = bucket_def ||  ||     def get(self; depth; max_depth): ||         if not self.bucket_def: ||             return 1.0 ||  ||         for idx; (cut_off; pct) in enumerate(self.bucket_def): ||             if cut_off <= 0: ||                 return self.get2(depth; max_depth; self.bucket_def[idx:]) ||  ||             if depth < cut_off: ||                 return pct ||  ||     def get2(self; depth; max_depth; stripped_def): ||         assert len(stripped_def) == 1 ||         return stripped_def[0][1] ||  ||  || ''',No
+"\""\""\""Problem definitions for Allen Brain Atlas problems. ||  || Notes: ||  ||   * TODO(cwbeitel): Want to be able to increase up-sampling ratio and\/or ||     in-paint fraction over the course of training. This could be done by ||     defining a range of problems or perhaps more aptly with an hparam ||     that is dialed up depending on training performance. ||  || \""\""\""",No
+"TODO: Do stuff with \""remainder\"" training data",Yes
+TODO: uncomment to train on all data,Yes
+TODO: kg_vector for training,No
+TODO: remove to add kg_vector for training,Yes
+TODO: apply constrain on training set size,Yes
+TODO: support integer; category; and basic scipy.optimize constraints,Yes
+todo training on the first graph only!,No
+TODO: handle each of ModeKeys.{EVAL;TRAIN;PREDICT},Yes
+TODO: Deprecated; Update with tf.train.MonitoredTrainingSession,Yes
+TODO: Darknet region training includes extra coordinate loss for early,Yes
+TODO: train step makes cross_entropy NAN,No
+TODO: train step makes cross_entropy NAN,Yes
+TODO implement resuming a training,No
+TODO does the imported retrain function take this path?,No
+TODO: maybe we should use arc_pred sometimes in training??,Yes
+TODO Check constraint algorithms + optimise,Yes
+TODO Maybe switch to using predicted arcs towards end of training,Yes
+TODO: I think this checking should be removed (already checked in trainer init),Yes
+Needs to restore the other hyperparameters\/states for training; (TODO xinlei) I have,No
+TODO: codeup a while loop - dry iterations (non training). or may be have a separate,No
+TODO: for compatibility reason; remove once we retrain,No
+"TODO fix Delta.arg_constraints[\""v\""] to be a",Yes
+"TODO fix Dirichlet.arg_constraints[\""concentration\""] to be a",Yes
+"TODO fix DirichletMultinomial.arg_constraints[\""concentration\""] to be a",Yes
+TODO fix LowRankMultivariateNormal.arg_constraints upstream,Yes
+TODO add temperature to RelaxedBernoulli.arg_constraints upstream,Yes
+TODO: Change this to per_gpu_train_batch_size,Yes
+"\""\""\"" || What's the best way to develop a new pretraining script? ||  || Dynamic masking straight from text. || Abtract out the gradient accumulation functionality. Tracking loss; acc variables within the accumulator rather than outside. || Incorporate the new transformers version. Be willing to lose my current work. ||  || # TODO: Should we include special tokens? <BOS>; <EOS>. || # TODO: Weight sharing between generator and discriminator; only token embeddings. ||  || \""\""\""",No
+"\""\""\"" || Batch sizes: 32 = 5GB memory; 128 = 17GB ||  || The \""read -1 expected ...\"" errors are harmless and come from Docker. See https:\/\/github.com\/horovod\/horovod\/issues\/503 || Running Docker in privileged mode (docker run --privileged) solves the issue. ||  || Dataset handling: Lots of empty lines; use dataset.filter() to eliminate those. || For now; just grab one sentence. || TODO: Combine two segments into a single example. https:\/\/github.com\/google-research\/electra\/blob\/master\/build_pretraining_dataset.py || TODO: Add zero-padding for shorter sequences ||  || nlp feature request: Select from dataset with arbitrary slices || `nlp` package tutorial: https:\/\/colab.research.google.com\/github\/huggingface\/nlp\/blob\/master\/notebooks\/Overview.ipynb || \""\""\""",No
+TODO: Limit code duplication between train_step and val_step.,Yes
+todo: make this script capable of training and annotating corpora,Yes
+(TODO): Perhaps compress the training files after pasting them together?,Yes
+"\""\""\"" || class GQCNNTrainingProgress(object): ||     def __init__(self; total_epochs): ||         self._training_status = GQCNNTrainingStatus.NOT_STARTED ||         self._epoch = np.nan ||         self._total_epochs = total_epochs || #        self._train_error = np.nan || #        self._val_error = np.nan || #        self._train_loss = np.nan || #        self._val_loss = np.nan ||  ||     @property ||     def training_status(self): ||         return self._training_status ||  ||     @property ||     def epoch(self): ||         return self._epoch ||  ||     @property ||     def total_epochs(self): ||         return self._total_epochs ||  ||     @training_status.setter ||     def training_status(self; status): ||         assert status in GQCNNTrainingStatus.__dict__.keys(); 'Invalid training status \""{}\""'.format(status) #TODO: @Vishal this is kind of jank but still works ||         self._training_status = training_status ||  ||     @epoch.setter ||     def epoch(self; epoch): ||         self._epoch = epoch || \""\""\""",No
+TODO (Neil): Enable both train and validation,Yes
+TODO: support training mode?,No
+TODO: need more arguments for full training,Yes
+TODO Reconsider the place of these splits. Perhaps train\/dev\/test,Yes
+TODO Probably should be hardcoding the list of train\/dev\/test utterances,Yes
+TODO Perhaps the ReadyCorpus train_prefixes variable should be a,Yes
+TODO This logic should be changed. The number of training instances,Yes
+# FIXME: need standard format for train\/test\/inputs\/targets,Yes
+# FIXME: combine results from train and test,Yes
+TODO: Extend to multifidelity problems by adding training_pts = {'approx': {}},Yes
+"\""\""\"" || Author: Dr. Mohamed Amine Bouhlel <mbouhlel@umich.edu> ||  || Some functions are copied from gaussian_process submodule (Scikit-learn 0.14) ||  || TODO: || - Add additional points GEKPLS1; GEKPLS2 and so on ||  || - define outputs['sol'] = self.sol ||  || - debug _train: self_pkl = pickle.dumps(obj) ||                            cPickle.PicklingError: Can't pickle <type 'function'>: attribute lookup __builtin__.function failed ||  || \""\""\""",Yes
+"\""\""\"" || Author: Dr. Mohamed Amine Bouhlel <mbouhlel@umich.edu> ||  || Some functions are copied from gaussian_process submodule (Scikit-learn 0.14) ||  || TODO: || - define outputs['sol'] = self.sol ||  || - debug _train: self_pkl = pickle.dumps(obj) ||                            cPickle.PicklingError: Can't pickle <type 'function'>: attribute lookup __builtin__.function failed ||  || \""\""\""",Yes
+"\""\""\"" || Author: Dr. Mohamed Amine Bouhlel <mbouhlel@umich.edu> ||  || Some functions are copied from gaussian_process submodule (Scikit-learn 0.14) ||  || TODO: || - fail_iteration and nb_iter_max to remove from options || - define outputs['sol'] = self.sol ||  || - debug _train: self_pkl = pickle.dumps(obj) ||                            cPickle.PicklingError: Can't pickle <type 'function'>: attribute lookup __builtin__.function failed ||  || \""\""\""",Yes
+TODO: Extend to multifidelity problems by adding training_points = {'approx': {}},Yes
+TODO -- could use BFGS for this (unconstrained) optimization as well -- everytime for min of mean,Yes
+TODO: save trained strategy on disk,Yes
+TODO: Add training commands,Yes
+TODO: Add support for training,Yes
+TODO: Constraints: 3-128 alphanumeric characters; parentheses (()); square brackets ([]); spaces ( ); periods (.); slashes (\/); dashes (-); single quotes ('); at-signs (@); or underscores(_),No
+TODO: add mlm back to pretrain,Yes
+TODO weights = tf.mul(train_labels; class_weight),No
+TODO Build trainer class,No
+TODO implement multi-gpu training and compare performance,Yes
+TODO: Add student training test code.,Yes
+3. transform to train\/valid data to standardized format #TODO change to multi-processing version for train,Yes
+TODO(jerry): Implement training resume,Yes
+TODO: Allow providing separate train_input; train_target dataframes; or the full df,Yes
+TODO add a pretrained model?,Yes
+TODO: Create a random minibatch of training data and labels; storing  #,Yes
+TODO: note this is the opposite of train_miccai and it might be confusing.,Yes
+TODO: support evaluation on training split,Yes
+TODO: refactor forward_train in two stage to reduce code redundancy,Yes
+"TODO: I think this should be a \""sampler\"" class and moved to training.py. To keep this file generic-sampling.",Yes
+TODO: Move config in train\/test cfg.,Yes
+TODO: Merge with same in trainSessionParams,Yes
+todo need load vocabulary of tokens from pretrain; but labels from real task.,Yes
+from model.bert_model import BertModel # TODO TODO TODO test whether pretrain can boost perofrmance with other model,No
+"\""\""\""Data augmentation functionality. Passed as callable transformations to || Dataset classes. ||  || The data augmentation procedures were interpreted from @weiliu89's SSD paper || http:\/\/arxiv.org\/abs\/1512.02325 ||  || TODO: explore https:\/\/github.com\/ncullen93\/torchsample\/blob\/master\/torchsample\/transforms ||     for any useful tranformations || TODO: implement data_augment for training ||  || Ellis Brown || \""\""\""",Yes
+TODO: For full training; put preprocessing inside training loop.,No
+TODO: implement passing of SVMlight parameters from train() to learn(),Yes
+TODO: Make orthographic heuristic less susceptible to overtraining,Yes
+"TODO check \""Tips for mask refinement (optional after >15k iters)\"" => https:\/\/render.githubusercontent.com\/view\/ipynb?commit=87d6e7a28ce754acd38d885367b6ceb0be92ec54&enc_url=68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f7368616f616e6c752f66616365737761702d47414e2f383764366537613238636537353461636433386438383533363762366365623062653932656335342f46616365537761705f47414e5f76325f737a3132385f747261696e2e6970796e62&nwo=shaoanlu%2Ffaceswap-GAN&path=FaceSwap_GAN_v2_sz128_train.ipynb&repository_id=115182783&repository_type=Repository#Tips-for-mask-refinement-(optional-after-%3E15k-iters)",No
+TODO: Parallel this part to make it train faster,Yes
+TODO: Try different dropout schemes. On the small training set; every kind of dropout,Yes
+TODO: If plotting; self.plot_train will be empty,Yes
+FIXME this does not train for some reason,Yes
+"\""\""\""Deploy Slim models across multiple clones and replicas. ||  || # TODO(sguada) docstring paragraph by (a) motivating the need for the file and || # (b) defining clones. ||  || # TODO(sguada) describe the high-level components of model deployment. || # E.g. \""each model deployment is composed of several parts: a DeploymentConfig; || # which captures A; B and C; an input_fn which loads data.. etc ||  || To easily train a model on multiple GPUs or across multiple machines this || module provides a set of helper functions: `create_clones`; || `optimize_clones` and `deploy`. ||  || Usage: ||  ||     g = tf.Graph() ||  ||     # Set up DeploymentConfig ||     config = model_deploy.DeploymentConfig(num_clones=2; clone_on_cpu=True) ||  ||     # Create the global step on the device storing the variables. ||     with tf.device(config.variables_device()): ||         global_step = slim.create_global_step() ||  ||     # Define the inputs ||     with tf.device(config.inputs_device()): ||         images; labels = LoadData(...) ||         inputs_queue = slim.data.prefetch_queue((images; labels)) ||  ||     # Define the optimizer. ||     with tf.device(config.optimizer_device()): ||         optimizer = tf.train.MomentumOptimizer(FLAGS.learning_rate; FLAGS.momentum) ||  ||     # Define the model including the loss. ||     def model_fn(inputs_queue): ||         images; labels = inputs_queue.dequeue() ||         predictions = CreateNetwork(images) ||         slim.losses.log_loss(predictions; labels) ||  ||     model_dp = model_deploy.deploy(config; model_fn; [inputs_queue]; ||                                    optimizer=optimizer) ||  ||     # Run training. ||     slim.learning.train(model_dp.train_op; my_log_dir; ||                                             summary_op=model_dp.summary_op) ||  || The Clone namedtuple holds together the values associated with each call to || model_fn: ||     * outputs: The return values of the calls to `model_fn()`. ||     * scope: The scope used to create the clone. ||     * device: The device used to create the clone. ||  || DeployedModel namedtuple; holds together the values needed to train multiple || clones: ||     * train_op: An operation that run the optimizer training op and include ||         all the update ops created by `model_fn`. Present only if an optimizer ||         was specified. ||     * summary_op: An operation that run the summaries created by `model_fn` ||         and process_gradients. ||     * total_loss: A `Tensor` that contains the sum of all losses created by ||         `model_fn` plus the regularization losses. ||     * clones: List of `Clone` tuples returned by `create_clones()`. ||  || DeploymentConfig parameters: ||     * num_clones: Number of model clones to deploy in each replica. ||     * clone_on_cpu: True if clones should be placed on CPU. ||     * replica_id: Integer.  Index of the replica for which the model is ||             deployed.  Usually 0 for the chief replica. ||     * num_replicas: Number of replicas to use. ||     * num_ps_tasks: Number of tasks for the `ps` job. 0 to not use replicas. ||     * worker_job_name: A name for the worker job. ||     * ps_job_name: A name for the parameter server job. ||  || TODO(sguada): ||     - describe side effect to the graph. ||     - what happens to summaries and update_ops. ||     - which graph collections are altered. ||     - write a tutorial on how to use this. ||     - analyze the possibility of calling deploy more than once. ||  ||  || \""\""\""",No
+TODO add a field _train; _test ; _dev in the unified dataset,No
+TODO: Rewrite this function to match inputs_train().,Yes
+TODO train.txt,No
+TODO Wrapper for all used dataset wrappers; that creates the train.txt; test.txt; dev.txt,No
+TODO Acquire train data.,Yes
+tf.train.NanTensorHook(loss); TODO fix,Yes
+TODO: Removed for now. Complete training first.,Yes
+tf.train.NanTensorHook(loss); TODO fix,No
+TODO: Known issue: Item coverage here is not considering as recommendable items those who were not in the train set,Yes
+FIXME for fast training. when it comes to service; comment out,Yes
+TODO: Save results for this classifier\/trainingset in database,Yes
+FIXME: Enforce this for META only. The problem is the TrainingSet class; which doesn't know about which classifier is running it,Yes
+ToDo: Stop if details indicate that training failed.,Yes
+TODO: Implement grid search training,Yes
+Todo: combine training,Yes
+TODO: this is bad solution to resume the training,Yes
+TODO: Verify that we need to split into training and validation or into inputs and expected_outputs.,Yes
+@todo: not sure whether it is absoluately necessary in training.,Yes
+TODO: change n_entity to n_train_entity and n_unseen_entity;,Yes
+TODO: Change to tf.contrib.training.bucket_by_sequence_length,Yes
+TODO: Specify also the weights if pre-trained,Yes
+TODO: Make a line that adds a point at each trained batch (Or percentage being updated),Yes
+TODO: better to use trainable=False?,Yes
+g.load(sess; self.save_dir; ckpt_name)  # TODO: use previously trained gan,Yes
+TODO: add self-trained cartoongan: MODE,Yes
+TODO: adversarial training code,Yes
+TODO: implement parameter constraints,Yes
+tmp.set_state(abatch.get('train')) # TODO: fix,No
+TODO: remove special constraint for Bernoulli case,Yes
+TODO: re-implement support for constraint satisfaction method,Yes
+TODO: re-implement support for constraint satisfaction method as needed,Yes
+TODO: Darknet region training includes extra coordinate loss for early,No
+todo: For these operations it is impossible to guess the size and all constrains on the matrix,No
+todo: For these expectations it is impossible to guess the size and all constrains on the matrix,No
+TODO implement train_set_mask! Currently BROKEN.,Yes
+TODO implement train_set_mask!,Yes
+TODO implement train_test split,Yes
+TODO use self.X_train_norm_squared_,Yes
+TODO: Fix the train generator code,Yes
+TODO dynamic decode defined scope here! train has to do this too,No
+compute a metric for training set (TODO: change to validation),No
+TODO: retrain for -1 fold,Yes
+todo include training data into measures,Yes
+TODO: replace get_trainign data by get using the training data name,Yes
+"\""\""\""Deploy Slim models across multiple clones and replicas. ||  || To easily train a model on multiple GPUs or across multiple machines this || module provides a set of helper functions: `create_clones`; || `optimize_clones` and `deploy`. ||  || Usage: ||  ||   g = tf.Graph() ||  ||   # Set up DeploymentConfig ||   config = model_deploy.DeploymentConfig(num_clones=2; clone_on_cpu=True) ||  ||   # Create the global step on the device storing the variables. ||   with tf.device(config.variables_device()): ||     global_step = slim.create_global_step() ||  ||   # Define the inputs ||   with tf.device(config.inputs_device()): ||     images; labels = LoadData(...) ||     inputs_queue = slim.data.prefetch_queue((images; labels)) ||  ||   # Define the optimizer. ||   with tf.device(config.optimizer_device()): ||     optimizer = tf.train.MomentumOptimizer(FLAGS.learning_rate; FLAGS.momentum) ||  ||   # Define the model including the loss. ||   def model_fn(inputs_queue): ||     images; labels = inputs_queue.dequeue() ||     predictions = CreateNetwork(images) ||     slim.losses.log_loss(predictions; labels) ||  ||   model_dp = model_deploy.deploy(config; model_fn; [inputs_queue]; ||                                  optimizer=optimizer) ||  ||   # Run training. ||   slim.learning.train(model_dp.train_op; my_log_dir; ||                       summary_op=model_dp.summary_op) ||  || The Clone namedtuple holds together the values associated with each call to || model_fn: ||   * outputs: The return values of the calls to `model_fn()`. ||   * scope: The scope used to create the clone. ||   * device: The device used to create the clone. ||  || DeployedModel namedtuple; holds together the values needed to train multiple || clones: ||   * train_op: An operation that run the optimizer training op and include ||     all the update ops created by `model_fn`. Present only if an optimizer ||     was specified. ||   * summary_op: An operation that run the summaries created by `model_fn` ||     and process_gradients. ||   * total_loss: A `Tensor` that contains the sum of all losses created by ||     `model_fn` plus the regularization losses. ||   * clones: List of `Clone` tuples returned by `create_clones()`. ||  || DeploymentConfig parameters: ||   * num_clones: Number of model clones to deploy in each replica. ||   * clone_on_cpu: True if clones should be placed on CPU. ||   * replica_id: Integer.  Index of the replica for which the model is ||       deployed.  Usually 0 for the chief replica. ||   * num_replicas: Number of replicas to use. ||   * num_ps_tasks: Number of tasks for the `ps` job. 0 to not use replicas. ||   * worker_job_name: A name for the worker job. ||   * ps_job_name: A name for the parameter server job. ||  || TODO(sguada): ||   - describe side effect to the graph. ||   - what happens to summaries and update_ops. ||   - which graph collections are altered. ||   - write a tutorial on how to use this. ||   - analyze the possibility of calling deploy more than once. ||  ||  || \""\""\""",No
+TODO: compare trained and enrolled values?,Yes
+# TODO: do we want gains\/biases to be trainable?,Yes
+TODO: should we disable training on connections to learning,No
+TODO: why does training fail if we probe out instead of out.neurons?,No
+TODO: remove this hack after we re-train w2v without OOV rows,Yes
+TODO: is it useful? How to delimitate train & test dataset?,Yes
+Keep only the folders that contain validation.csv and training.csv TODO: Why?,No
+FIXME: color mapping scheme is hardcoded for now because of memory constraint; To be fixed.,Yes
+TODO: return the result of train_and_evaluate.,Yes
+TODO: Decoder training stream mask!,No
+TODO: make sparse layer respond to train,Yes
+TODO (johngiorgi): read up on train_test_split; do I want to shuffle?,No
+TODO (johngiorgi): the way I get train\/test partitions is likely copying,No
+TODO (johngiorgi): begin writing tests; start with _split_train_valid,No
+assert train_size == (64*64*3) + self.num_pose_vars + 1 + self.num_options; #KDK TODO,No
+TODO(ahundt) it seems set_trainable_layers in grasp_model.py has a bug?,No
+TODO(rishabhagarwal): Hack for loading a model trained on cloud machine.,No
+TODO(tfish): Improve handling of known linear constraints between,Yes
+TODO: this creates a problem for pretrained vecs; as Guillaume noted,Yes
+"\""\""\"" || Implementation of \""Training RNNs as Fast as CNNs\"". || TODO: turn to pytorch's implementation when it is available. ||  || This implementation is adpoted from the author of the paper: || https:\/\/github.com\/taolei87\/sru\/blob\/master\/cuda_functional.py. || \""\""\""",No
+TODO: Edge case? Currently this is handled by flooring the number of training\/testing samples,Yes
+train_writer.add_summary(summary; step)  # todo tf2: delete following to clean up after TF2,No
+todo: tf2 to be removed #train_helper;,No
+tf.train.AdagradDAOptimizer  todo appears tf.keras.optimizers does not support,No
+tf.train.MomentumOptimizer  todo appears tf.keras.optimizers does not support,No
+tf.train.ProximalGradientDescentOptimizer todo appears tf.keras.optimizers does not support,No
+tf.train.ProximalAdagradOptimizer todo appears tf.keras.optimizers does not support,No
+train_sampler;  # todo: tf2 to be removed #train_helper;,Yes
+TODO: use `constraint_to` inside `pyro.param(...)` when available,Yes
+TODO consider returing constrained,Yes
+TODO implement constraints.sphere or similar,Yes
+TODO: change corr_cholesky_constraint to corr_cholesky when the latter is availabler,Yes
+TODO: just a hack for now; but eventually opcode will be different in i_mvm and i_train,Yes
+TODO output training time,Yes
+TODO: do we have to re-compute batch size here so it'll work w\/ both validation and training?,Yes
+TODO: this'll throw an error when using training data tho...,Yes
+if not isinstance(optimizer; tf.train.Optimizer): #TODO uh this fails,No
+TODO: ygao20130130 relax constraint by comment out following; see if it is ok,No
+# TODO: train and benchmark against Parsey,No
+TODO: Split training data into validation,Yes
+TODO: Train on harmony and style,Yes
+FIXME: Training hyperparameters,Yes
+TODO: MaxPool constraints,Yes
+TODO: the y_train should be given us externally; so far we create it as random values,Yes
+"\""\""\""TODO: Docstring for setup_training.",No
+token_ids = [torch.LongTensor(self.spm.SampleEncodeAsIds(sentence.to_original_text(); self.length; self.alpha[self.training])) for sentence in sentences]  # TODO: expose these params; we want this to be random in training; but fixed in inference,Yes
+TODO how do we validate this happens before train\/test split? Or do we need to? Can we implement it in the,Yes
+TODO      simple trainer in the correct order and leave this to advanced users?,Yes
+TODO how do we validate this happens before train\/test split? Or do we need to? Can we implement it in the,No
+TODO      simple trainer in the correct order and leave this to advanced users?,No
+Pete Todo: separate train\/val?,No
+TODO: code for training; experience replay; storing data to a database,No
+TODO merge it with train_wd.py,Yes
+TODO: maybe we should log the indices of episodes used to train ?,No
+FIXME: don't retrain if there was only one fold,Yes
+TODO(rbharath): This training is currently broken w.r.t minibatches! Fix.,Yes
+"FIXME: Signature of \""train_valid_test_split\"" incompatible with supertype \""Splitter\""",Yes
+TODO: training not yet supported,Yes
+TODO Is there a better way to differentiate between train and test points?,Yes
+TODO: determine how to use quick methods that require train and test data.,Yes
+TODO: move this into Trainer class,Yes
+TODO: in pyannote.audio.train.model,No
+@TODO: better solution with train\/inference handling ?,No
+@TODO: add registry for algorithms; trainers; samplers,Yes
+@TODO: better solution with train\/inference handling ?,Yes
+todo: should implement different training steps,Yes
+dep_constraints = bdb.sql TODO,No
+TODO: Save params\/results ? or already inside training args ?,Yes
+TODO JRK: test GAT with non-exhaustive CV (eg. train on 80%; test on 10%),Yes
+TODO (pradeep): Make the distinction between the two kinds of trainers in the way they,Yes
+TODO: distributed training and 16-bits training (FP16),No
+logging.info('Pre-training on 1 sample.')   # TODO Confirm if needed,No
+FIXME This makes bind_trainer in register_callback reduntant;,Yes
+TODO implement function to load a pretrained unet,Yes
+TODO: revise kwarg trilist in method constrain_mask_to_landmarks;,Yes
+TODO: repeated code from Builder. Should builder and Trainer have a,Yes
+TODO: include this into the NMT training part,Yes
+sample_probability = (20 + self.epoch_index) \/ self.config_args['num_epochs']  # TODO: include this into the NMT training part,Yes
+logging.info('Pre-training on 1 sample.')   # TODO Confirm if needed,Yes
+TODO(Yada): Move logic for checkpointing finetuned vs frozen pretrained tasks,Yes
+TODO: We don't want diagnostic tasks in train_task_names,Yes
+TODO there is probably some elegant way to combine ConstrainedRidge and ConstrainedSVR,Yes
+@TODO: remove seed from param. See @TODO in constraints\/chunks,Yes
+TODO: Check should trainable=True really be set here,Yes
+TODO: make training compatible with full net,Yes
+TODO: Refactor the run_train_translate function!,Yes
+TODO: Figure out a better way to set train_op_fn and optimizer,Yes
+TODO: supports for distributed training and evaluation.,Yes
+TODO (T36875783): load pretrained lm to score,No
+"\""\""\"" Params: Latin ||  || TODO: Some of these are only used for training. PRAENOMINA for training punkt tokenizer (als ABBREVIATIONS; CALENDAR; MISC) || TODO: The enclitic exceptions (que_exceptions and below) can all be deleted ||  || \""\""\""",Yes
+TODO pretrain\u7684embedding\u662F\u600E\u4E48\u89E3\u51B3\u7684\uFF1F,No
+TODO add pretrain urls,Yes
+TODO why in the training we have this and here is flat without the if ?,Yes
+"\""\""\""Script to train highres3dnet model. ||  || The input CSV must have two columns: ||     1. filepaths of features ||     2. filepaths of corresponding labels ||  || TODO || ---- || - Make this script more general. Ideally; one could drop in their model and ||     loss function. || - Move some common methods (eg; i\/o) to dedicated modules. || - Dice coefficient for class 1 (brainmask) is sometimes NaN. || - Input of 1 * 128**3 is too large for 1080ti. This seems to be related to the ||     `input_fn` used. || - Remove pandas as a dependency. Make pure python reader that accepts CSV or ||     TSV as input. || \""\""\""",No
+TODO: add `K.in_train_phase`.,Yes
+TODO: Presets for training; prediction and evaluation,No
+todo: make auto split 80% train; 20% test (make this configurable; also random vs sequential) and save it to disk,Yes
+"raise ValueError(\""Model is not persisted; so training must be performed\"") # TODO is this true?",Yes
+"\""\""\""A script to randomly move files in a directory to a test; train and || validate folder. ||  || This script is intended to be used on projects where the data is made || up of multiple files e.g. images or email files. ||  || Usage: python3 split_data.py <directory> <file extension> ||  || TODO: Add a flag to sort data into sub-folders based on a prefix for file names || TODO: Make sure reset works for all flags || TODO: Modify script to work on a CSV file. In this case split the CSV file into multiple files under each folder. ||  || \""\""\""",No
+"\""\""\"" visualise.py ||  || Visualises the output from training a classifier. ||  || Supports both binary and multi class classifiers. ||  || Use cases: ||  - Visualising the output from training a model ||  - Viewing the output from running batch predictions on a dataset ||  || TODO: Order confusion matrix by most popular class to least popular class || TODO: Output file format in HTML. Always print to the screen. || TODO: Visualisation function should be different from function the output metrics || TODO: Wrap in a Visualiser interface for use in Surround || TODO: Support multiple ground truth and prediction columns || TODO: Add flag to output file with incorrect records. True by default. || TODO: Rename module to visualise_classifier.py ||  || TODO: Add a flag to set probability thresholds || TODO: Add a flag that describes each aspect of the generated report in human readable terminology ||  || \""\""\""",No
+TODO:  Needs to be updated to use train loader,Yes
+TODO: add additional constraints in the future,Yes
+TODO: need to revisit this to be able to plot after training; interactive plotting is messing up,Yes
+TODO: give option to mirror train\/target,Yes
+TODO maybe it was trained on the whole w2v?,Yes
+!! FIXME: tests in trainer.fast and trainer.brillorig are exact duplicates,Yes
+TODO(trax): Move to trainer.py. Only here because of t2t_trainer usage.,Yes
+TODO: maybe add testStepTrain (and possibly some other tests) from dopamine,No
+TODO: batching; send a set of sentences to the train_sentence_sg Cython method. Sum of sentence lengths should not exceed MAX_SENTENCE_LENGTH (probably just import this constant directly from word2vec_inner.pyx).,Yes
+TODO: Get spaCy using Thinc's trainer and optimizer,Yes
+TODO: verify if n_train is needed,Yes
+TODO perhaps k-fold is a better inner CV; which guarantees full use of training set with fewer repeats?,Yes
+self.update_temperature(adv_epoch; cfg.ADV_train_epoch)   # TODO: update parents temperature,Yes
+self.clas_data.reset(train_s)  # TODO: bug: have to reset,Yes
+TODO: optimize this; skip untrainable architecture at the beginning,Yes
+TODO: Check why the CUDA version does 3.7291 (train_nrmse32); 0.16 (test_mse32) and 3.42 (test_nrmse32),Yes
+todo: if valid set if None; create it as random segment of the shuffled train set,Yes
+todo: if valid set is None; create it as random segment of the shuffled train set,Yes
+TODO: fix training part...,Yes
+todo: check duplicated tests against trainer_checks,Yes
+TODO: convert train_percent_check to limit_train_batches,Yes
+todo: IDE is complaining; these shall be initialized in the Trainer init at leas as placeholders,Yes
+TODO: Move this check to Trainer __init__ or device parser,Yes
+TODO: remove bool from Trainer.profiler param in v1.3.0; update profiler_connector.py,Yes
+TODO: How to start training in middle of epoch,No
+todo: add also `train_dataloader__multiple_sequence`,Yes
+todo: consider rename as `is_training`,Yes
+"TODO: the old setup is now called \""pre_training\""; where should this hook be called now?",No
+TODO: connectors refactor: move callbacks list to connector and do not write Trainer state,Yes
+TODO: the rpc plugin should wrap trainer.save_checkpoint,Yes
+TODO: is there a better way than accessing trainer through model -> trainer?,No
+TODO: check for trainer reference,Yes
+TODO: unrolling function in theano; for training,Yes
+TODO: per step recurrence function in theano; for training,Yes
+TODO: Should id_train be used here?,Yes
+TODO also missing: index in AEB space; train_mode,Yes
+TODO Fix for training iters; docstring,Yes
+TODO Fix for multi-episode training. Won't know where to delete after the first episode.,Yes
+TODO set to_train here,Yes
+TODO: relax this constraint,Yes
+#TODO stop training,Yes
+@@TODO: this should come from the trainer class as the current epoch number,Yes
+@@TODO: split the sample_folds and label_folds into sizes K-1 and 1 for test and training sets,Yes
+TODO: validate_json(train_data; schema),Yes
+Load in pretrained weights - TODO test,Yes
+TODO: validate that [pretraining] block exists,Yes
+TODO: begin_training is not guaranteed to see all data \/ labels ?,Yes
+FIXME: replace  with GaussianHMMMAPTrainer code?,Yes
+TODO: parallel training using joblib.,Yes
+FIXME: sample_weight must be split into training\/validation data,Yes
+TODO: define variables 'filenames_train' and 'filenames_test',Yes
+TODO: define variables 'y_train' and 'y_test',Yes
+TODO: define a variable named 'X_train',Yes
+TODO: define variables X_train; X_test; y_train; y_test by splitting the data,Yes
+TODO request that classifiers return classification of training sets when fitting,Yes
+todo this won't work correctly when test_size > train_size,Yes
+todo: run eval in parallel (i.e. at the same time as training?),Yes
+todo: add flag to toggle loss comp in validation? (add to trainer config maybe?),Yes
+TODO: add pretrained param to toggle loading weights from imagenet before applying task?,Yes
+TODO: 1. use better training parameters. 2. use consistant activation functions; 3. consider how to do this for hierarchical case,Yes
+TODO: change activation default to relu and implement weight constraint,Yes
+test #TODO: implement complementary testing to training set selection,Yes
+TODO: make sure we arent falling for any https:\/\/medium.com\/@utk.is.here\/keep-calm-and-train-a-gan-pitfalls-and-tips-on-training-generative-adversarial-networks-edd529764aa9,Yes
+"\""\""\"" || ======================== || Variables (``variable``) || ======================== ||  || Data instances in Orange can contain several types of variables: || :ref:`discrete <discrete>`; :ref:`continuous <continuous>`; || :ref:`strings <string>`; and :ref:`Python <Python>` and types derived from it. || The latter represent arbitrary Python objects. || The names; types; values (where applicable); functions for computing the || variable value from values of other variables; and other properties of the || variables are stored in descriptor classes defined in this module. ||  || Variable descriptors || -------------------- ||  || Variable descriptors can be constructed either directly; using  || constructors and passing attributes as parameters; or by a  || factory function :func:`Orange.data.variable.make`; which either  || retrieves an existing descriptor or constructs a new one. ||  || .. class:: Variable ||  ||     An abstract base class for variable descriptors. ||  ||     .. attribute:: name ||  ||         The name of the variable. Variable names do not need to be unique since two ||         variables are considered the same only if they have the same descriptor ||         (e.g. even multiple variables in the same table can have the same name). ||         This should; however; be avoided since it may result in unpredictable ||         behavior. ||      ||     .. attribute:: var_type ||         ||         Variable type; it can be Orange.data.Type.Discrete; ||         Orange.data.Type.Continuous; Orange.data.Type.String or ||         Orange.data.Type.Other.   ||  ||     .. attribute:: get_value_from ||  ||         A function (an instance of :obj:`Orange.classification.Classifier`) which computes ||         a value of the variable from values of one or more other variables. This ||         is used; for instance; in discretization where the variables describing ||         the discretized variable are computed from the original variable.  ||  ||     .. attribute:: ordered ||      ||         A flag telling whether the values of a discrete variable are ordered. At ||         the moment; no built-in method treats ordinal variables differently than ||         nominal ones. ||      ||     .. attribute:: distributed ||      ||         A flag telling whether the values of the variables are distributions. ||         As for the flag ordered; no methods treat such variables in any special ||         manner. ||      ||     .. attribute:: random_generator ||      ||         A local random number generator used by method ||         :obj:`Variable.random_value`. ||      ||     .. attribute:: default_meta_id ||      ||         A proposed (but not guaranteed) meta id to be used for that variable. ||         This is used; for instance; by the data loader for tab-delimited file ||         format instead of assigning an arbitrary new value; or by ||         :obj:`Orange.data.new_meta_id` if the variable is passed as an argument.  ||          ||     .. attribute:: attributes ||          ||         A dictionary which allows the user to store additional information ||         about the variable. All values should be strings. See the section  ||         about :ref:`storing additional information <attributes>`. ||  ||     .. method:: __call__(obj) ||      ||            Convert a string; number; or other suitable object into a variable ||            value. ||             ||            :param obj: An object to be converted into a variable value ||            :type o: any suitable ||            :rtype: :class:`Orange.data.Value` ||         ||     .. method:: randomvalue() ||  ||            Return a random value for the variable. ||         ||            :rtype: :class:`Orange.data.Value` ||         ||     .. method:: compute_value(inst) ||  ||            Compute the value of the variable given the instance by calling ||            obj:`~Variable.get_value_from` through a mechanism that prevents deadlocks by ||            circular calls. ||  ||            :rtype: :class:`Orange.data.Value` ||  || .. _discrete: || .. class:: Discrete ||  ||     Bases: :class:`Variable` ||     ||     Descriptor for discrete variables. ||      ||     .. attribute:: values ||      ||         A list with symbolic names for variables' values. Values are stored as ||         indices referring to this list. Therefore; modifying this list  ||         instantly changes the (symbolic) names of values as they are printed out or ||         referred to by user. ||      ||         .. note:: ||          ||             The size of the list is also used to indicate the number of ||             possible values for this variable. Changing the size - especially ||             shrinking the list - can have disastrous effects and is therefore not ||             really recommended. Also; do not add values to the list by ||             calling its append or extend method: call the :obj:`add_value` ||             method instead. ||  ||             It is also assumed that this attribute is always defined (but can ||             be empty); so never set it to None. ||      ||     .. attribute:: base_value ||  ||             Stores the base value for the variable as an index in `values`. ||             This can be; for instance; a \""normal\"" value; such as \""no ||             complications\"" as opposed to abnormal \""low blood pressure\"". The ||             base value is used by certain statistics; continuization etc. ||             potentially; learning algorithms. The default is -1 which means that ||             there is no base value. ||      ||     .. method:: add_value ||      ||             Add a value to values. Always call this function instead of ||             appending to values. ||  || .. _continuous: || .. class:: Continuous ||  ||     Bases: :class:`Variable` ||  ||     Descriptor for continuous variables. ||      ||     .. attribute:: number_of_decimals ||      ||         The number of decimals used when the value is printed out; converted to ||         a string or saved to a file. ||      ||     .. attribute:: scientific_format ||      ||         If ``True``; the value is printed in scientific format whenever it ||         would have more than 5 digits. In this case; :obj:`number_of_decimals` is ||         ignored. ||  ||     .. attribute:: adjust_decimals ||      ||         Tells Orange to monitor the number of decimals when the value is ||         converted from a string (when the values are read from a file or ||         converted by; e.g. ``inst[0]=\""3.14\""``):  ||         0: the number of decimals is not adjusted automatically; ||         1: the number of decimals is (and has already) been adjusted; ||         2: automatic adjustment is enabled; but no values have been converted yet. ||  ||         By default; adjustment of the number of decimals goes as follows: ||      ||         If the variable was constructed when data was read from a file; it will  ||         be printed with the same number of decimals as the largest number of  ||         decimals encountered in the file. If scientific notation occurs in the  ||         file; :obj:`scientific_format` will be set to ``True`` and scientific format  ||         will be used for values too large or too small.  ||      ||         If the variable is created in a script; it will have; by default; three ||         decimal places. This can be changed either by setting the value ||         from a string (e.g. ``inst[0]=\""3.14\""``; but not ``inst[0]=3.14``) or by ||         manually setting the :obj:`number_of_decimals`. ||  ||     .. attribute:: start_value; end_value; step_value ||      ||         The range used for :obj:`randomvalue`. ||  || .. _String: || .. class:: String ||  ||     Bases: :class:`Variable` ||  ||     Descriptor for variables that contain strings. No method can use them for  ||     learning; some will complain and others will silently ignore them when they  ||     encounter them. They can be; however; useful for meta-attributes; if  ||     instances in a dataset have unique IDs; the most efficient way to store them  ||     is to read them as meta-attributes. In general; never use discrete  ||     attributes with many (say; more than 50) values. Such attributes are  ||     probably not of any use for learning and should be stored as string ||     attributes. ||  ||     When converting strings into values and back; empty strings are treated  ||     differently than usual. For other types; an empty string can be used to ||     denote undefined values; while :obj:`String` will take empty strings ||     as empty strings -- except when loading or saving into file. ||     Empty strings in files are interpreted as undefined; to specify an empty ||     string; enclose the string in double quotes; these are removed when the ||     string is loaded. ||  || .. _Python: || .. class:: Python ||  ||     Bases: :class:`Variable` ||  ||     Base class for descriptors defined in Python. It is fully functional ||     and can be used as a descriptor for attributes that contain arbitrary Python ||     values. Since this is an advanced topic; PythonVariables are described on a  ||     separate page. !!TODO!! ||      ||      || Variables computed from other variables || --------------------------------------- ||  || Values of variables are often computed from other variables; such as in || discretization. The mechanism described below usually functions behind the scenes; || so understanding it is required only for implementing specific transformations. ||  || Monk 1 is a well-known dataset with target concept ``y := a==b or e==1``. || It can help the learning algorithm if the four-valued attribute ``e`` is || replaced with a binary attribute having values `\""1\""` and `\""not 1\""`. The || new variable will be computed from the old one on the fly.  ||  || .. literalinclude:: code\/variable-get_value_from.py ||     :lines: 7-17 ||      || The new variable is named ``e2``; we define it with a descriptor of type  || :obj:`Discrete`; with appropriate name and values ``\""not 1\""`` and ``1`` (we  || chose this order so that the ``not 1``'s index is ``0``; which can be; if  || needed; interpreted as ``False``). Finally; we tell e2 to use  || ``checkE`` to compute its value when needed; by assigning ``checkE`` to  || ``e2.get_value_from``.  ||  || ``checkE`` is a function that is passed an instance and another argument we  || do not care about here. If the instance's ``e`` equals ``1``; the function  || returns value ``1``; otherwise it returns ``not 1``. Both are returned as  || values; not plain strings. ||  || In most circumstances the value of ``e2`` can be computed on the fly - we can  || pretend that the variable exists in the data; although it does not (but  || can be computed from it). For instance; we can compute the information gain of || variable ``e2`` or its distribution without actually constructing data containing || the new variable. ||  || .. literalinclude:: code\/variable-get_value_from.py ||     :lines: 19-22 ||  || There are methods which cannot compute values on the fly because it would be || too complex or time consuming. In such cases; the data need to be converted || to a new :obj:`Orange.data.Table`:: ||  ||     new_domain = Orange.data.Domain([data.domain[\""a\""]; data.domain[\""b\""]; e2; data.domain.class_var]) ||     new_data = Orange.data.Table(new_domain; data)  ||  || Automatic computation is useful when the data is split into training and  || testing examples. Training instances can be modified by adding; removing  || and transforming variables (in a typical setup; continuous variables  || are discretized prior to learning; therefore the original variables are  || replaced by new ones). Test instances; on the other hand; are left as they  || are. When they are classified; the classifier automatically converts the  || testing instances into the new domain; which includes recomputation of  || transformed variables.  ||  || .. literalinclude:: code\/variable-get_value_from.py ||     :lines: 24- ||  || .. _attributes: ||  || Storing additional variables || ----------------------------- ||  || All variables have a field :obj:`~Variable.attributes`; a dictionary || which can contain strings. Although the current implementation allows all || types of value we strongly advise to use only strings. An example: ||  || .. literalinclude:: code\/attributes.py ||  || These attributes can only be saved to a .tab file. They are listed in the || third line in <name>=<value> format; after other attribute specifications || (such as \""meta\"" or \""class\""); and are separated by spaces.  ||  || .. _variable_descriptor_reuse: ||  || Reuse of descriptors || -------------------- ||  || There are situations when variable descriptors need to be reused. Typically; the  || user loads some training examples; trains a classifier; and then loads a separate || test set. For the classifier to recognize the variables in the second data set; || the descriptors; not just the names; need to be the same.  ||  || When constructing new descriptors for data read from a file or during unpickling; || Orange checks whether an appropriate descriptor (with the same name and; in case || of discrete variables; also values) already exists and reuses it. When new || descriptors are constructed by explicitly calling the above constructors; this || always creates new descriptors and thus new variables; although a variable with || the same name may already exist. ||  || The search for an existing variable is based on four attributes: the variable's name; || type; ordered values; and unordered values. As for the latter two; the values can  || be explicitly ordered by the user; e.g. in the second line of the tab-delimited  || file. For instance; sizes can be ordered as small; medium; or big. ||  || The search for existing variables can end with one of the following statuses. ||  || .. data:: Orange.data.variable.MakeStatus.NotFound (4) ||  ||     The variable with that name and type does not exist.  ||  || .. data:: Orange.data.variable.MakeStatus.Incompatible (3) ||  ||     There are variables with matching name and type; but their ||     values are incompatible with the prescribed ordered values. For example; ||     if the existing variable already has values [\""a\""; \""b\""] and the new one ||     wants [\""b\""; \""a\""]; the old variable cannot be reused. The existing list can; ||     however be appended with the new values; so searching for [\""a\""; \""b\""; \""c\""] would ||     succeed. Likewise a search for [\""a\""] would be successful; since the extra existing value ||     does not matter. The formal rule is thus that the values are compatible iff ``existing_values[:len(ordered_values)] == ordered_values[:len(existing_values)]``. ||  || .. data:: Orange.data.variable.MakeStatus.NoRecognizedValues (2) ||  ||     There is a matching variable; yet it has none of the values that the new ||     variable will have (this is obviously possible only if the new variable has ||     no prescribed ordered values). For instance; we search for a variable ||     \""sex\"" with values \""male\"" and \""female\""; while there is a variable of the same  ||     name with values \""M\"" and \""F\"" (or; well; \""no\"" and \""yes\"" :). Reuse of this  ||     variable is possible; though this should probably be a new variable since it  ||     obviously comes from a different data set. If we do decide to reuse the variable; the  ||     old variable will get some unneeded new values and the new one will inherit  ||     some from the old. ||  || .. data:: Orange.data.variable.MakeStatus.MissingValues (1) ||  ||     There is a matching variable with some of the values that the new one  ||     requires; but some values are missing. This situation is neither uncommon  ||     nor suspicious: in case of separate training and testing data sets there may ||     be values which occur in one set but not in the other. ||  || .. data:: Orange.data.variable.MakeStatus.OK (0) ||  ||     There is a perfect match which contains all the prescribed values in the ||     correct order. The existing variable may have some extra values; though. ||  || Continuous variables can obviously have only two statuses;  || :obj:`~Orange.data.variable.MakeStatus.NotFound` or :obj:`~Orange.data.variable.MakeStatus.OK`. ||  || When loading the data using :obj:`Orange.data.Table`; Orange takes the safest  || approach and; by default; reuses everything that is compatible up to  || and including :obj:`~Orange.data.variable.MakeStatus.NoRecognizedValues`. Unintended reuse would be obvious from the || variable having too many values; which the user can notice and fix. More on that  || in the page on `loading data`. !!TODO!! ||  || There are two functions for reusing the variables instead of creating new ones. ||  || .. function:: Orange.data.variable.make(name; type; ordered_values; unordered_values[; create_new_on]) ||  ||     Find and return an existing variable or create a new one if none of the existing ||     variables matches the given name; type and values. ||      ||     The optional `create_new_on` specifies the status at which a new variable is ||     created. The status must be at most :obj:`~Orange.data.variable.MakeStatus.Incompatible` since incompatible (or ||     non-existing) variables cannot be reused. If it is set lower; for instance  ||     to :obj:`~Orange.data.variable.MakeStatus.MissingValues`; a new variable is created even if there exists ||     a variable which is only missing the same values. If set to :obj:`~Orange.data.variable.MakeStatus.OK`; the function ||     always creates a new variable. ||      ||     The function returns a tuple containing a variable descriptor and the ||     status of the best matching variable. So; if ``create_new_on`` is set to ||     :obj:`~Orange.data.variable.MakeStatus.MissingValues`; and there exists a variable whose status is; say; ||     :obj:`~Orange.data.variable.MakeStatus.NoRecognizedValues`; a variable would be created; while the second  ||     element of the tuple would contain :obj:`~Orange.data.variable.MakeStatus.NoRecognizedValues`. If; on the other ||     hand; there exists a variable which is perfectly OK; its descriptor is  ||     returned and the returned status is :obj:`~Orange.data.variable.MakeStatus.OK`. The function returns no  ||     indicator whether the returned variable is reused or not. This can be; ||     however; read from the status code: if it is smaller than the specified ||     ``create_new_on``; the variable is reused; otherwise a new descriptor has been constructed. ||  ||     The exception to the rule is when ``create_new_on`` is OK. In this case; the  ||     function does not search through the existing variables and cannot know the  ||     status; so the returned status in this case is always :obj:`~Orange.data.variable.MakeStatus.OK`. ||  ||     :param name: Variable name ||     :param type: Variable type ||     :type type: Orange.data.variable.Type ||     :param ordered_values: a list of ordered values ||     :param unordered_values: a list of values; for which the order does not ||         matter ||     :param create_new_on: gives the condition for constructing a new variable instead ||         of using the new one ||      ||     :return_type: a tuple (:class:`Orange.data.variable.Variable`; int) ||      || .. function:: Orange.data.variable.retrieve(name; type; ordered_values; onordered_values[; create_new_on]) ||  ||     Find and return an existing variable; or :obj:`None` if no match is found. ||      ||     :param name: variable name. ||     :param type: variable type. ||     :type type: Orange.data.variable.Type ||     :param ordered_values: a list of ordered values ||     :param unordered_values: a list of values; for which the order does not ||         matter ||     :param create_new_on: gives the condition for constructing a new variable instead ||         of using the new one ||  ||     :return_type: :class:`Orange.data.variable.Variable` ||      || These following examples (from :download:`variable-reuse.py <code\/variable-reuse.py>`) give the shown results if || executed only once (in a Python session) and in this order. ||  || :func:`Orange.data.variable.make` can be used for the construction of new variables. :: ||      ||     >>> v1; s = Orange.data.variable.make(\""a\""; Orange.data.Type.Discrete; [\""a\""; \""b\""]) ||     >>> print s; v1.values ||     4 <a; b> ||  || No surprises here: a new variable is created and the status is :obj:`~Orange.data.variable.MakeStatus.NotFound`. :: ||  ||     >>> v2; s = Orange.data.variable.make(\""a\""; Orange.data.Type.Discrete; [\""a\""]; [\""c\""]) ||     >>> print s; v2 is v1; v1.values ||     1 True <a; b; c> ||  || The status is 1 (:obj:`~Orange.data.variable.MakeStatus.MissingValues`); yet the variable is reused (``v2 is v1``). || ``v1`` gets a new value; ``\""c\""``; which was given as an unordered value. It does || not matter that the new variable does not need the value ``b``. :: ||  ||     >>> v3; s = Orange.data.variable.make(\""a\""; Orange.data.Type.Discrete; [\""a\""; \""b\""; \""c\""; \""d\""]) ||     >>> print s; v3 is v1; v1.values ||     1 True <a; b; c; d> ||  || This is like before; except that the new value; ``d`` is not among the || ordered values. :: ||  ||     >>> v4; s = Orange.data.variable.make(\""a\""; Orange.data.Type.Discrete; [\""b\""]) ||     >>> print s; v4 is v1; v1.values; v4.values ||     3; False; <b>; <a; b; c; d> ||  || The new variable needs to have ``b`` as the first value; so it is incompatible  || with the existing variables. The status is thus 3 (:obj:`~Orange.data.variable.MakeStatus.Incompatible`); the two  || variables are not equal and have different lists of values. :: ||  ||     >>> v5; s = Orange.data.variable.make(\""a\""; Orange.data.Type.Discrete; None; [\""c\""; \""a\""]) ||     >>> print s; v5 is v1; v1.values; v5.values ||     0 True <a; b; c; d> <a; b; c; d> ||  || The new variable has values ``c`` and ``a``; but the order is not important;  || so the existing attribute is :obj:`~Orange.data.variable.MakeStatus.OK`. :: ||  ||     >>> v6; s = Orange.data.variable.make(\""a\""; Orange.data.Type.Discrete; None; [\""e\""]) \""a\""]) ||     >>> print s; v6 is v1; v1.values; v6.values ||     2 True <a; b; c; d; e> <a; b; c; d; e> ||  || The new variable has different values than the existing variable (status is 2; || :obj:`~Orange.data.variable.MakeStatus.NoRecognizedValues`); but the existing one is nonetheless reused. Note that we || gave ``e`` in the list of unordered values. If it was among the ordered; the || reuse would fail. :: ||  ||     >>> v7; s = Orange.data.variable.make(\""a\""; Orange.data.Type.Discrete; None; ||             [\""f\""]; Orange.data.variable.MakeStatus.NoRecognizedValues))) ||     >>> print s; v7 is v1; v1.values; v7.values ||     2 False <a; b; c; d; e> <f> ||  || This is the same as before; except that we prohibited reuse when there are no || recognized values. Hence a new variable is created; though the returned status is  || the same as before:: ||  ||     >>> v8; s = Orange.data.variable.make(\""a\""; Orange.data.Type.Discrete; ||             [\""a\""; \""b\""; \""c\""; \""d\""; \""e\""]; None; Orange.data.variable.MakeStatus.OK) ||     >>> print s; v8 is v1; v1.values; v8.values ||     0 False <a; b; c; d; e> <a; b; c; d; e> ||  || Finally; this is a perfect match; but any reuse is prohibited; so a new  || variable is created. ||  || \""\""\""",No
+TODO: keyboard modifiers and constraints.,No
+TODO add test to assure history is written to from trainer,Yes
+FIXME: but we need validation data during training (LR annealing),Yes
+FIXME: currently we have iterators for training and validation. Both of those,Yes
+TODO creation of training data changed,Yes
+TODO we reload params again in train do we need it here?,Yes
+TODO local: except specific training exception that can occur,Yes
+TODO: loss functions and training,Yes
+"\""\""\""02. Monodepth2 training on KITTI dataset || ================================================== ||  || TODO\""\""\""",No
+TODO this may be a problem when training config is large,Yes
+TODO: This is somewhat brittle. Make these constants in trainer.py.,Yes
+TODO: Move Trainable autopopulation to a util function,Yes
+TODO: Implement autoscaling. If num_workers=-1; the trainer will use as,Yes
+TODO(ekl) fix iterator metrics bugs w\/multiple trainers.,Yes
+TODO: (sven) if sub_exploration is None; use Trainer's default,No
+TODO: implement loopy training case,Yes
+"\""emit_constraint_type\"": \""center\""; TODO: enable when adds support for no gt boxes",No
+TODO: training and bn_training,No
+TODO: find a way to reset the state of Adam so we only need to compile the training function ones,Yes
+fixme: check if `configuration.config.train` flag has changed. If so; run define-by-run code.,Yes
+FIXME: detect corpus reading errors here (e.g. wrong encoding),Yes
+TODO: token encoding scheme where subdirectories,No
+FIXME: support sparse encoding,Yes
+"\""\""\"" || This module handles map plotting. Currently only 3 types of map types are \\ || supported (aggregated choropleth; geo-scatterplot; and lines on map). ||  || Global Variables: ||     - Sidebar: To be used for creating side-menus. ||  || Functions: ||     - Map_Options: Generate the layout of the dashboard. ||     - country2code: It takes a string and tries to convert it to a country \\ ||                     code by trying out various encodings. ||  || Dash callbacks: ||     - render_variable_choices_maps: Create a menu of dcc components for \\ ||                                     the user to choose plotting options. ||     - show_hide_aggregator_dropdown: Disable some dropdowns. Some maps do \\ ||                                      not handle all the fields. ||     - plot_map: Plot the map according to user choices. ||  || TODO: ||     Implement https:\/\/plot.ly\/python\/choropleth-maps\/#choropleth-inset-map || TODO: ||     Add text\/annotations to the various maps. || \""\""\""",No
+TODO use np.unique for run-length encoding?,Yes
+TODO: add character level encoding,Yes
+TODO: add character-level encoding,Yes
+TODO First spike encoding.,Yes
+f = open(JobService.Project.path(project) + '.upload';'w') #TODO: check for problems with character encoding?,Yes
+TODO: catch encoding errors,Yes
+TODO: check for problems with character encoding?,Yes
+"o += \"" format=\\\""\""+inputformat.__class__.__name__+\""\\\"" formatlabel=\\\""\""+inputformat.name+\""\\\"" encoding=\\\""\""+inputformat.encoding+\""\\\""\""; #TODO: output nice format labels?",Yes
+TODO: only re-download the ones with encoding issues. Don't touch the rest.,Yes
+TODO: Arguments for sparse vector encoding,Yes
+TODO: use `image_encoding_channels` when calling class ImageEncoding,Yes
+todo: re-add positional encodings,Yes
+TODO: Should write this to file and avoid doing encoding if already exists,Yes
+"\""\""\""Converts legacy encodings into Unicode || TODO for replacer.py: ||  - add perseus-style iota subscript and diaeresis || \""\""\""",Yes
+"\""\""\""Converts legacy encodings into Unicode. ||  || TODO: Rm regex dependency || TODO: Add tests || \""\""\""",Yes
+get_sinusoid_encoding_table  # todo: \u5E94\u8BE5\u5C06position embedding\u79FB\u5230core,Yes
+TODO: Check if the encoding method is included in the manifest,Yes
+TODO: If auto-sklearn & TPOT also require imputation & dummy encoding; let's move this to common_code,Yes
+TODO One-hot encoding of either type labels or of a tensor of type ids (some class renaming required in the,Yes
+TODO (wardlt): One-hot encoding for the elements,Yes
+TODO: Encoding and decoding back and forth not terribly efficient,Yes
+todo encoding; unicode fields; errors?,Yes
+TODO: assert encoding and filename exist,Yes
+TODO: encoding of molecular graph into vector,Yes
+TODO: Handle encodings other than int16,Yes
+TODO: I've got the encoding (int16) hardcoded in a few places.,No
+TODO: Write test for encoding bug,Yes
+TODO: remove label encoding when class bug is fixed,Yes
+TODO: Check if weight is tied to encoding embedding,Yes
+TODO: use `tokenize.detect_encoding`,Yes
+TODO don't like that: encoding after each event,Yes
+TODO might not work with label_featurizer encoding;,Yes
