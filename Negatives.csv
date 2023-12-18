@@ -1,0 +1,1325 @@
+index,Comment,GPT_4_Predicted_MLTD_label,spaCy_Predicted_MLTD_label,actual_MLTD_label
+21,# How it seems to be implemented in R mfe:,No,No,No
+115,"What we really want to return is \""Steve Smith\"".",No,No,No
+117,Add additional embeddings for special tokens if needed,No,No,No
+119,Setup distant debugging if needed,No,No,No
+122,The convention in BERT is:,No,No,No
+124,Add additional embeddings for special tokens if needed,No,No,No
+126,The convention in BERT is:,No,No,No
+131,The convention in BERT is:,No,No,No
+133,The convention in BERT is:,No,No,No
+134,"What we really want to return is \""Steve Smith\"".",No,No,No
+139,discard unused features,No,No,No
+152,# features_mat is has 536 columns,No,No,No
+156,determine if we already figured out which features belong to that feature group.,No,No,Yes
+159,use 'feature_list_indices' from model_dict to get the actual columns,No,No,No
+168,averaged over columns occupy several columns,No,No,No
+170,probably doesn't matter but why introduce more noise?,No,No,No
+194,Session(Configurable) configuration,No,No,No
+197,FileManagerMixin(Configurable) configuration,No,No,No
+203,features. If need should arise we can still implement a generic,No,No,No
+213,get only projected columns,No,No,No
+214,meta_columns is {origin_column: stored_column},No,No,No
+297,and then averaged together. This provides significantly better performance than treating the probability,No,No,No
+298,exit loop when episode ends,No,No,No
+299,exit loop when episode ends,No,No,No
+302,Fix=[1;1;0;0;0]),No,No,No
+309,Nice 1 number very sim. to Arial,No,No,No
+317,So getting all photons (DA) with this mask is efficient,No,No,No
+318,Workaround for open-file dialog in IPython Notebook,No,No,No
+319,Workaround for open-file dialog in IPython Notebook,No,No,No
+320,Workaround for open-file dialog in IPython Notebook,No,No,No
+323,Workaround for open-file dialog in IPython Notebook,No,No,No
+324,Workaround for open-file dialog in IPython Notebook,No,No,No
+325,Workaround for open-file dialog in IPython Notebook,No,No,No
+327,robust in cases where setup.py was invoked in some weird way (e.g. pip),No,No,No
+334,"\""\""\"" || Script to execute notebooks in a folder; unless their name || starts with '_' or ends with '-out'. ||  || The executed notebooks are saved with a '-out' suffix. ||  || Usage: ||  ||     nbrun.py notebook_folder ouput_folder ||      || \""\""\""",No,No,No
+364,if triplet_sem better than triplet,No,No,No
+368,"\""\""\"" || Created on Tue Sep 25 17:57:27 2018 ||  || @author: Emmanouil Theofanis Chourdakis <e.t.chourdakis@qmul.ac.uk> ||  || Reimplementation in spacy+python of: ||      || Del Corro Luciano; and Rainer Gemulla.  || \""Clausie: clause-based open information extraction.\""  || Proceedings of the 22nd international conference on World Wide Web. ACM; 2013. ||  || \""\""\""",No,No,No
+369,"\""\""\"" || Created on Tue Sep 25 17:57:27 2018 ||  || @author: Emmanouil Theofanis Chourdakis <e.t.chourdakis@qmul.ac.uk> ||  || Reimplementation in spacy+python of: ||      || Del Corro Luciano; and Rainer Gemulla.  || \""Clausie: clause-based open information extraction.\""  || Proceedings of the 22nd international conference on World Wide Web. ACM; 2013. ||  || \""\""\""",No,No,No
+370,"\""\""\"" || Created on Tue Sep 25 17:57:27 2018 ||  || @author: Emmanouil Theofanis Chourdakis <e.t.chourdakis@qmul.ac.uk> ||  || Reimplementation in spacy+python of: ||      || Del Corro Luciano; and Rainer Gemulla.  || \""Clausie: clause-based open information extraction.\""  || Proceedings of the 22nd international conference on World Wide Web. ACM; 2013. ||  || \""\""\""",No,No,No
+371,"\""\""\"" || Created on Tue Sep 25 17:57:27 2018 ||  || @author: Emmanouil Theofanis Chourdakis <e.t.chourdakis@qmul.ac.uk> ||  || Reimplementation in spacy+python of: ||      || Del Corro Luciano; and Rainer Gemulla.  || \""Clausie: clause-based open information extraction.\""  || Proceedings of the 22nd international conference on World Wide Web. ACM; 2013. ||  || \""\""\""",No,No,No
+396,Pad if needed,No,No,No
+409,For positive anchors; compute shift and scale needed to transform them,No,No,No
+433,The multiple of 64 is needed to ensure smooth scaling of feature,No,No,No
+455,returns a list with all artists. Each list element is a dictionary with all columns of the database,No,No,No
+464,Collect all data needed for the song-entry (except the song ID),No,No,No
+479,needed to work with signals,No,No,No
+482,select: select an icon; move: move an icon,No,No,No
+484,start where the grind ends + 1 space,No,No,No
+490,Create all interfaces that are needed by this Thread,No,No,No
+504,Create all interfaces that are needed by this Thread,No,No,No
+518,After some tries I figured out that all unref-falls needed by GStreamer,No,No,No
+522,Collect all data needed for the song-entry (except the song ID),No,No,No
+529,Create all interfaces that are needed by this Thread,No,No,No
+533,Collect all data needed for the song-entry (except the song ID),No,No,No
+555,Now; the Management Thread takes care about post processing or removing no longer needed content,No,No,No
+564,TODO: Hassan,No,No,No
+574,following the shape convention: (examples; channels; rows; columns),No,No,No
+635,Static data ends,No,No,No
+637,Static data ends,No,No,No
+649,The loaded data should be in a csv file with 41 columns. Columns 0-38 are the MFCC features.,No,No,No
+652,returns: df: dataframe with 'lh_dist_rp' and 'rh_dist_rp' columns added to it,No,No,No
+654,Returns the original data frame with the velocity columns added.,No,No,No
+655,Returns: the original dataframe with the hip-elbows; hip-hands; should center-elbows and shoulder center-hands distances columns added.,No,No,No
+656,Returns: the original df with the angles columns added to it.,No,No,No
+657,Returns: the data frame with the left and right hand direction columns added.,No,No,No
+659,returns: df: with two more columns appended for left and right hand velocities,No,No,No
+662,The loaded data should be in a csv file with 41 columns. Columns 0-38 are the MFCC features.,No,No,No
+663,"\""\""\"" || ------------------------------------------------- ||    File Name\uFF1A     model ||    Description : ||    Author :       huangneng ||    date\uFF1A          2018\/8\/6 || ------------------------------------------------- ||    Change Activity: ||                    2018\/8\/6: || ------------------------------------------------- || \""\""\""",No,No,No
+671,True is better,No,No,No
+673,True is better,No,No,No
+674,True is better,No,No,No
+675,True is better,No,No,No
+676,True is better,No,No,No
+683,Move the added items to the front of the path:,No,No,No
+685,columns are the filter channels,No,No,No
+735,Collect all results. This is where hyperband ends and sklearn code,No,No,No
+741,recompute temporary state if needed,No,No,No
+752,'words_len_feature_columns': words_len_feature_columns,No,No,No
+758,'words_len_feature_columns': words_len_feature_columns,No,No,No
+760,'words_len_feature_columns': words_len_feature_columns,No,No,No
+768,"model.save(create_dir_if_needed(config[\""h5_model_file\""]))",No,No,No
+770,"model.save(create_file_dir_if_needed(config[\""h5_model_file\""]))",No,No,No
+789,continue to next gt unless better match made,No,No,No
+795,continue to next gt unless better match made,No,No,No
+800,fix for ulimit,No,No,No
+803,continue to next gt unless better match made,No,No,No
+839,Return the model and needed variables.,No,No,No
+845,Label 0 is reserved for an (unused) background class.,No,No,No
+846,Label 0 is reserved for an (unused) background class.,No,No,No
+847,"\""\""\""Contains convenience wrappers for various Neural Network TensorFlow losses. ||  ||   All the losses defined here add themselves to the LOSSES_COLLECTION ||   collection. ||  ||   l1_loss: Define a L1 Loss; useful for regularization; i.e. lasso. ||   l2_loss: Define a L2 Loss; useful for regularization; i.e. weight decay. ||   cross_entropy_loss: Define a cross entropy loss using ||     softmax_cross_entropy_with_logits. Useful for classification. || \""\""\""",No,No,No
+849,Label 0 is reserved for an (unused) background class.,No,No,No
+851,Save after the training ends.,No,No,No
+853,disable=no-name-in-module;unused-import;g-bad-import-order;maybe-no-member,No,No,No
+855,The conditional here is needed to deal with the last few batches of the,No,No,No
+856,disable=no-name-in-module;unused-import;g-bad-import-order;maybe-no-member,No,No,No
+864,Resize and crop if needed.,No,No,No
+878,number columns and related-padding,No,No,No
+883,compute softmax over all the columns using column controller vector,No,No,No
+887,print orig_columns,No,No,No
+890,"\""\""\""Multi-threaded word2vec unbatched skip-gram model. ||  || Trains the model described in: || (Mikolov; et. al.) Efficient Estimation of Word Representations in Vector Space || ICLR 2013. || http:\/\/arxiv.org\/abs\/1301.3781 || This model does true SGD (i.e. no minibatching). To do this efficiently; custom || ops are used to sequentially process data within a 'batch'. ||  || The key ops used are: || * skipgram custom op that does input processing. || * neg_train custom op that efficiently calculates and applies the gradient using ||   true SGD. || \""\""\""",No,No,No
+891,Move everything into depth so we can perform a single matrix multiply.,No,No,No
+892,activations such that no rescaling is needed at evaluation time.,No,No,No
+903,the rows of the LHS with the columns of the RHS.,No,No,No
+919,Load variables from snapshot if needed.,No,No,No
+920,Set up caching of vision features if needed.,No,No,No
+937,num_classes (maybe encoded as categories),No,No,No
+955,better than zeros,No,No,No
+964,fix standard deviations to variable,No,No,No
+980,it is needed in output (for policy gradient training),No,No,No
+988,itself depend on some problem variables. This would produce,No,No,No
+990,ends up assigned to after the first iteration.,No,No,No
+991,Initialize params such that the columns of theta_a and theta_b have L2,No,No,No
+1013,offering better performance.,No,No,No
+1019,fix conv layers,No,No,No
+1027,fix conv layers,No,No,No
+1033,continue to next gt unless better match made,No,No,No
+1089,count_q = self.statement.with_only_columns([func.count()]).order_by(None),No,No,No
+1107,Split line by whitespaces into columns,No,No,No
+1131,Add more here if needed,No,No,No
+1156,ends_at = ends_at.strftime(valid_format)  # type: str,No,No,No
+1157,ends_at = ends_at.strftime(invalid_format)  # type: str,No,No,No
+1260,POST \/restrictions - another correct way (no end date),No,No,No
+1263,"\""\""\""rename columns to match API ||  || Revision ID: e792ab930685 || Revises: 7110c972b137 || Create Date: 2020-11-06 15:45:29.383856 ||  || \""\""\""",No,No,No
+1268,POST \/restrictions - another correct way (no end date),No,No,No
+1297,This code is to implement deep fingerprinting model for website fingerprinting attacks,No,No,No
+1298,This code is to implement deep fingerprinting model for website fingerprinting attacks,No,No,No
+1300,This code is to implement deep fingerprinting model for website fingerprinting attacks,No,No,No
+1301,This code is to implement deep fingerprinting model for website fingerprinting attacks,No,No,No
+1302,This code is to implement deep fingerprinting model for website fingerprinting attacks,No,No,No
+1309,Hack for keras. CTC implementation of TF considers (num_classes - 1) as blank,No,No,No
+1312,assigns contraction times to each motor unit (moved into loop),No,No,No
+1313,excitation will never be lower than that needed at rest for a given force,No,No,No
+1316,so start with excitation needed for fth(i) when rested (won't be lower than this),No,No,No
+1324,excitation will never be lower than that needed at rest for a given force,No,No,No
+1325,so start with excitation needed for fth(i) when rested (won't be lower than this),No,No,No
+1333,Maybe https:\/\/docs.python.org\/3\/library\/functools.html#functools.lru_cache,No,No,No
+1338,Strategy 2 - Uses inverse of fatigue rates in an asymptotic approach,No,No,No
+1346,sometimes(iaa.ElasticTransformation(alpha=(0.5; 3.5); sigma=0.25)); # move pixels locally around (with random strengths),No,No,No
+1410,maybe below is more clear implementation compared to older keras,No,No,No
+1447,Pad extra columns if necessary.,No,No,No
+1449,Track whether the rows and columns can be concatenated.,No,No,No
+1451,components of `f`. Fix that by instead designating the elements of,No,No,No
+1458,implement ResNet's block.,No,No,No
+1491,Load Cifar10 data. Please implement your own load_data() module for your own dataset,No,No,No
+1492,Load Cifar10 data. Please implement your own load_data() module for your own dataset,No,No,No
+1493,Load Cifar10 data. Please implement your own load_data() module for your own dataset,No,No,No
+1523,Uncomment and download weighs file if needed,No,No,No
+1526,Uncomment and download weighs file if needed,No,No,No
+1571,Note: only bounding box detection is needed to be submitted,No,No,No
+1577,Add anchors_scales by myself; it seems that does not improve the performance,No,No,No
+1592,Moving averages ends up in the trainable variables collection,No,No,No
+1593,Moving averages ends up in the trainable variables collection,No,No,No
+1594,Moving averages ends up in the trainable variables collection,No,No,No
+1597,following the shape convention: (examples; channels; rows; columns),No,No,No
+1607,Naming convention: QCLCD201103.zip,No,No,No
+1612,print wdf.columns,No,No,No
+1613,add blanks if needed,No,No,No
+1614,add blanks if needed with reindexing,No,No,No
+1617,Naming convention: QCLCD201103.zip,No,No,No
+1622,print wdf.columns,No,No,No
+1623,add blanks if needed,No,No,No
+1624,add blanks if needed with reindexing,No,No,No
+1644,(name; f(m; x))  First parameter of f is for parameters (if needed); second is data,No,No,No
+1654,The circular doubly linked list starts and ends with a sentinel element.,No,No,No
+1655,Needed so that self[missing_item] does not raise KeyError,No,No,No
+1656,contexts.  Instead; we implement straight-addition.  Both the inputs,No,No,No
+1679,Directly load the _thread module (needed during bootstrap).,No,No,No
+1680,Directly load the _weakref module (needed during bootstrap).,No,No,No
+1682,Python 2.5b3: 62111 (fix wrong code: x += yield),No,No,No
+1684,Python 3.5b2  3340 (fix dictionary display evaluation order #11205),No,No,No
+1692,Directly load the os module (needed during bootstrap).,No,No,No
+1693,Directly load the _thread module (needed during bootstrap).,No,No,No
+1694,Directly load the _weakref module (needed during bootstrap).,No,No,No
+1695,Directly load the winreg module (needed during bootstrap).,No,No,No
+1707,Insert a '\/' unless the first part is empty or already ends in '\/'.,No,No,No
+1708,rest).  If the path ends in '\/'; tail will be empty.  If there is no,No,No,No
+1710,Issue 17489: Since __reduce__ was defined to fix #759889 this is no,No,No,No
+1731,Not needed,No,No,No
+1738,"Naming convention: Variables named \""wr\"" are weak reference objects;",No,No,No
+1741,Maybe return without target,No,No,No
+1742,Maybe return without targets,No,No,No
+1744,Maybe group paragraphs together until we hit a length limit,No,No,No
+1786,# Needed for generating random characters for appending to URL in append_params_to_url().,No,No,No
+1787,# Needed for generating random characters for appending to URL in append_params_to_url().,No,No,No
+1803,tf_config['gpu_options.allow_growth']          = False     # False (default) = Allocate all GPU memory at the beginning. True = Allocate only as much GPU memory as needed.,No,No,No
+1809,#     # print(rows.columns[:20]),No,No,No
+1811,VERY MUCH needed for linux !! makes everything MUCH faster -> from 10 to 30+ batches\/s,No,No,No
+1814,fix random seed for reproducibility purposes,No,No,Yes
+1815,fix random seed for reproducibility,No,No,Yes
+1818,The convention in BERT is:,No,No,No
+1819,The convention in BERT is:,No,No,No
+1825,it is not needed if batch size = 1,No,No,No
+1827,Load weights that gave best performance on validation set,No,No,No
+1831,<instr_desc> Recursively invokes the interpreter on the program on top of the `code` stack. After evaluation the `code` stack is popped; normally this pops the program that was just executed; but if the expression itself manipulates the stack then this final pop may end up popping something else.,No,No,No
+1833,<instr_desc> Recursively invokes the interpreter on the program on top of the `code` stack. After evaluation the `code` stack is popped; normally this pops the program that was just executed; but if the expression itself manipulates the stack then this final pop may end up popping something else.,No,No,No
+1839,"\""\""\"" || @author: Eddie ||  || This example problem is meant to be a demonstration of how ``pyshgp`` could be || used to perform simple regression tasks.  ||  || The problem consists of using integer instructions and integer constants to fit || the following polynomial:  ||  || .. literalinclude:: \/..\/examples\/integer_regression.py ||    :pyobject: target_function ||  || The training set for this problem consists of only 20 data points. ||  || \""\""\""",No,No,No
+1840,"\""\""\"" || @author: Eddie ||  || This example problem is meant to be a demonstration of how ``pyshgp`` could be || used to perform simple classification tasks.  ||  || The problem consists of predicting the species of iris. || \""\""\""",No,No,No
+1841,"\""\""\"" || @author: Eddie ||  || This example problem is meant to be a demonstration of how ``pyshgp`` could be || used to perform simple regression tasks.  ||  || The problem consists of fitting the following polynomial:  ||  || .. literalinclude:: \/..\/examples\/simple_sklearn_regression.py ||    :pyobject: target_function ||  || The training set for this problem consists of only 10 data points. ||  || \""\""\""",No,No,No
+1847,"\""\""\"" || @author: Eddie ||  || This example problem is meant to be a demonstration of how ``pyshgp`` could be || used to perform simple classification tasks. ||  || The problem consists of predicting the species of iris. || \""\""\""",No,No,No
+1849,"\""\""\"" || @author: Eddie ||  || This example problem is meant to be a demonstration of how ``pyshgp`` could be || used to perform simple classification tasks. ||  || The problem consists of predicting the species of iris. || \""\""\""",No,No,No
+1863,@TODO: Instructions for pad_left and pad_right,No,No,No
+1885,"raise UDError(\""Cannot parse HEAD '{}'\"".format(_encode(columns[HEAD])))",No,No,No
+1898,Move the added items to the front of the path:,No,No,No
+1940,we ignore APREDs (columns that represent argument,No,No,No
+2058,scaling hack,No,No,No
+2066,scaling hack,No,No,No
+2089,run the model to compute the needed probabilities,No,No,No
+2091,move everything to the GPU; if possible,No,No,No
+2099,pycharm workaround,No,No,No
+2140,Follow the convention by adding back the batch dimension,No,No,No
+2142,Follow the convention by adding back the batch dimension,No,No,No
+2144,"\""\""\"" || ML-Ask (eMotive eLement and Expression Analysis system) is a keyword-based language-dependent system || for automatic affect annotation on utterances in Japanese. || It uses a two-step procedure: || 1. Specifying whether a sentence is emotive; and || 2. Recognizing particular emotion types in utterances described as emotive. ||  || Original Perl version by Michal Ptaszynski || Python version by Yukino Ikegami || \""\""\""",No,No,No
+2166,todo: might want to look at http:\/\/stackoverflow.com\/a\/39578062\/195651,No,No,No
+2170,and there isn't anything left to do. world.end_turn() ends the turn,No,No,No
+2173,check if needed to save game,No,No,No
+2175,and there isn't anything left to do. world.end_turn() ends the turn,No,No,No
+2188,recompute assoc_cache columns for src_i and participating targets,No,No,No
+2211,Otherwise (1; 1) ends up in D[v] after which (0. 1) generates it,No,No,No
+2212,not needed here,No,No,No
+2220,if new or better:,No,No,No
+2237,use experimental; more efficient double dop algorithm,No,No,No
+2265,TODO: tabulate & plot,No,No,Yes
+2309,one graph for each query (maybe one for each text as well).,No,No,No
+2314,one graph for each query (maybe one for each text as well).,No,No,No
+2341,Move to sibling if possible.,No,No,No
+2357,needed for treeparsing(),No,No,No
+2358,needed for treeparsing(),No,No,No
+2362,leaf itself can be empty; leaf ends with closing paren or whitespace,No,No,No
+2383,improve model performance.,No,No,No
+2386,We can better observe the process of model training with plots.,No,No,No
+2390,Take bounding boxes by slice columns from 0 to 4,No,No,No
+2419,"\""\""\""Feature extraction blocks. || Feature or Multi-Feature extraction is a key component in object detection. || Class predictor\/Box predictor are usually applied on feature layer(s). || A good feature extraction mechanism is critical to performance. || \""\""\""",No,No,No
+2420,append sentinel values at both ends,No,No,No
+2425,random.randint(1; 10000) # fix seed,No,No,No
+2426,load checkpoint if needed,No,No,No
+2434,Compute values needed for means and stds,No,No,No
+2440,changing epoc to larger values helps getting better prediction.,No,No,No
+2445,Tie goes to the DIAG move.,No,No,No
+2446,Tie goes to UP move.,No,No,No
+2453,# Mixin for configurable classes that work with connection files,No,No,No
+2455,Session(Configurable) configuration,No,No,No
+2459,FileManagerMixin(Configurable) configuration,No,No,No
+2465,same in all layers. In uniform distribution this ends up being the range:,No,No,No
+2466,The performance of current implementation is better than updating,No,No,No
+2467,Generic way to extend multihead_attention,No,No,No
+2476,needed because a dataloader doesn't accept PIL images for batching,No,No,No
+2493,add Dirichlet Noise for exploration (needed for self-play training),No,No,No
+2496,"\""\""\"" || Code for evaluation of acdc metrics. Writes full report of experiment performance. ||  || Authors: || Christian F. Baumgartner (c.f.baumgartner@gmail.com) || Lisa. M. Koch (lisa.margret.koch@gmail.com) ||  || Extended from code made available by || author: Cl\u00E9ment Zotti (clement.zotti@usherbrooke.ca) || date: April 2017 || Link: http:\/\/acdc.creatis.insa-lyon.fr ||  || \""\""\""",No,No,No
+2505,Fix annotations of modified categories,No,No,No
+2531,Only allowed to select unused annotations,No,No,No
+2535,Fix the docs: https:\/\/github.com\/pytorch\/pytorch\/issues\/14099,No,No,No
+2537,This convention has the property that when thresh=0; we dont just,No,No,No
+2542,# Is there a better way to incorporate these into normal ext_modules,No,No,No
+2555,perfectly to the input. It may crop a bit of the ends.  If this is,No,No,No
+2575,Fix annotations of modified categories,No,No,No
+2579,NOTE: We are using following convention:,No,No,No
+2580,NOTE: We are using following convention:,No,No,No
+2581,This convention has the property that when thresh=0; we dont just,No,No,No
+2605,Fix the docs: https:\/\/github.com\/pytorch\/pytorch\/issues\/14099,No,No,Yes
+2626,This line seems like a safe way to reset model weights,No,No,No
+2628,Give the user a way of visualizing what we did,No,No,No
+2649,Flag any unused true box that overlaps,No,No,No
+2673,hack the coder into the criterion,No,No,No
+2699,hack OutputShapeFor with sympy to do some symbolic math,No,No,No
+2708,perfectly to the input. It may crop a bit of the ends.  If this is,No,No,No
+2714,focal loss is usually better than nh.criterions.CrossEntropyLoss,No,No,No
+2730,Fix the docs: https:\/\/github.com\/pytorch\/pytorch\/issues\/14099,No,No,Yes
+2755,focal loss is usually better than nh.criterions.CrossEntropyLoss,No,No,No
+2764,I believe this is the correct way to solve the problem,No,No,No
+2789,multi-gpu with tensorflow.cll all_sum() is more efficient.,No,No,No
+2790,shuffle maybe?,No,No,No
+2791,new best (a little better),No,No,No
+2793,maybe after some (10-15) epochs reduce it to 0.0008-0.0007,No,No,No
+2797,"\""\""\"" || Created on Fri Sep 21 15:58:50 2018 ||  || @author: madon ||  || I will try using a  different model || Machine learning algorithms: || Linear Algorithms: || Algorithm 1: Linear Regression || Algorithm 2: Logistic Regression || Algorithm 3: Linear Discriminant Analysis || *Nonlinear Algorithms: ||  || Algorithm 4: Classification and Regression Trees || Algorithm 5: Naive Bayes || Algorithm 6: K-Nearest Neighbors || Algorithm 7: Learning Vector Quantization || Algorithm 8: Support Vector Machines || *Ensemble Algorithms: ||  || Algorithm 9: Bagged Decision Trees and Random Forest || Algorithm 10: Boosting and AdaBoost || \""\""\""",No,No,No
+2812,Sort the genomes by label for optimal better performance,No,No,No
+2829,Sort the genomes by label for optimal better performance,No,No,No
+2831,the appropriate columns and apply the readdressed model to the data (in RAM).,No,No,No
+2834,Sort the genomes by label for optimal better performance,No,No,No
+2849,XXX: Otherwise; the model is just one big leaf containing all the training,No,No,No
+2853,XXX: master_tree is the pruned decision tree learned on the entire training set (no need to retrain later),No,No,No
+2931,What percent of the columns's receptive field is available,No,No,No
+2932,is correct here as opposed to 'columns'),No,No,No
+2939,"\""\""\"" || This code uses the recurrent neural net implementation in rnn.py || but trains it using Hessian-Free optimization. || It requires the theano-hf package: || https:\/\/github.com\/boulanni\/theano-hf || @author Graham Taylor || \""\""\""",No,No,No
+2941,pointer to somewhere along parameter vector,No,No,No
+2947,"\""\""\"" || This code uses the recurrent neural net implementation in rnn.py || but trains it using Hessian-Free optimization. || It requires the theano-hf package: || https:\/\/github.com\/boulanni\/theano-hf || @author Graham Taylor || \""\""\""",No,No,No
+2949,pointer to somewhere along parameter vector,No,No,No
+2954,"\""\""\"" || This code uses the recurrent neural net implementation in rnn.py || but trains it using Hessian-Free optimization. || It requires the theano-hf package: || https:\/\/github.com\/boulanni\/theano-hf || @author Graham Taylor || \""\""\""",No,No,No
+2957,"\""\""\"" || This code uses the recurrent neural net implementation in rnn.py || but trains it using Hessian-Free optimization. || It requires the theano-hf package: || https:\/\/github.com\/boulanni\/theano-hf || @author Graham Taylor || \""\""\""",No,No,No
+2960,"\""\""\"" || This code uses the recurrent neural net implementation in rnn.py || but trains it using Hessian-Free optimization. || It requires the theano-hf package: || https:\/\/github.com\/boulanni\/theano-hf || @author Graham Taylor || \""\""\""",No,No,No
+2962,pointer to somewhere along parameter vector,No,No,No
+2964,pointer to somewhere along parameter vector,No,No,No
+2967,pointer to somewhere along parameter vector,No,No,No
+2968,"\""\""\"" || This code uses the recurrent neural net implementation in rnn.py || but trains it using Hessian-Free optimization. || It requires the theano-hf package: || https:\/\/github.com\/boulanni\/theano-hf || @author Graham Taylor || \""\""\""",No,No,No
+2970,"\""\""\"" || This code uses the recurrent neural net implementation in rnn.py || but trains it using Hessian-Free optimization. || It requires the theano-hf package: || https:\/\/github.com\/boulanni\/theano-hf || @author Graham Taylor || \""\""\""",No,No,No
+2973,this importing of matplotlib is needed to run on the cluster,No,No,No
+2982,needed_landmark_samples = max(1; needed_landmark_samples),No,No,No
+2985,Print the probability of prediction (if needed),No,No,No
+2996,'''Core functionality''',No,No,No
+3003,sort classes and reorder columns,No,No,No
+3009,requires_grad needed for checkpointing,No,No,No
+3021,Eligibility trace records how much state; action pairs affect the current reward,No,No,No
+3026,probabilities for the prefix given that it ends in a,No,No,No
+3027,Add `source` module (needed when it runs via terminal),No,No,No
+3028,Add `source` module (needed when it runs via terminal),No,No,No
+3029,Add `source` module (needed when it runs via terminal),No,No,No
+3030,Add `source` module (needed when it runs via terminal),No,No,No
+3046,---- For tf 1.13.1 The following setting is needed,No,No,No
+3084,Fix generator :)),No,No,No
+3086,Fix generator :)),No,No,No
+3097,select_binary_streams_randomly(number=1000)  # This function just used for my master thesis when I needed just 1000,No,No,No
+3102,## idea ends,No,No,No
+3104,calculate the regression targets if they will be needed,No,No,No
+3112,initialize saver and restore if needed,No,No,No
+3116,probabilities for the prefix given that it ends in a,No,No,No
+3118,probabilities for the prefix given that it ends in a,No,No,No
+3119,So; we ultimately check if the verb ends with an 's' which is a pretty,No,No,No
+3154,Flatten columns,No,No,No
+3155,Reset index to get grouped_MJD and target as columns,No,No,No
+3162,Flatten columns,No,No,No
+3163,Reset index to get grouped_MJD and target as columns,No,No,No
+3168,Compute how many unique nights of data taking existed around PEAKMJD,No,No,No
+3173,Get indices to sort the batch by sequence size (needed to use packed sequences in pytorch),No,No,No
+3184,fix random seed for reproducibility,No,No,Yes
+3185,fix random seed for reproducibility,No,No,Yes
+3218,to the list of feature_columns to be read.,No,No,No
+3220,to the list of feature_columns to be read.,No,No,No
+3223,look at a pair of characters (a move),No,No,No
+3229,fix random seed for reproducibility,No,No,Yes
+3232,look at a pair of characters (a move),No,No,No
+3252,The circular doubly linked list starts and ends with a sentinel element.,No,No,No
+3253,Needed so that self[missing_item] does not raise KeyError,No,No,No
+3277,Directly load the _thread module (needed during bootstrap).,No,No,No
+3278,Directly load the _weakref module (needed during bootstrap).,No,No,No
+3280,Python 2.5b3: 62111 (fix wrong code: x += yield),No,No,No
+3282,Python 3.5b2  3340 (fix dictionary display evaluation order #11205),No,No,No
+3290,Directly load the os module (needed during bootstrap).,No,No,No
+3291,Directly load the _thread module (needed during bootstrap).,No,No,No
+3292,Directly load the _weakref module (needed during bootstrap).,No,No,No
+3293,Directly load the winreg module (needed during bootstrap).,No,No,No
+3305,Insert a '\/' unless the first part is empty or already ends in '\/'.,No,No,No
+3306,rest).  If the path ends in '\/'; tail will be empty.  If there is no,No,No,No
+3308,Issue 17489: Since __reduce__ was defined to fix #759889 this is no,No,No,No
+3329,Not needed,No,No,No
+3336,"Naming convention: Variables named \""wr\"" are weak reference objects;",No,No,No
+3338,Move the added items to the front of the path:,No,No,No
+3340,PID is 0x0D: Vehicle Speed. 1 byte of data AA using 1km\/h per bit: no conversion necessary,No,No,No
+3346,PID is 0x0D: Vehicle Speed. 1 byte of data AA using 1km\/h per bit: no conversion necessary,No,No,No
+3360,if relProb of best type at this redshift is better than the relProb of this type at any redshift,No,No,No
+3371,#  Multiprocessing with apply_async (better when arrays are large - i.e. agnostic redshift),No,No,No
+3372,The multiple of 64 is needed to ensure smooth scaling of feature,No,No,No
+3374,Pad if needed,No,No,No
+3382,For positive anchors; compute shift and scale needed to transform them,No,No,No
+3407,Remember original dtype to so we can convert back if needed,No,No,No
+3414,Mul. In either case; these min\/max vars are not needed once replaced with,No,No,No
+3428,Resize and crop if needed.,No,No,No
+3430,NOTE: np.array needed for .shape property,No,No,No
+3431,Follow the convention by adding back the batch dimension,No,No,No
+3441,Get rows and columns to craete purchase sparse matrix,No,No,No
+3449,Feature stack  ends here.,No,No,No
+3450,Word vectorization initialization ends here.,No,No,No
+3451,Parameter tuning ends here.,No,No,No
+3452,Execution parameter tuning ends here.,No,No,No
+3454,Setting optimizer and loss criteria ends here,No,No,No
+3487,print(len(ends)),No,No,No
+3492,Updating Learning Rate if needed,No,No,No
+3493,Updating Learning Rate if needed,No,No,No
+3494,Updating Learning Rate if needed,No,No,No
+3507,Performance improved by remove batch normalization and activation,No,No,No
+3532,more efficient splitting,No,No,No
+3537,multi class needed,No,No,No
+3550,QtWidgets.QMessageBox.information(self; 'Warning'; 'Grids needed!'),No,No,No
+3556,Defined functions for all the basic tensorflow components that we needed for building a model.,No,No,No
+3557,kernel=[image_jump;rows;columns;depth],No,No,No
+3558,find error like squared error but better,No,No,No
+3559,Defined functions for all the basic tensorflow components that we needed for building a model.,No,No,No
+3560,kernel=[image_jump;rows;columns;depth],No,No,No
+3561,find error like squared error but better,No,No,No
+3569,XXX reduce log,No,No,No
+3570,XXX sanity,No,No,No
+3574,XXX report dupes,No,No,No
+3576,XXX put number_of_outputs on config,No,No,No
+3579,XXX report dupes,No,No,No
+3583,XXX sanity,No,No,No
+3602,MAYBE useful for when small number of iterations.  otherwise pretty much the same,No,No,No
+3623,MAYBE useful for when small number of iterations.  otherwise pretty much the same,No,No,No
+3641,XXX should be passed in,No,No,No
+3648,XXX should we add to unique_states ?,No,No,No
+3696,note dropping b - for blank (not needed),No,No,No
+3704,move = '%s%s' % (b; a),No,No,No
+3705,move = '%s%s' % (flip(a); b),No,No,No
+3709,"self.engine.send(f\""search %s  0 {int(hint.visit)}\"" % (move;",No,No,No
+3738,XXX tmp:,No,No,No
+3749,XXX add support for new config : unique_identifier \/ number_of_polls_before_dumping_stats,No,No,No
+3761,XXX code modified:,No,No,No
+3770,samples; and 90% will be skipped using n iterations.  XXX this idea is adopted from KataGo and is NOT a full implementation of the idea there.,No,No,No
+3790,temperature for policy (XXX remove this; I have never used it),No,No,No
+3804,if inputFile ends in .jsonl; run jsonCleaner,No,No,No
+3809,What is needed: The domain; the restricted domain (what is the longest URL that every post has in common); the element that has the text,No,No,No
+3810,What is needed: The domain; the restricted domain (what is the longest URL that every post has in common); the element that has the text,No,No,No
+3812,input sentence ends in EOS; the last word idx is not included in,No,No,No
+3821,recompute\/expand embeddings if needed,No,No,No
+3822,move extra_state into sub-dictionary,No,No,No
+3828,todo: \u76EE\u524D\u4F20\u4E0D\u51FA\u53BB,No,No,No
+3830,The convention in BERT is:,No,No,No
+3837,better than pop()?,No,No,No
+3839,if dq sign miss or line ends; dP is terminated,No,No,No
+3845,better than pop()?,No,No,No
+3847,better than pop()?,No,No,No
+3850,line ends; vP and dP are terminated after inclusion of quad with incomplete lateral fd and fm:,No,No,No
+3852,line ends; last rng of incomplete tuples is discarded,No,No,No
+3853,higher line ends,No,No,No
+3860,line ends; last incomplete P is buffered or scanned:,No,No,No
+3861,higher line ends; all hPs converted to seg,No,No,No
+3865,higher line ends; all hPs are converted to seg,No,No,No
+3868,line ends; last rng of incomplete ders is discarded,No,No,No
+3869,higher line ends; all hPs are converted to segments,No,No,No
+3883,max P match; or abs_Dx; abs_Dy: more accurate but not needed for most blobs?,No,No,No
+3888,max P match -> PP_; also abs_Dx; abs_Dy: more accurate but not needed for most blobs?,No,No,No
+3891,P ends; complete boundaries with x_end and y,No,No,No
+3897,first term is proj P match; + abs_Dx and abs_Dy: more accurate but not needed for most blobs?,No,No,No
+3915,i_dert and unused d_dert,No,No,No
+3924,I is iG; filters maybe specific for a_fork and hLe blob?,No,No,No
+3927,filter maybe specific for a_fork and hLe blob?,No,No,No
+3928,filter maybe specific for afork and hLe blob?,No,No,No
+3929,a+ fork; crit = 1(G) | 6(Ga); filter maybe specific for a+ and hLe blob?,No,No,No
+3936,why always 1?,No,No,No
+3963,no longer needed: g__.mask = dy__.mask = dx__.mask = gg__.mask?,No,No,Yes
+3973,no longer needed: g__.mask = dy__.mask = dx__.mask = gg__.mask?,No,No,Yes
+3990,rotate 90 degree clockwise; anti-clockwise is better for consistency?,No,No,No
+3991,mPP if 1; else dPP; not needed if packed in PP_?,No,No,No
+4014,sstack maybe already terminated in other upconnect,No,No,No
+4023,PPm if 1; else PPd; not needed if packed in PP_?,No,No,No
+4040,PPm if 1; else PPd; not needed if packed in PP_?,No,No,No
+4043,PPm if 1; else PPd; not needed if packed in PP_?,No,No,No
+4054,get size of the image and calculate numbers of iterations needed to transform it,No,No,No
+4064,# Update columns,No,No,No
+4066,t['xxx a'].append(8),No,No,No
+4091,The performance of current implementation is better than updating,No,No,No
+4094,The performance of current implementation is better than updating,No,No,No
+4097,Generic way to extend multihead_attention,No,No,No
+4099,The performance of current implementation is better than updating,No,No,No
+4100,Generic way to extend multihead_attention,No,No,No
+4117,Reward prediction if needed.,No,No,No
+4121,Note - the only way to ensure making a copy of tensor is to run simple,No,No,No
+4123,Should be implemented if ever two StackWrappers are to be used together.,No,No,No
+4132,Hack: foldl complains when the output shape is less specified than the,No,No,No
+4135,"rule 3: convert a noun to a past participle if ((string)words[i]) ends with \""ed\""",No,No,No
+4136,"rule 4: convert any type to adverb if it ends in \""ly\""",No,No,No
+4137,"rule 5: convert a common noun (NN or NNS) to a adjective if it ends with \""al\""",No,No,No
+4138,"rule 7: if a word has been categorized as a common noun and it ends with \""s\"";",No,No,No
+4143,"\""why..I\""     e.g. \""why am I here?\"" \""Why do I like cake?\""",No,No,No
+4144,"\""why...\""    e.g. \""Why is the sky blue?\""",No,No,No
+4145,"- this style works for positives (e.g. \""why do you like cake?\"")",No,No,No
+4149,calculate amount of left padding needed,No,No,No
+4150,calculate amount of middle padding needed,No,No,No
+4161,\t                 '             Cpal C    e:0 e:@ +:0 Vbk V   @'; # english.rul needed pairs re-ordered,No,No,No
+4171,"\""\""\"" || This modules provides functionality for parsing and manipulating the || contents of a Shoebox lexicon without reference to its metadata. || \""\""\""",No,No,No
+4173,Move it back; if we were dragging.,No,No,No
+4174,Move to (x;y),No,No,No
+4178,Move the remaining text to the correct location (keep it,No,No,No
+4205,SUBPATTERN item and repair the sub item if needed,No,No,No
+4214,The convention in BERT is:,No,No,No
+4229,Label 0 is reserved for an (unused) background class.,No,No,No
+4230,Save after the training ends.,No,No,No
+4231,activations such that no rescaling is needed at evaluation time.,No,No,No
+4252,if a stale gradient come; we through it away directly,No,No,No
+4269,To verify that the file ends in \ || ; we just have to make sure the,No,No,No
+4270,Found DISALLOW* macro outside a class declaration; or perhaps it,No,No,No
+4275,Also ignores cases where the previous line ends with a backslash as can be,No,No,No
+4279,it provides a way to workaround this warning for people who use,No,No,No
+4284,"Support the UNIX convention of using \""-\"" for stdin.  Note that",No,No,No
+4294,The convention in BERT is:,No,No,No
+4317,track the data elements needed for the dataset,No,No,No
+4323,move state is locked in on a button press,No,No,No
+4364,We do better when we keep stopwords,No,No,No
+4365,We do better when we keep stopwords,No,No,No
+4366,fix random seed for reproducibility,No,No,No
+4368,fix random seed for reproducibility,No,No,No
+4369,We do better when we keep stopwords,No,No,No
+4370,We do better when we keep stopwords,No,No,No
+4372,ref_annotation.sort_values(ref_annotation.columns[0]),No,No,No
+4398,lr_t = as_floatX(lr) * (T.sqrt(fix2) \/ fix1),No,No,No
+4409,# define the maximum rows and columns to support.,No,No,No
+4435,The convention in BERT is:,No,No,No
+4438,move is a damaging move,No,No,No
+4442,assert that levitate causes return to be the better move,No,No,No
+4448,guaranteed boosts from a damaging move (none in the moves JSON but items\/abilities can cause this),No,No,No
+4451,update the attacking move based on certain special-effects:,No,No,No
+4453,if this pokemon used a damaging move; eliminate the possibility of it having a lifeorb,No,No,No
+4455,gen8 (probably),No,No,No
+4457,this can happen if a move with equal priority to a phasing move (generally -6) is used by a slower pokemon and the faster pokemon uses a phasing move,No,No,No
+4462,contact move that can miss (90% accurate),No,No,No
+4470,Shape info needed to build Decoder Model,No,No,No
+4488,Promote vec to 1D array if needed,No,No,No
+4489,Check is sphere is a Sphere object and convert it if needed,No,No,No
+4493,I guess the intel guys know what is best anyway,No,No,No
+4506,"\""\""\"" Utility functions for processing point clouds. ||  || Author: Charles R. Qi; Hao Su || Date: November 2016 || \""\""\""",No,No,No
+4508,"\""\""\"" Utility functions for processing point clouds. ||  || Author: Charles R. Qi; Hao Su || Date: November 2016 || \""\""\""",No,No,No
+4509,if zero padding is needed for missing context,No,No,No
+4534,impurity gain is difference in loss before vs. after split,No,No,No
+4540,FUNCTION: import_raw_labels_file(path;columns),No,No,No
+4543,FUNCTION: import_raw_signals(path;columns),No,No,No
+4551,split words following CamelCase convention,No,No,No
+4570,Columns,No,No,No
+4574,track of the best score and move to play.,No,No,No
+4580,Pad features if needed,No,No,No
+4652,The convention in BERT is:,No,No,No
+4653,'feature_columns': my_feature_columns;,No,No,No
+4655,The convention in BERT is:,No,No,No
+4656,len(bert_tokens[i]) maybe greater than 1,No,No,No
+4658,# The convention in BERT is:,No,No,No
+4661,request new dataframes if needed,No,No,No
+4673,datadict = {column:[] for column in unique_columns},No,No,No
+4677,Group all the op needed for training,No,No,No
+4720,"\""\""\"" || Created on Tue Sep 11 17:33:58 2018 ||  || @author: 123 || \""\""\""",No,No,No
+4723,could adjust to accelerate (small) or improve accuracy(large).,No,No,No
+4728,feature_columns = [tf.feature_column.numeric_column(k) for k in FEATURES],No,No,No
+4745,Compute number of actives needed per task.,No,No,No
+4759,I added the dataset here to implement output_predictions() function easier.,No,No,No
+4792,I added the dataset here to implement output_predictions() function easier.,No,No,No
+4821,Author: Peter Kang\t                 #,No,No,No
+4822,move part of the unit outside,No,No,No
+4823,The multiple of 64 is needed to ensure smooth scaling of feature,No,No,No
+4825,Pad if needed,No,No,No
+4835,For positive anchors; compute shift and scale needed to transform them,No,No,No
+4850,print(train_list.columns),No,No,No
+4851,print(train_list.columns),No,No,No
+4852,print(train_list.columns),No,No,No
+4882,it now as this argument is needed to compute this,No,No,No
+4884,it now as this argument is needed to compute this,No,No,No
+4888,Extract relevant columns,No,No,No
+4890,Rename columns from Facebook export,No,No,No
+4891,Rename columns from Google export,No,No,No
+4909,Keep track of where each individual recording (1 observer; 1 stimulus clip) starts and ends -- will need this,No,No,No
+4914,no ground truth available or needed,No,No,No
+4916,1. dowload if needed,No,No,No
+4927,Move the added items to the front of the path:,No,No,No
+4936,RBF function. Get the .max() RBF across columns to get the closest peak,No,No,No
+4946,correct dimensions if needed,No,No,No
+4947,correct dimensions if needed,No,No,No
+4965,header does not really belong here. But anyhoo!!!,No,No,No
+5005,Needed for colours,No,No,No
+5064,first  perceptron implement,No,No,No
+5099,"'''MobileNet in PyTorch. ||  || See the paper \""MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications\"" || for more details. || '''",No,No,No
+5105,Multinomail distribution (naive bayes classification) works better in case of counts.,No,No,No
+5106,Multinomail distribution (naive bayes classification) works better in case of counts.,No,No,No
+5107,Multinomail distribution (naive bayes classification) works better in case of counts.,No,No,No
+5108,Compute Fisher matrix if needed,No,No,No
+5146,in a better way,No,No,No
+5151,fix random seed for reproducibility,No,No,Yes
+5158,move cube a little more,No,No,No
+5173,check if significantly better than random,No,No,No
+5181,"\""\""\"" || Created on Fri Feb 23 09:35:54 2018 ||  || @author: Pavel ||  || Tests function in random_background.py || Since these tests are based on random functions || or random number generators; each function is tested several || times to ensure that it behaves correctly. || \""\""\""",No,No,No
+5191,move unwanted side directly behind camera such that origin of mesh bounding sphere,No,No,No
+5192,move unwanted side directly behind camera such that origin of mesh bounding sphere,No,No,No
+5241,until we know better,No,No,No
+5256,cut off pixels from both ends of the histogram,No,No,No
+5273,somewhere (or perhaps extract some basic information from,No,No,No
+5280,"\""If this document and functionality of the Software conflict;",No,No,No
+5281,the actual functionality of the Software represents the correct,No,No,No
+5298,"params = \""<< \/Predictor 15 \/Columns %d >>\"" % (width-2)",No,No,No
+5324,used the traceback module to do a much better job of reporting,No,No,No
+5327,"outcome always ends with a newline.  \""lineno\"" is the line number;",No,No,No
+5391,there seems to be no easy way to reset the seed!,No,No,No
+5399,dependency relation labels corresponding to the dependencies  described in 9,No,No,No
+5430,"\""\""\"" || Input to attention callables. ||  || :param seq_idx: Decoder time step \/ sequence index. || :param query: Query input to attention mechanism; e.g. decoder hidden state (plus previous word). || \""\""\""",No,No,No
+5443,todo sentence types,No,No,No
+5466,The convention in BERT is:,No,No,No
+5470,"What we really want to return is \""Steve Smith\"".",No,No,No
+5472,Maybe crop if needed.,No,No,No
+5490,print(len(ends)),No,No,No
+5563,Maybe succeed by adding to context,No,No,No
+5566,Import all needed modules (folder is valid at this point),No,No,No
+5573,Move axis to front,No,No,No
+5574,Move back,No,No,No
+5602,maybe insert instruction,No,No,No
+5617,column to maybe write corresponding value into,No,No,No
+5620,maybe mutate an instruction (flip a bit),No,No,No
+5621,maybe swap two instructions,No,No,No
+5626,mutations repeatedly; random probably small amount,No,No,No
+5628,maybe mutate an instruction (flip a bit),No,No,No
+5636,column to maybe write corresponding value into,No,No,No
+5640,needed for mutation,No,No,No
+5641,mutations repeatedly; random probably small amount,No,No,No
+5649,maybe mutate an instruction (flip a bit),No,No,No
+5650,maybe swap two instructions,No,No,No
+5656,TOBOT doesn't know how to answer; so send a generic message,No,No,No
+5680,Require a joint to move at least 200mm since the previous pose,No,No,No
+5689,Lots of options that should work and appear similar accross platforms,No,No,No
+5691,import json # NOT NEEDED,No,No,No
+5731,Resize and crop if needed.,No,No,No
+5891,otsu threshold works perfectly on green band - would be better stat representation,No,No,Yes
+5897,Specify offset and rows and columns to read,No,No,No
+5910,otsu threshold works perfectly on green band - would be better stat representation,No,No,Yes
+5923,Only one inversion is needed for implicit spline energy minimization:,No,No,No
+5932,Specify offset and rows and columns to read,No,No,No
+5936,maybe check if a non-model language,No,No,No
+5947,Load Cifar10 data. Please implement your own load_data() module for your own dataset,No,No,Yes
+5948,Load Cifar10 data. Please implement your own load_data() module for your own dataset,No,No,Yes
+5949,group a set of images row per columns,No,No,No
+5964,not needed for this dataset; ground truth is known and not generated,No,No,Yes
+5991,Compute values needed for means and stds,No,No,No
+5996,Compute values needed for means and stds,No,No,No
+6024,data directories (created if needed),No,No,No
+6041,needed),No,No,No
+6042,# we assume those attributes are not needed as they can be found in,No,No,No
+6054,Print summary report we can directly include into release notes.,No,No,No
+6127,The size of the image patch in rows or columns,No,No,No
+6135,Move the layer up (negative offset) or down (postive offset),No,No,No
+6144,we'll publish a TF related to this object only once,No,No,No
+6149,python3 hook; nothing better ?,No,No,No
+6159,Variance Unused How to represant that !?,No,No,No
+6165,Variance Unused How to represant that !?,No,No,No
+6198,self._timestep_a = 0 #\u00A0better convergence when setting to 0; but better roc ?,No,No,No
+6213,+ implement dict value for model (or in list of model; in order to,No,No,No
+6217,python3 hook; nothing better ?,No,No,No
+6226,fill ends of dimension that is too short with random noise,No,No,No
+6227,Prepare Object Grid of size pattern_size where pattern_size[0] is columns and pattern_size[1] is rows,No,No,No
+6240,"\""\""\"" || synthnn.util.io ||  || handle io operations for the synthnn package ||  || Author: Jacob Reinhold (jacob.reinhold@jhu.edu) ||  || Created on: Nov 2; 2018 || \""\""\""",No,No,No
+6244,"\""\""\"" || synthit.exec.fa_train ||  || command line interface to synthesize an MR (brain) image || with a trained NN where the DNN was trained in fastai ||  || Author: Jacob Reinhold (jacob.reinhold@jhu.edu) ||  || Created on: Nov 2; 2018 || \""\""\""",No,No,No
+6245,"\""\""\"" || synthnn.util.metrics ||  || custom metrics for the synthnn package (used in fastai implementation) ||  || Author: Jacob Reinhold (jacob.reinhold@jhu.edu) ||  || Created on: Nov 15; 2018 || \""\""\""",No,No,No
+6264,Keeping track of the number of columns,No,No,No
+6266,Keeping track of the number of columns,No,No,No
+6271,"logging.debug(\""Feature columns: {}\"".format(data_object.feature_columns))",No,No,No
+6284,These are all elements that are needed as callback inputs,No,No,No
+6310,# yvars is needed,No,No,No
+6341,"\""\""\"" || This module collects functions and utilities for text visualizations. ||  || Functions: ||     - create_wordcloud: Generate a wordcloud and save it to a file. ||  || Notes to others: ||     Feel free to write code here either to improve current or to add ||     new functionality. Avoid word vectors visualizations at this stage ||     of development as it will simply increase (re)load times for the app. || \""\""\""",No,No,No
+6394,"\""\""\"" || This module collects the layouts for connecting to the various APIs. ||  || Functions: ||     - twitter_connect: Connect to the Twitter API. ||     - google_sheets_connect: Connect to the Google Sheets API. ||     - reddit_connect: Connect to the Reddit API. ||     - spotify_connect: Connect to the Spotify API. ||  || Notes to others: ||     You should probably not write code here; unless adding \\ ||     a new API connection (or improving existing ones). || \""\""\""",No,No,No
+6432,Functions below here implement the various graphs,No,No,No
+6458,end is the index right after where the term right after opidx ends,No,No,No
+6472,However; what I think the author meant was that the second,No,No,No
+6493,We now have a list of edges which ends on a cycle.,No,No,No
+6504,"The algorithm is taken from \""Efficient Algorithms for Finding Maximum",No,No,No
+6519,threshold at which its better to use `heapq.nlargest()`,No,No,No
+6584,"\""\""\"" Given an image; computes its fingerprint. Does the ANN query and finds the most similar image. ||     This script loads the 3d model rendering an image. Thus; this script is a testing script on ||     synthetically generated images. ||  ||     Created : 25th Jan; 2017 ||     Author  : Manohar Kuse <mpkuse@connect.ust.hk> || \""\""\""",No,No,No
+6591,print 'max-err:'; (xxx_s - nl_outputs[0;kk;:]).max(),No,No,No
+6600,choose a better vantage point selection process,No,No,No
+6627,move pixels locally around (with random strengths),No,No,No
+6653,move pixels locally around (with random strengths),No,No,No
+6664,Resize and crop if needed.,No,No,No
+6690,check more iterations better,No,No,No
+6698,i.e.; How many bits of additional information are needed to where we are on axis 1 if we know where we are on axis 0?,No,No,No
+6703,Leaky ReLU activation. More efficient than tf.nn.leaky_relu() and supports FP16.,No,No,No
+6713,load the checkpoint data if needed,No,No,No
+6774,the CoNLL 2000 task on chunking has three columns: text; pos and np (chunk),No,No,No
+6782,the CoNLL 2000 task on chunking has three columns: text; pos and np (chunk),No,No,No
+6783,the GERMEVAL task only has two columns: text and ner,No,No,No
+6879,maybe with Gumbel-max trick ? (http:\/\/amid.fish\/humble-gumbel),No,No,No
+6889,from a uniform distribution for better exploration.,No,No,No
+6892,Warn the user if needed.,No,No,No
+6910,ToDo: earlyfirst; earlylateafternoon,No,No,No
+6912,ends with non regex,No,No,No
+6930,Move the layer up (negative offset) or down (postive offset),No,No,No
+6936,Check if C-Support is available for better performance,No,No,No
+6939,IDs are needed.,No,No,No
+6940,if the label is not known; but ends with a 'group' (e.g. cargroup),No,No,No
+6941,If the label is not known; but ends with a 'group' (e.g. cargroup),No,No,No
+6950,'loss' : target.loss; #binary crossentropy performs slightly better?,No,No,No
+6952,''' || ######################################################### || This file containts classes to handle data processing ||  || Author: Julian Kates-Harbeck; jkatesharbeck@g.harvard.edu ||  || This work was supported by the DOE CSGF program. || ######################################################### || ''',No,No,No
+6953,unused: handling sequences of shots,No,No,No
+6954,''' || ######################################################### || This file trains a deep learning model to predict || disruptions on time series data from plasma discharges. ||  || Dependencies: || conf.py: configuration of model;training;paths; and data || model_builder.py: logic to construct the ML architecture || data_processing.py: classes to handle data processing ||  || Author: Julian Kates-Harbeck; jkatesharbeck@g.harvard.edu ||  || This work was supported by the DOE CSGF program. || ######################################################### || ''',No,No,No
+6957,''' || ######################################################### || This file containts classes to handle data processing ||  || Author: Julian Kates-Harbeck; jkatesharbeck@g.harvard.edu ||  || This work was supported by the DOE CSGF program. || ######################################################### || ''',No,No,No
+6958,''' || ######################################################### || This file containts classes to handle data processing ||  || Author: Julian Kates-Harbeck; jkatesharbeck@g.harvard.edu ||  || This work was supported by the DOE CSGF program. || ######################################################### || ''',No,No,No
+6959,''' || ######################################################### || This file containts classes to handle data processing ||  || Author: Julian Kates-Harbeck; jkatesharbeck@g.harvard.edu ||  || This work was supported by the DOE CSGF program. || ######################################################### || ''',No,No,No
+6965,binary crossentropy performs slightly better?,No,No,No
+6987,cut shot ends if we are supposed to,No,No,No
+6992,performs !much better than minmaxnormalizer,No,No,No
+6996,performs !much better than minmaxnormalizer,No,No,No
+6997,performs !much better than minmaxnormalizer,No,No,No
+7005,"LSTM in ONNX: \""The maximum opset needed by this model is only 9.\""",No,No,No
+7047,This try...except only needed in the case where training stops after,No,No,No
+7048,"\""\""\""  Convention: inMat row major (C ordering) as (time; batch; state) || \""\""\""",No,No,No
+7053,We will use chunk_starts and chunk_ends to stitch the basecalls together,No,No,No
+7097,Figure out what columns we need to relabel,No,No,No
+7249,"''' || customReportQuery.py ||  || This filter runs an SQL query on specified PDB metadata and annotation fields retrived using || RCSB PDB RESTful web services. The fields are then queried and the resulting PDB IDs are || used to filter the data. The input to the filter consists of an SQL WHERE clause; and list || data columns availible from RCSB PDB web services. ||  || <p>See <a href=\""http:\/\/www.rcsb.org\/pdb\/results\/reportField.do\""> list of supported || field names.<\/a> ||  || <p>See <a href=\""https:\/\/www.w3schools.com\/sql\/sql_where.asp\""> for examples of || SQL WHERE clauses.<\/a> ||  || <p>Example: find PDB entries with Enzyme classification number 2.7.11.1 || and source organism Homo sapiens: ||  || <pre><code> ||     JavaPairRDD<String; StructureDataInterface> pdb = ... ||     String whereClause = \""WHERE ecNo='2.7.11.1' AND source='Homo sapiens'\""; ||     pdb = pdb.filter(new RcsbWebserviceFilter(whereClause; \""ecNo\"";\""source\"")); || <\/code><\/pre> ||  || Authorship information: ||     __author__ = \""Mars Huang\"" ||     __maintainer__ = \""Mars Huang\"" ||     __email__ = \""marshuang80@gmail.com: ||     __status__ = \""Done\"" || '''",No,No,No
+7326,split residue columns into an array,No,No,No
+7331,Convert RDD to a Dataset with the following columns and types,No,No,No
+7387,Sort the atomic numbers. This is not needed but makes things maybe a,No,No,No
+7390,Sort the atomic numbers. This is not needed but makes things maybe a,No,No,No
+7393,"print(\""Time needed to get coulomb matrix:\"")",No,No,No
+7394,"print(\""Time needed to get sine matrix:\""; dt_get_sinemat)",No,No,No
+7395,"print(\""Time needed to get charge over distance matrix:\"")",No,No,No
+7408,k>=i. The enumeration begins from [0; 0; 0]; and ends at [n_elem;,No,No,No
+7410,# k>=i. The enumeration begins from [0; 0; 0]; and ends at [n_elem;,No,No,No
+7442,Calculate with central finite difference implemented in C++,No,No,Yes
+7443,Calculate with central finite difference implemented in C++,No,No,Yes
+7448,Calculate with central finite difference implemented in C++,No,No,Yes
+7449,Calculate with central finite difference implemented in C++,No,No,Yes
+7452,# Calculate with central finite difference implemented in C++,No,No,No
+7455,Perhaps most common scenario: multiple systems with same atoms in,No,No,No
+7456,Calculate with central finite difference implemented in C++.,No,No,No
+7588,"\""\""\""Metrics to assess performance on classification task given scores ||  || Functions named as ``*_score`` return a scalar value to maximize: the higher || the better ||  || Function named as ``*_error`` or ``*_loss`` return a scalar value to minimize: || the lower the better || \""\""\""",No,No,No
+7591,Fix random seed for reproducibility,No,No,No
+7594,f_{i}(x) = activation(W_{i} * x + b); where activation is ReLU according to the paper,No,No,No
+7597,Fix random seed for reproducibility,No,No,No
+7608,Close node from last tick; if needed,No,No,No
+7634,less number of solutions is better,No,No,No
+7722,This illustrates why effect handlers are a useful PPL implementation technique:,No,No,No
+7789,This illustrates why effect handlers are a useful PPL implementation technique:,No,No,No
+7860,this fix is not available in NumPyro 0.2.4,No,No,No
+7986,not needed,No,No,No
+7996,''' || Module containing functionality to perform basic tokenization. || ''',No,No,No
+7998,'''Functionality for using Java-based components. ||  || Attributes || ---------- || JAVARES_PATH: str ||     The root path for Java components of Estnltk library. || ''',No,No,No
+8004,text classifier related + some needed in future,No,No,No
+8026,"\""\""\"" ||     referencesRegEx = re.compile(r'&lt;ref(.+?)(\/&gt|\/ref&gt);'; re.DOTALL|re.IGNORECASE) ||     references = referencesRegEx.finditer(data) ||     refend = referencesEndRegEx.finditer(data) ||     count = 0 ||     ends = [] ||     for i in references: ||        # print(i.end()) ||        print(i.group()) ||        print('--------------------------') ||        count += 1 ||     print('sss'; referencesParser(data)) ||     print(count) || \""\""\""",No,No,No
+8096,deciding whether one sentence ends and another begins;,No,No,No
+8134,"\""\""\"" || Converts data from made to brat. Enter input and output directories as command line arguments. || The associated txt file is not needed to perform any calculations. ||  || :date: 23 November; 2018 || :author: Steele W. Farnsworth || \""\""\""",No,No,No
+8155,Initialize everything needed for model,No,No,No
+8162,:param title: What should appear in the header of the outputted HTML file; not very important,No,No,No
+8214,The next step is to process each group (perhaps in a subroutine);,No,No,No
+8270,may be needed.,No,No,No
+8276,So what's needed is an assembly procedure where an active form is applied,No,No,No
+8303,enzyme argument is needed,No,No,No
+8320,(or perhaps tuples of stmts along with index into the original array,No,No,No
+8362,Step 1: fix JSON directly to eliminate errors when deserializing,No,No,No
+8363,Fix locations if possible,No,No,No
+8380,Fix errors in references to protein sequences,No,No,No
+8381,We fix the time point to 10 hours,No,No,No
+8382,We fix the time point to 10 hours,No,No,No
+8385,We fix the time point to 10 hours,No,No,No
+8413,Maybe longer?,No,No,No
+8443,Probably as simple as adding some kind of 'unique' onto sql query.,No,No,No
+8467,Maybe longer?,No,No,No
+8538,Invert if needed,No,No,No
+8566,We use materialized views to allow fast and efficient load of data;,No,No,No
+8601,Flatten evidence if needed,No,No,No
+8602,Filter to top if needed,No,No,No
+8608,initialize annotations if needed so deft predicted,No,No,No
+8657,Step 1: fix JSON directly to reduce errors when deserializing,No,No,No
+8662,Fix evidence,No,No,No
+8673,ndex_cred = {'user': 'myusername'; 'password': 'xxx'},No,No,No
+8691,This is needed for e.g.; '1.0',No,No,No
+8707,Fix CHEMBL IDs,No,No,No
+8901,Local Read: Increment B - TODO,No,No,No
+8919,no wait needed here b\/c we already waited for ds_write,No,No,No
+8927,move wg0;1 in vgprs into sgprs,No,No,No
+8939,move vgprs into sgprs,No,No,No
+9028,Create a special macro that does one K iter if needed:,No,No,No
+9031,winners when needed.,No,No,No
+9032,winners when needed.,No,No,No
+9034,we can detect if that is needed or not,No,No,No
+9082,+ Less VGPRS (32b offset vs 64-bit) needed for addressing,No,No,No
+9094,+ Less VGPRS (32b offset vs 64-bit) needed for addressing,No,No,No
+9116,add a wrap increment; if needed:,No,No,No
+9144,move wg0;1 in vgprs into sgprs,No,No,No
+9146,move wg0;1 in vgprs into sgprs,No,No,No
+9148,move wg0;1 in vgprs into sgprs,No,No,No
+9150,move wg0;1 in vgprs into sgprs,No,No,No
+9151,move wg0;1 in vgprs into sgprs,No,No,No
+9152,move wg0;1 in vgprs into sgprs,No,No,No
+9153,move wg0;1 in vgprs into sgprs,No,No,No
+9156,Create a special macro that does one K iter if needed:,No,No,No
+9161,move vgprs into sgprs,No,No,No
+9195,Change offset for subsequent dims (if needed),No,No,No
+9200,move wg0;1 in vgprs into sgprs,No,No,No
+9208,add a wrap increment; if needed:,No,No,No
+9236,Create a special macro that does one K iter if needed:,No,No,No
+9243,move vgprs into sgprs,No,No,No
+9245,move wg0;1 in vgprs into sgprs,No,No,No
+9285,Change offset for subsequent dims (if needed),No,No,No
+9288,move vgprs into sgprs,No,No,No
+9295,"kStr += inst(\""v_mov_b32\""; vgpr(21); hex(self.initVgprValue); \""hack tmp in pool\"")",No,No,No
+9468,"\""Columns used to build model\"")",No,No,No
+9485,RidgeClassifier is better but has no probabilistic interpretation,No,No,No
+9494,Maybe group paragraphs together until we hit a length limit,No,No,No
+9528,as needed so it is possible to run multiple tf sessions on the same GPU,No,No,No
+9530,"\""\""\"" || Demonstrates image-based grasp candidate sampling; which is used in the || GQ-CNN-based grasping policy || Author: Jeff Mahler || \""\""\""",No,No,No
+9542,as needed so it is possible to run multiple tf sessions on the same GPU,No,No,No
+9552,as needed so it is possible to run multiple tf sessions on the same GPU,No,No,No
+9553,allocate output tensor if needed,No,No,No
+9554,allocate mask channel if needed,No,No,No
+9555,as needed so it is possible to run multiple tf sessions on the same GPU,No,No,No
+9556,"\""\""\"" || Displays robust grasps planned using a GQ-CNN-based policy on a set of saved RGB-D images. || The default configuration is cfg\/examples\/policy.yaml. ||  || Author || ------ || Jeff Mahler || \""\""\""",No,No,No
+9564,allocate output tensor if needed,No,No,No
+9566,"\""\""\"" || Displays robust grasps planned using a GQ-CNN-based policy on a set of saved RGB-D images. || The default configuration is cfg\/examples\/policy.yaml. ||  || Author || ------ || Jeff Mahler || \""\""\""",No,No,No
+9569,"\""\""\"" || Displays robust grasps planned using a GQ-CNN-based policy on a set of saved RGB-D images. || The default configuration is cfg\/examples\/policy.yaml. ||  || Author || ------ || Jeff Mahler || \""\""\""",No,No,No
+9574,get success probablility predictions only (this is needed because the output of the net is pairs of (p_failure; p_success)),No,No,No
+9619,"\""\""\"" || Script for searching over Grasp Quality Convolutional Neural Network (GQ-CNN) hyper-parameters. ||  || Author || ------ || Vishal Satish || \""\""\""",No,No,No
+9649,because it's needed by our kernel spec.,No,No,No
+9650,because it's needed by our kernel spec.,No,No,No
+9673,"\""\""\"" || Speedml is a Python package to speed start machine learning projects. Author @manavsehgal. Docs https:\/\/speedml.com. || \""\""\""",No,No,No
+9675,"\""\""\"" || Speedml Xgb component with methods that work on XGBoost model workflow. Author @manavsehgal. Docs https:\/\/speedml.com. || \""\""\""",No,No,No
+9677,"\""\""\"" || Speedml is a Python package to speed start machine learning projects. Contact author https:\/\/twitter.com\/manavsehgal. Code; docs and demos https:\/\/speedml.com. || \""\""\""",No,No,No
+9690,XXX support sklearn.cross_validation cv,No,No,No
+9704,compute optimal number of fragments if needed,No,No,No
+9705,These functions expose a public interface that properly encapsulates their internals,No,No,No
+9711,this layer is needed because cuDNN dropout only applies to inputs between layers; not the first inputs,No,No,No
+9713,stack multiple cells if needed,No,No,No
+9740,backward run: check the data format and transpose if needed,No,No,No
+9816,better translation,No,No,No
+9840,better translation,No,No,No
+9918,make all the columns types be text,No,No,No
+9922,make all the columns types be text,No,No,No
+10005,For positive anchors; compute shift and scale needed to transform them,No,No,No
+10044,This is needed to display the images.,No,No,No
+10046,The convention in BERT is:,No,No,No
+10051,This is needed to display the images.,No,No,No
+10075,The convention in BERT is:,No,No,No
+10076,"What we really want to return is \""Steve Smith\"".",No,No,No
+10080,The convention in BERT is:,No,No,No
+10082,"\""\""\""Defines NeuMF model for NCF framework. ||  || Some abbreviations used in the code base: || NeuMF: Neural Matrix Factorization || NCF: Neural Collaborative Filtering || GMF: Generalized Matrix Factorization || MLP: Multi-Layer Perceptron ||  || GMF applies a linear kernel to model the latent feature interactions; and MLP || uses a nonlinear kernel to learn the interaction function from data. NeuMF model || is a fused model of GMF and MLP to better model the complex user-item || interactions; and unifies the strengths of linearity of MF and non-linearity of || MLP for modeling the user-item latent structures. ||  || In NeuMF model; it allows GMF and MLP to learn separate embeddings; and combine || the two models by concatenating their last hidden layer. || \""\""\""",No,No,No
+10100,subtoken_dict; count how often the resulting subtokens appear; and update,No,No,No
+10105,subtoken_dict; count how often the resulting subtokens appear; and update,No,No,No
+10109,The convention in BERT is:,No,No,No
+10110,"What we really want to return is \""Steve Smith\"".",No,No,No
+10122,WARNING: RunNetOnce call is needed only if we use brew and ConstantFill.,No,No,No
+10129,clamp output if needed,No,No,No
+10168,The convention in BERT is:,No,No,No
+10193,parse coordinate number from needed output name,No,No,No
+10229,preload data if needed,No,No,No
+10230,preload data if needed,No,No,No
+10233,preload data if needed,No,No,No
+10240,preload data if needed,No,No,No
+10251,so move channels from the last to the first axis if needed,No,No,No
+10309,NOTE: The 'full_unitaries' argument is not needed for training \/ sampling.,No,No,No
+10313,# NOTE: The 'full_unitaries' argument is not needed for training\/sampling.,No,No,No
+10319,Check how many local bases rotations appear in basis,No,No,No
+10347,Loop through batch winners (lower value better),No,No,No
+10361,Renaming columns in the sessions dataframe to avoid ambiguity,No,No,No
+10371,Check for general stupidity:,No,No,No
+10404,Conversion from ppm to atomic units. Alpha is the fine structure constant and 1e6 are the ppm,No,No,No
+10431,the url ends with \/,No,No,No
+10436,Here is how the columns are distributed,No,No,No
+10458,Two other columns are used to predict the output: ``DOSAGEFORMNAME`` and,No,No,No
+10471,create new column if needed,No,No,No
+10488,create new column if needed,No,No,No
+10507,drop column if needed,No,No,No
+10548,Call setup if needed,No,No,No
+10582,should have requested columns + utility columns from CARTO,No,No,No
+10584,should have requested columns + utility columns from CARTO,No,No,No
+10589,alter non-util columns that are not text type,No,No,No
+10590,util columns + new column of type number,No,No,No
+10591,alter non-util columns that are not text type,No,No,No
+10641,set(boundaries.columns)),No,No,No
+10642,set(geoms.columns)),No,No,No
+10645,msg='metadata columns are all there'),No,No,No
+10649,util columns + new column of type number,No,No,No
+10656,set(df_index.columns)),No,No,No
+10885,Equal columns: truncate table,No,No,No
+10926,Bugs that go from dev-doc-needed to dev-doc-complete are guaranteed to be good,No,No,No
+10944,Override the Docker image tag if needed,No,No,No
+10947,Override the Docker image tag if needed,No,No,No
+11035,default that all columns are conditions of interest,No,No,No
+11048,regressors needed to account for the covariance,No,No,No
+11050,Squareform and shuffle rows\/columns of pairwise ISC matrix to,No,No,No
+11054,Return signal needed,No,No,No
+11057,Inspired by workaround from PyMC3,No,No,No
+11110,white box hack,No,No,No
+11177,probably should be 6,No,No,No
+11182,+ Less VGPRS (32b offset vs 64-bit) needed for addressing,No,No,No
+11214,+ Less VGPRS (32b offset vs 64-bit) needed for addressing,No,No,No
+11247,move wg0;1 in vgprs into sgprs,No,No,No
+11270,VGPR to use for element data; needed for atomic or beta,No,No,No
+11278,VGPR to use for element data; needed for atomic or beta,No,No,No
+11281,"GEMM csv files contain \""LDD\"" \""LDC\"" \""LDA\"" \""LDB\"" columns",No,No,No
+11284,Change offset for subsequent dims (if needed),No,No,No
+11295,Move the row ptr,No,No,No
+11310,Also allocate VGPR resources here; if needed.,No,No,No
+11324,since it reduces addressing overhead and will produce a more efficient kernel,No,No,No
+11329,since it reduces addressing overhead and will produce a more efficient kernel,No,No,No
+11334,cidx is first summation index; filter summations follow as needed,No,No,No
+11344,spatial summations (if needed),No,No,No
+11353,spatial summations (if needed),No,No,No
+11356,spatial summations (if needed),No,No,No
+11387,spatial summations (if needed),No,No,No
+11491,spatial summations (if needed),No,No,No
+11520,spatial summations (if needed),No,No,No
+11610,cidx is first summation index; filter summations follow as needed,No,No,No
+11658,spatial summations (if needed),No,No,No
+11726,spatial summations (if needed),No,No,No
+11812,default; may be changed if needed to generate a valid kernel,No,No,No
+11813,default; may be changed if needed to generate a valid kernel,No,No,No
+11814,default; may be changed if needed to generate a valid kernel,No,No,No
+11817,default; may be changed if needed to generate a valid kernel,No,No,No
+11818,default; may be changed if needed to generate a valid kernel,No,No,No
+11859,64-bit C val move by 2 32-bit instructions,No,No,No
+11921,we will add s_nop if needed,No,No,No
+11941,"kStr += inst(\""s_add_u32\""; sgpr(\""PersistentLoopIter\""); sgpr(\""PersistentLoopIter\""); hex(1); \""Inc PersistentLoop Iter\"")   # Back-up: not needed now",No,No,No
+11960,"kStr += inst(\""s_add_u32\""; sgpr(\""PersistentLoopIter\""); sgpr(\""PersistentLoopIter\""); hex(1); \""Inc PersistentLoop Iter\"")   # Back-up: not needed now",No,No,No
+12000,case 4: after Ord.NLL (with Beta); cnt = no needed for vmcnt,No,No,No
+12045,robust in cases where setup.py was invoked in some weird way (e.g. pip),No,No,No
+12205,How best to keep reads of the corpus consistent?,No,No,No
+12290,Reduce the alpha of the vertex colors when we rendering triangles,No,No,No
+12325,# Better be in correct format!,No,No,No
+12339,# Better be in correct format!,No,No,No
+12353,# IS THIS A BETTER WAY?:,No,No,No
+12384,# first; find the set to skip over; if needed:,No,No,No
+12390,# M move to,No,No,No
+12413,Initialize materials needed to create ONNX LSTM,No,No,No
+12448,the most efficient way to compute the prediction.,No,No,No
+12449,Predictions are more efficient if the graph is small.,No,No,No
+12450,That's why the converter checks that there is no unused input.,No,No,No
+12451,must be applied on columns of the same type.,No,No,Yes
+12460,the most efficient way to compute the prediction.,No,No,No
+12463,Last detail; every column was described  not really as a vector,No,No,No
+12464,the data is defined by two text columns.,No,No,No
+12467,if needed,No,No,No
+12473,The new differences look much better.,No,No,No
+12481,ends,No,No,No
+12482,ends,No,No,No
+12483,HistGradientBoostingRegressor does not implement decision_path.,No,No,No
+12486,It is just better to use strings.,No,No,No
+12489,It works too in a more simple way.,No,No,No
+12493,"\""\""\"" || .. _example-lightgbm: ||  || Convert a pipeline with a LightGBM model || ======================================== ||  || .. index:: LightGBM ||  || :epkg:`sklearn-onnx` only converts :epkg:`scikit-learn` models into *ONNX* || but many libraries implement :epkg:`scikit-learn` API so that their models || can be included in a :epkg:`scikit-learn` pipeline. This example considers || a pipeline including a :epkg:`LightGBM` model. :epkg:`sklearn-onnx` can convert || the whole pipeline as long as it knows the converter associated to || a *LGBMClassifier*. Let's see how to do it. ||  || .. contents:: ||     :local: ||  || Train a LightGBM classifier || +++++++++++++++++++++++++++ || \""\""\""",No,No,No
+12550,"\""\""\"" || Created on Fri May 04 10:26:49 2018 ||  || @author: Mostafa Meliani <melimostafa@gmail.com> ||  || Multi-Fidelity co-Kriging: recursive formulation with autoregressive model of  || order 1 (AR1) || \""\""\""",No,No,No
+12553,Some quantities needed,No,No,No
+12567,"\""\""\"" || Created on Fri May 04 10:26:49 2018 ||  || @author: Mostafa Meliani <melimostafa@gmail.com> || Multi-Fidelity co-Kriging: recursive formulation with autoregressive model of  || order 1 (AR1) || Partial Least Square decomposition added on highest fidelity level || Adapted March 2020 by Nathalie Bartoli to the new SMT version || \""\""\""",No,No,No
+12612,You can replace this with other tokenizers if needed,No,No,No
+12614,A useful hack: add previously visited points to the grid,No,No,No
+12632,Burn samples (if needed),No,No,No
+12633,Burn samples (if needed),No,No,No
+12644,If it is a numpy array of size 1; cast it to a float (this might not be needed),No,No,No
+12658,XXX: Usage message,No,No,No
+12736,Create needed folders,No,No,No
+12737,Create needed folders,No,No,No
+12743,Create needed folders,No,No,No
+12744,Create needed folders,No,No,No
+12746,Create needed folders,No,No,No
+12804,label (unused),No,No,No
+12817,"\""\""\"" || From https:\/\/github.com\/bparr\/lars\/blob\/master\/lars.py ||  || Layer-wise Adaptive Rate Scaling minimizer. ||  || When tuning; a large initial_learning_rate (e.g. 1000.0) might be needed for || good results if using the default value for lars_coefficient. ||  || Based on Algorithm 1 in https:\/\/arxiv.org\/pdf\/1708.03888.pdf. ||  || Usage Example: ||   train_step = createLarsMinimizer(...) ||   with tf.Session() as sess: ||     sess.run(tf.global_variables_initializer()) ||     sess.run(train_step) ||  || This uses tf.train.get_or_create_global_step(); and increments this global step || every time the returned Operation is run. ||  || Args: ||   loss: A Tensor containing the value to minimize. ||   initial_learning_rate: A float. The base LR to use (gamma_0 in paper). ||   learning_rate_decay_steps: A scalar int32 or int64 Tensor or a Python number. ||     See https:\/\/www.tensorflow.org\/api_docs\/python\/tf\/train\/polynomial_decay ||     documentation on decay_steps argument. ||   momentum: A Tensor or a float. The momentum. ||   weight_decay: A float. B in paper. ||   lars_coefficient: A float. eta in paper. ||   eps: A float. Used for numerical stability close to the optimum. ||   use_decay: A boolean. ||   var_list: List of tensorflow Variables. Each one will be optimized ||     individually (e.g. have its own momentum). If None; then defaults to all ||     trainable variables. ||  || Returns: ||   A tuple of (an Operation that minimizes using LARS; ||               debug function that returns dict of values given a Session). || \""\""\""",No,No,No
+12828,\t\t\ttf.summary.image(k; expand_if_needed(v)),No,No,No
+12839,Changes all columns of type object into strings,No,No,No
+12840,Alter the table to allow the column (if needed),No,No,No
+12844,Changes all columns of type object into strings,No,No,No
+12848,Only load the similarity matrix if needed,No,No,No
+12853,Load the categorical columns,No,No,No
+12891,a bit useless maybe,No,No,No
+12993,"\""\""\""Vgg model configuration. ||  || Includes multiple models: vgg11; vgg16; vgg19; corresponding to ||   model A; D; and E in Table 1 of [1]. ||  || References: || [1]  Simonyan; Karen; Andrew Zisserman ||      Very Deep Convolutional Networks for Large-Scale Image Recognition ||      arXiv:1409.1556 (2014) || \""\""\""",No,No,No
+13003,Allow stdout to be viewed before the process ends.,No,No,No
+13013,unused: this function returns the cached ref or value.,No,No,No
+13025,Update a log file if needed,No,No,No
+13029,Output columns,No,No,No
+13059,force text encoding dict for all string columns,No,No,No
+13076,convert a long pandas.DataFrame to a wide xpandas.XDataFrame. Not necessarily very efficient and it is more desirable,No,No,No
+13080,assume series are indexed from 0 to m-1 (can map to non-linear indices later if needed),No,No,No
+13094,'applied to the data columns'),No,No,No
+13095,raise ValueError('Number of columns of input is different from what was seen',No,No,No
+13238,assume series are indexed from 0 to m-1 (can map to non-linear indices later if needed),No,No,No
+13295,Check for conflicts with double-underscore convention,No,No,No
+13301,Check for conflicts with double-underscore convention,No,No,No
+13349,(also random)     be extended to  random enumeration and also a random time contract transforms. I think the best way to do this is,No,No,No
+13373,"f\""but found: {X.shape[1]} columns\"")",No,No,No
+13492,concatenate transformed columns,No,No,No
+13519,shuffle columns,No,No,No
+13523,select number of columns and move iterator ahead,No,No,No
+13557,efficient than multiprocessing in that case.,No,No,No
+13563,First step is to pad the portion on both ends once.,No,No,No
+13564,Pad both ends of X,No,No,No
+13589,We concatenate by tabularizing all columns and then detabularizing,No,No,No
+13599,assuming samples in columns,No,No,No
+13608,If all the columns are nested in structure,No,No,No
+13609,If some columns are primitive (non-nested) then first convert to,No,No,No
+13611,Randomly generate arc starts and ends,No,No,No
+13656,all features better than noise,No,No,No
+13657,noise better than all features aka no feature better than noise,No,No,No
+13661,massage columns,No,No,No
+13699,Needed to assess BaseImagery,No,No,No
+13700,better to do pip install git+https:\/\/github.com\/MIT-LCP\/wfdb-python.git,No,No,No
+13701,.flash file can give the exact times of the flashes if necessary,No,No,No
+13703,on a loop of several subjects; MOABB ends up being a more appropriate option.,No,No,No
+13705,.flash file can give the exact times of the flashes if necessary,No,No,No
+13707,.flash file can give the exact times of the flashes if necessary,No,No,No
+13708,better to do pip install git+https:\/\/github.com\/MIT-LCP\/wfdb-python.git,No,No,No
+13709,.flash file can give the exact times of the flashes if necessary,No,No,No
+13737,given maybe input return keras version  for your model,No,No,No
+13738,given maybe input return keras version  for your model,No,No,No
+13751,we no longer require output once we are using the model,No,No,No
+13758,'lein' where original word ends in 'l',No,No,No
+13759,only needed for the example,No,No,No
+13765,Maybe too strict,No,No,No
+13801,Maybe too strict,No,No,No
+13803,default needed because box does not have groups,No,No,No
+13810,maybe support?,No,No,No
+13861,Continuous columns,No,No,No
+13862,Wide columns and deep columns.,No,No,No
+13863,Continuous columns,No,No,No
+13864,Wide columns and deep columns.,No,No,No
+13874,This is needed to display the images.,No,No,No
+13886,Update config with kwargs if needed,No,No,No
+13894,Convert old format to new format if needed from a PyTorch state_dict,No,No,No
+13900,# Table columns,No,No,No
+13903,move the snake in north,No,No,No
+13927,In the matrices below: rows - attacks; columns - defenses.,No,No,No
+13928,higher scores are better.,No,No,No
+13930,"\""\""\""Helper classes and wrappers to access Google Cloud. ||  || Google Cloud API is encapsulated with these wrappers; so it's easier to || test the code with help of fake (declared in testing\/fake_cloud_client.py). || \""\""\""",No,No,No
+13932,Number of work records to read at once,No,No,No
+13940,arguments needed for the predicition,No,No,No
+13969,dropout 0.5 is needed for protein and citation (large nets),No,No,No
+13970,dropout 0.2 is needed for conflict and metabolic (small nets),No,No,No
+13972,"\""Using the Output Embedding to Improve Language Models\"" (Press & Wolf 2016)",No,No,No
+13973,Insert blank columns,No,No,No
+13977,Insert columns,No,No,No
+13978,Insert columns,No,No,No
+13979,Insert columns (Files),No,No,No
+13980,Insert columns (Files),No,No,No
+13981,Insert columns (Files),No,No,No
+13984,Insert Columns (Files),No,No,No
+13985,Insert Columns (Total),No,No,No
+14019,# perhaps this normalization should be left out??,No,No,No
+14025,#NAME?,No,No,No
+14057,image name ends with a dash,No,No,No
+14067,leave only score columns,No,No,No
+14073,only keep columns with results,No,No,No
+14074,only keep columns with results,No,No,No
+14077,'strip_unused_nodes';,No,No,No
+14085,starts at 0; ends at 1-seq_len,No,No,No
+14087,encoder_outputs is defined. input_ids not needed,No,No,No
+14114,coordinate needed for the gather,No,No,No
+14137,columns,No,No,No
+14211,The convention in BERT is:,No,No,No
+14213,The convention in BERT is:,No,No,No
+14214,"What we really want to return is \""Steve Smith\"".",No,No,No
+14216,The convention in BERT is:,No,No,No
+14221,The convention in BERT is:,No,No,No
+14222,"What we really want to return is \""Steve Smith\"".",No,No,No
+14223,The convention in BERT is:,No,No,No
+14225,"What we really want to return is \""Steve Smith\"".",No,No,No
+14269,precomputation is needed,No,No,No
+14276,calls. When a process ends; it shuts the all its daemonic children,No,No,No
+14278,ends.,No,No,No
+14282,copyright notice and this permission notice appear in all copies.,No,No,No
+14283,copyright notice and this permission notice appear in all copies.,No,No,No
+14344,"\""\""\"" || Summary:  mnist dnn pytorch example.  ||           te_err around 2%.  || Author:   Qiuqiang Kong || Usage:    $ CUDA_VISIBLE_DEVICES=1 python test9.py train --init_type=glorot_uniform --optimizer=adam --loss=softmax --lr=1e-3 ||           $ python mnist_dnn_pt.py train --init_type=glorot_uniform --optimizer=adam --loss=softmax --lr=1e-4 --resume_model_path=\""models\/md_3000iters.tar\"" || Created:  2017.12.09 || Modified: 2017.12.12 || \""\""\""",No,No,No
+14347,"\""\""\"" || Summary:  mnist dnn pytorch example.  ||           te_err around 2%.  || Author:   Qiuqiang Kong || Usage:    $ CUDA_VISIBLE_DEVICES=1 python test9.py train --init_type=glorot_uniform --optimizer=adam --loss=softmax --lr=1e-3 ||           $ python mnist_dnn_pt.py train --init_type=glorot_uniform --optimizer=adam --loss=softmax --lr=1e-4 --resume_model_path=\""models\/md_3000iters.tar\"" || Created:  2017.12.09 || Modified: 2017.12.12 || \""\""\""",No,No,No
+14348,"\""\""\"" || Summary:  mnist dnn pytorch example.  ||           te_err around 2%.  || Author:   Qiuqiang Kong || Usage:    $ CUDA_VISIBLE_DEVICES=1 python test9.py train --init_type=glorot_uniform --optimizer=adam --loss=softmax --lr=1e-3 ||           $ python mnist_dnn_pt.py train --init_type=glorot_uniform --optimizer=adam --loss=softmax --lr=1e-4 --resume_model_path=\""models\/md_3000iters.tar\"" || Created:  2017.12.09 || Modified: 2017.12.12 || \""\""\""",No,No,No
+14387,compute edges for the far columns,No,No,No
+14407,compute edges for the far columns,No,No,No
+14421,POSSIBILITY 1: guess the number of edges (in the best situation is faster but requires a little bit more memory. In the worst is slower.),No,No,No
+14437,"\""\""\"" || @package medpy.utilities.arsparseu || Holds additional functionality for the argparse commandline parser package. ||  || @author Oskar Maier || @version r0.1.0 || @since 2013-07-02 || @status Release || \""\""\""",No,No,No
+14439,"\""\""\"" || @package medpy.metric.image || Provides a number of image distance and similarity measures. ||  || @author Oskar Maier || @version r0.1.0 || @since 2013-07-09 || @status Release || \""\""\""",No,No,No
+14454,"\""\""\"" || @package medpy.metric.binary || Provides a number of binary image distance measures. ||  || @author Oskar Maier || @version d0.1.0 || @since 2014-03-13 || @status Development || \""\""\""",No,No,No
+14455,"\""\""\"" || @package medpy.filter.noise || Global and local noise estimator filters. ||  || @author Oskar Maier || @version r0.1.0 || @since 2014-03-20 || @status Release || \""\""\""",No,No,No
+14472,calculate differences by using Sobel-filter. (Maybe other filter kernel like Prewitt will do a better job),No,No,No
+14485,Determine the columns that represent features,No,No,No
+14495,((n_classes - 1) * n_models) columns have to be stored,No,No,No
+14497,TODO: log \u6BCF\u4E00\u7C7B\u7684\u6982\u7387,No,No,Yes
+14546,Change settings of default edges if needed. E.g.:,No,No,Yes
+14547,Create new Edges here if needed E.g.:,No,No,Yes
+14556,XXX 'translate(' + str( self.view_center[0] ) + ';' + str( self.view_center[1] ) + ')',No,No,No
+14564,Change settings of default edges if needed. E.g.:,No,No,No
+14577,XXX simple guess,No,No,No
+14597,Upper: second tab width if needed,No,No,No
+14701,"\""\""\"" || How to support a new layer type: ||  layer_name=log.add_layer(layer_type_name) ||  top_blobs=log.add_blobs(<output of that layer>) ||  layer=caffe_net.Layer_param(xxx) ||  <set layer parameters> ||  [<layer.add_data(*datas)>] ||  log.cnet.add_layer(layer) || \""\""\""",No,No,No
+14722,Needed to output labels,No,No,No
+14736,M_inv: Inverted normalized transformation matrix --> Needed for grid sample,No,No,No
+14748,M_inv: Inverted normalized transformation matrix --> Needed for grid sample,No,No,No
+14782,make sure the number of labels corresponds to the number of columns in X,No,No,No
+14796,column stack each of the sensors s -- resulting in s*d columns,No,No,No
+14800,\tif needed_metas in memoized_metaclasses_map:,No,No,No
+14803,\telif not needed_metas:         # wee; a trivial case; happy us,No,No,No
+14804,\telif len(needed_metas) == 1:  # another trivial case,No,No,No
+14813,TODO: \u91CD\u53E0\u5B9E\u4F53\u6D88\u6B67,No,No,No
+14826,Predict - [1 rows x 4 columns],No,No,No
+14827,print(X_trans_columns; len(X_trans_columns)),No,No,No
+14830,print(X_trans_columns; len(X_trans_columns)),No,No,No
+14837,"\""\""\"" || start_time = time() || en_nlp = spacy.load(\""en_core_web_md\"") || dta = pandas.read_csv('corpus\/qclassifier_trainer.csv'; sep='|') || # get_data_info(dta) ||  || y = dta.pop('Class') || dta.pop('#Question') || dta.pop('WH-Bigram') ||  || X_train = pre_process(dta) ||  || # print(X_train.shape) ||  || # print(len(column_list)) ||  || question = 'Who is Linus Torvalds ?' || # question = 'What is the colour of apple ?' || en_doc = en_nlp(u'' + question) ||  || question_data = get_question_predict_data(en_doc) || X_predict = pre_process(question_data) || # print(X_predict) || # print(X_train) ||  || X_train; X_predict = transform_data_matrix(X_train; X_predict) ||  || # print(naive_bayes_classifier(X_train; y; X_predict)) || print(support_vector_machine(X_train; y; X_predict)) || end_time = time() || print(\""Total time :\""; end_time - start_time) || \""\""\""",No,No,No
+14904,Default min size for all sub-columns,No,No,No
+14929,columns=iris_input.columns.values.tolist() + ['is_' + _ for _ in target_counts[0][0]],No,No,No
+14974,"\""\""\""This module contains utilities for building and executing unit tests; as well as for reporting the results ||  || Related || ------- || :mod:`hyperparameter_hunter.tests` ||     This module contains all unit tests for the library; and it uses :mod:`hyperparameter_hunter.utils.test_utils` throughout\""\""\""",No,No,No
+14987,TODO: ??????????????????????????????????????????????????,No,No,No
+15017,Custom recorders must subclass `recorders.BaseRecorder`; and implement these four abstract items:,No,No,No
+15026,List containing strings that specify the columns to be used as input,No,No,No
+15069,columns_a,No,No,No
+15136,XXX check that sum(prior) == 1,No,No,No
+15191,the model vgg16_bn is better than vgg16?,No,No,No
+15193,please refer the origin implement and I will just use the code for my own usage,No,No,No
+15220,This call is needed to initialise input_shape and output_shape,No,No,No
+15222,This call is needed to initialise input_shape and output_shape,No,No,No
+15250,sort each time point (columns) by risk score (descending),No,No,No
+15263,plt.plot([num_points_hack[0];num_points_hack[-1]];[old_mean[0];old_mean[0]];'r-';label='siggraph17 (auto)'),No,No,No
+15270,Matplotlib backend. Apparently the DISPLAY variable is not set in Windows,No,No,No
+15294,there is no better individual than offSpring,No,No,No
+15296,there is no better individual than offSpring,No,No,No
+15300,there is no better individual than offSpring,No,No,No
+15305,there is no better individual than offspring,No,No,No
+15385,Efficient Grid Size Reduction,No,No,No
+15463,reshape the input if needed,No,No,No
+15472,Spans are returned as closed intervals on both ends,No,No,No
+15504,tensorflow hub input that is not needed outside of training.,No,No,No
+15510,Load the wav from disk if needed,No,No,No
+15530,first; check if the sentence ends with some punctuation sign,No,No,Yes
+15540,first; check if the sentence ends with some punctuation sign,No,No,Yes
+15572,AI move,No,No,No
+15612,y has two or more columns,No,No,No
+15614,sample_weight has two or more columns,No,No,No
+15710,TODO: google search,No,No,No
+15739,figure out the number of rows and columns,No,No,No
+15742,get the ends,No,No,No
+15808,if larger the better; self.score; self.greedyscore = 0; 1 \/ while (self.greedyscore > self.score) | self.ScoreUpdate():,No,No,No
+15816,stop when no improve for the last round and no potential add feature,No,No,No
+15833,implement model.optim_parameters(args) to handle different models' lr setting,No,No,No
+15834,implement model.optim_parameters(args) to handle different models' lr setting,No,No,No
+15842,Little fix for max_slope = 1,No,No,No
+15889,"\""\""\""Use byte pair encoding (BPE) to learn a variable-length encoding of the vocabulary in a text. || Unlike the original BPE; it does not compress the plain text; but can be used to reduce the vocabulary || of a text to a configurable number of symbols; with only a small increase in the number of tokens. ||  || Reference: || Rico Sennrich; Barry Haddow and Alexandra Birch (2016). Neural Machine Translation of Rare Words with Subword Units. || Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (ACL 2016). Berlin; Germany. || \""\""\""",No,No,No
+15931,If the file already exists; ensure it ends with a new line,No,No,No
+15933,10;000 iterations seems enough to converge,No,No,No
+15934,print(list(data.columns)),No,No,No
+15942,resize\/crop if needed,No,No,No
+15945,Load Cifar10 data. Please implement your own load_data() module for your own dataset,No,No,No
+15951,Outer double quotes needed or else colon characters don't parse,No,No,No
+15958,To verify that the file ends in \ || ; we just have to make sure the,No,No,No
+15964,Also ignores cases where the previous line ends with a backslash as can be,No,No,No
+15968,it provides a way to workaround this warning for people who use,No,No,No
+15973,"Support the UNIX convention of using \""-\"" for stdin.  Note that",No,No,No
+15978,continue to next gt unless better match made,No,No,No
+15982,Compute values needed for means and stds,No,No,No
+15984,Move channels (axis 3) to axis 1,No,No,No
+16055,ASCII ends at 127; not 255,No,No,No
+16059,What happen if IOError: [Errno 5] Input\/output error?? WTF is Errno5 !!@$!%#@^$& ???!!!!@#$!%@,No,No,No
+16072,Resize and crop if needed.,No,No,No
+16076,Resize and crop if needed.,No,No,No
+16083,in the code of Kim et al.; seems to improve performance,No,No,No
+16121,For normalization-augmentation: Get channels' stds if needed:,No,No,No
+16125,stride is how much I move in each dimension to acquire the next imagePart.,No,No,No
+16131,plt.subplots(rows;columns): returns: (figure; axes); where axes is an array; one element for each subplot; of rows and columns as I specify!,No,No,No
+16132,The file will be read UP UNTIL the line where the list ] ends. This may be the already read line (ie; dont read any more).,No,No,No
+16169,stride is how much I move in each dimension to acquire the next imagePart.,No,No,No
+16260,ends = [],No,No,No
+16262,print(ends),No,No,No
+16263,int[] ends = new int[3];,No,No,No
+16284,out += self.temp('ends').format(self.n_svs_rows),No,No,No
+16329,The convention in BERT is:,No,No,No
+16364,Create temporary mono track if needed,No,No,No
+16372,order of labels for different scorers. Currently using only the first (as by convention the human labeler is displayed as +).,No,No,No
+16376,bodyparts2plot = list(np.unique(Dataframe.columns.get_level_values(1))),No,No,No
+16381,bodyParts = self.Dataframe.columns.get_level_values(1),No,No,No
+16395,bodyParts = self.Dataframe.columns.get_level_values(1),No,No,No
+16458,Deal with exact matches possibly needed at one or both ends.,No,No,No
+16459,ends with exact match,No,No,No
+16462,True == keep line ends,No,No,No
+16467,python 2.5 compat: if previous line ends in a continuation;,No,No,No
+16470,if this is the end of the line and the line ends with,No,No,No
+16471,segment with the same basename as our package ends up,No,No,No
+16476,disable in < 2.4: eval can't take needed args,No,No,No
+16489,Move the added items to the front of the path:,No,No,No
+16496,## convention: SPACES separate tags.,No,No,No
+16501,''' || convention_df = st.SampleCorpora.ConventionData2012.get_data() || corpus = (st.CorpusFromPandas(convention_df; ||                               category_col='party'; ||                               text_col='text'; ||                               nlp=st.whitespace_nlp_with_sentences) ||           .build() ||           .get_unigram_corpus()) ||  || term_scorer = st.MannWhitneyU(corpus).set_categories('democrat'; ['republican']) || html = st.produce_frequency_explorer( ||     corpus; ||     category='democrat'; ||     category_name='Democratic'; ||     not_category_name='Republican'; ||     y_label='Mann Whitney FDR-BH Z'; ||     scores=term_scorer.get_score_df('fdr_bh').mwu_z; ||     metadata=convention_df['speaker']; ||     grey_threshold=0 || ) || file_name = 'demo_mann_whitney.html' || open(file_name; 'wb').write(html.encode('utf-8')) || print('Open %s in Chrome or Firefox.' % file_name) || ''',No,No,No
+16529,Gold ends.,No,No,No
+16544,Get the images; image filenames; (maybe) image IDs; and (maybe) labels for this batch.,No,No,No
+16550,Do a few preparatory things like maybe shuffling the dataset initially.,No,No,No
+16554,# Credits goes to the original author Erik Hovland,No,No,No
+16557,Transpose matrix for the two last columns (ignoring batch_size),No,No,No
+16626,''' This function takes in the model; saves the weights (multiple copies if  ||     requested); and prepares sample sheets: one consisting of samples given ||     a fixed noise seed (to show how the model evolves throughout training); ||     a set of full conditional sample sheets; and a set of interp sheets. ''',No,No,No
+16629,"\""\""\"" A simple benchmark on the last.fm dataset || Compares the running time of this package vs the QMF library from Quora. ||  || On my laptop (2015 Macbook Pro ; Dual Core 3.1 GHz Intel Core i7) running || with 50 factors for 15 iterations this is the output: ||  ||     QMF finished in 547.933080912 ||     Implicit finished in 302.997884989 ||     Implicit is 1.80837262587 times faster ||  || (implicit-mf package was run separately; I estimate it at over 60;000 times || slower on the last.fm dataset - with an estimated running time of around 250 days) || \""\""\""",No,No,No
+16644,continue to next gt unless better match made,No,No,No
+16664,"\""\""\"" || Author: ||     Weichen Shen;wcshen1994@163.com ||  || Reference: ||     [1] Deep & Cross Network for Ad Click Predictions (https:\/\/arxiv.org\/abs\/1708.05123) || \""\""\""",No,No,No
+16681,check_feature_config_dict(linear_feature_columns),No,No,No
+16684,check_feature_config_dict(feature_columns),No,No,No
+16686,"enumerate(feature_columns[\""sparse\""])}",No,No,No
+16691,check_feature_config_dict(dnn_feature_columns),No,No,No
+16693,history_feature_columns.append(fc),No,No,No
+16701,for feat in region_feature_columns['sparse'] + base_feature_columns['sparse'] + bias_feature_columns['sparse']:,No,No,No
+16704,check_feature_config_dict(linear_feature_columns),No,No,No
+16752,'back rotate' the move before printing it.,No,No,No
+16776,Apparantly it makes a huge difference... Maybe the depth-3 version is wrong somehow?,No,No,No
+16779,But is best really -MATE_UPPER when legal moves?,No,No,No
+16783,Then killer move,No,No,No
+16786,But is best really -MATE_UPPER when legal moves?,No,No,No
+16807,since I think this is giving the bug.,No,No,No
+16825,''' || Author: Ji-Sung Kim ||  || Some code adapted from Evan Chow's jazzml; https:\/\/github.com\/evancchow\/jazzml  || with express permission. ||  || Code was built while significantly referencing public examples from the || Keras documentation on Github: || https:\/\/github.com\/fchollet\/keras\/blob\/master\/examples\/lstm_text_generation.py ||  || GPU run command: ||     THEANO_FLAGS=mode=FAST_RUN;device=gpu;floatX=float32 python preprocess.py || ''',No,No,No
+16863,"\""\""\""Definition of 512 VGG-based SSD network. ||  || This model was initially introduced in: || SSD: Single Shot MultiBox Detector || Wei Liu; Dragomir Anguelov; Dumitru Erhan; Christian Szegedy; Scott Reed; || Cheng-Yang Fu; Alexander C. Berg || https:\/\/arxiv.org\/abs\/1512.02325 ||  || Two variants of the model are defined: the 300x300 and 512x512 models; the || latter obtaining a slightly better accuracy on Pascal VOC. ||  || Usage: ||     with slim.arg_scope(ssd_vgg.ssd_vgg()): ||         outputs; end_points = ssd_vgg.ssd_vgg(inputs) || @@ssd_vgg || \""\""\""",No,No,No
+16865,Xception arg scope (Keras hack!),No,No,No
+16870,Moving averages ends up in the trainable variables collection,No,No,No
+16871,Moving averages ends up in the trainable variables collection,No,No,No
+16920,num_classes (maybe encoded as categories),No,No,No
+16950,num_classes (maybe encoded as categories),No,No,No
+16965,TODO: double check documentaion.,No,No,No
+17006,num_classes (maybe encoded as categories),No,No,No
+17024,Resize and crop if needed.,No,No,No
+17030,Compute values needed for means and stds,No,No,No
+17036,if a model specific queue does not exists then this is where the task ends up,No,No,No
+17049,Move any overlaps into greatest_child,No,No,No
+17076,go outside of the shape's area for some reason. XXX,No,No,No
+17096,Transpose to move the head dimension back: b x lq x n x dv,No,No,No
+17099,"\""\""\""Use byte pair encoding (BPE) to learn a variable-length encoding of the vocabulary in a text. || Unlike the original BPE; it does not compress the plain text; but can be used to reduce the vocabulary || of a text to a configurable number of symbols; with only a small increase in the number of tokens. ||  || Reference: || Rico Sennrich; Barry Haddow and Alexandra Birch (2016). Neural Machine Translation of Rare Words with Subword Units. || Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (ACL 2016). Berlin; Germany. || \""\""\""",No,No,No
+17193,this keeps data vectors in cache better,No,No,No
+17212,''' || You can implement your own TrainingDataGenerator || ''',No,No,No
+17213,''' || You can implement your own SampleGenerator || ''',No,No,No
+17230,"\""\""\"" || Leras.  ||  || like lighter keras. || This is my lightweight neural network library written from scratch || based on pure tensorflow without keras. ||  || Provides: || + full freedom of tensorflow operations without keras model's restrictions  || + easy model operations like in PyTorch; but in graph mode (no eager execution) || + convenient and understandable logic ||  || Reasons why we cannot import tensorflow or any tensorflow.sub modules right here: || 1) change env variables based on DeviceConfig before import tensorflow || 2) multiprocesses will import tensorflow every spawn || \""\""\""",No,No,No
+17240,todo green bg,No,No,No
+17262,XXX: Return a sorted list of pairs?,No,No,No
+17299,\u7B2C\u4E00\u6B65\u8FC7\u6EE4\u4E0D\u5728\u5728\u7279\u5F81\u5217\u4E2D\u7684feature_columns\u5143\u7D20,No,No,No
+17300,\u7B2C\u4E8C\u6B65\u8FC7\u6EE4feature_columns\u5143\u7D20\u4E2D\u7C7B\u578B\u4E0D\u662Fint\u6216\u8005float\u7684,No,No,No
+17301,\u7B2C\u4E09\u6B65\u8FC7\u6EE4feature_columns\u5143\u7D20\u4E2D\u6240\u6307\u7279\u5F81\u5217\u4E2Dunique==1\u7684\uFF0Ceg\uFF1A1\u5217\u5168\u662F1\uFF0C\u5168\u662F0\uFF0C\u6CA1\u529E\u6CD5\u505Abin,No,No,No
+17308,raise RuntimeError('df.columns must have |date|open|close|high|volume| '),No,No,No
+17320,TODO \u57FA\u7C7B\u63D0\u53D6\u4F5C\u4E3A\u88C5\u9970\u5668\u51FD\u6570\uFF0C\u5B50\u7C7B\u6839\u636E\u9700\u8981\u9009\u62E9\u662F\u5426\u88C5\u9970\uFF0C\u5E76\u4E14\u6DFB\u52A0\u4E0A\u6839\u636Eorder\u7684call\uFF0Cput\u660E\u786E\u7EC6\u8282\u903B\u8F91,No,No,No
+17334,\u4ECEdf_x_dict['fiter_df'].columns\u4E2D\u7B5B\u9009\u7279\u5F81\u5217,No,No,No
+17344,TODO ABuScalerUtil\u4E2D\u6DFB\u52A0\u4F7F\u7528\u56FA\u5B9A\u8F74\u8FDB\u884C\u7F29\u653E\u7684\u529F\u80FD,No,No,No
+17349,\u8FD9\u91CC\u4F1A\u4F7F\u7528\u5230\u7279\u5F81\u7684\u540D\u79F0\u5217pig_three_feature.columns[1:],No,No,No
+17350,"\""\""\"" ||     \u3010\u793A\u4F8B1\u3011\u4F7F\u7528abu\u91CF\u5316\u7CFB\u7EDF\u4E2D\u7684ABuSimilar.find_similar_with_xxx()\u51FD\u6570\u627E\u5230\u4E0E\u76EE\u6807\u80A1\u7968\u76F8\u5173\u7A0B\u5EA6\u6700\u9AD8\u7684\u80A1\u7968\u53EF\u89C6\u5316 || \""\""\""",No,No,No
+17353,e.g: dist\/abupy-xxx-py2.py3-none-any.whl,No,No,No
+17356,TODO \u5E01\u7C7B\u5339\u914D\u7EDF\u4E00\u6807\u51C6\u89C4\u8303,No,No,No
+17413,Move the remaining text to the correct location (keep it,No,No,No
+17423,"\""why..I\""     e.g. \""why am I here?\"" \""Why do I like cake?\""",No,No,No
+17424,"\""why...\""    e.g. \""Why is the sky blue?\""",No,No,No
+17425,"- this style works for positives (e.g. \""why do you like cake?\"")",No,No,No
+17472,Columns can be resized by dragging them.  (This binding is,No,No,No
+17473,used if they click on the grid between columns:),No,No,No
+17497,skip comments at the ends of lines,No,No,No
+17508,If the word ends with a double consonant,No,No,No
+17511,Ensure that the filename ends with '.zip',No,No,No
+17512,add new columns to the output probability table without,No,No,No
+17527,ends in a period.,No,No,No
+17536,Kneser and Hermann Ney. It was meant to improve the accuracy of language,No,No,No
+17570,move image 4 to the left,No,No,No
+17584,move pixels locally around (with random strengths),No,No,No
+17587,be moved around before leaving the image);,No,No,No
+17757,TODO AffineCv2,No,No,Yes
+17770,which probably should be the center-point here anyways,No,No,No
+17789,c:c+1 here; because the additional axis is needed by imresize_single_image,No,No,No
+17836,c:c+1 here; because the additional axis is needed by imresize_single_image,No,No,No
+17844,which probably should be the center-point here anyways,No,No,No
+17875,We draw three columns: (1) original image; (2) heatmap drawn on image; (3) heatmap drawn,No,No,No
+17876,Draw three columns: (1) original image; (2) original image with mask on top; (3) only mask,No,No,No
+17877,Draw three columns: (1) original image; (2) original image with unaltered segmentation,No,No,No
+17919,which probably should be the center-point here anyways,No,No,No
+18034,Using this LUT approach is significantly faster than the else-block code (around 3-4x speedup),No,No,No
+18047,this is needed if no cache for LUT is used:,No,No,No
+18143,better; but can probably only be computed for pairs of valid,No,No,No
+18153,c:c+1 here; because the additional axis is needed by imresize_single_image,No,No,No
+18202,this would probably work if drawing was subpixel-accurate,No,No,No
+18261,areas being dropped instead of the opposite way around,No,No,No
+18338,needed.),No,No,No
+18455,speedup; maybe dependent on installed BLAS libraries?),No,No,No
+18495,Verify that if any augmented BB ends up with x1 > x2 that the,No,No,No
+18502,Note here that the propagation hook removes columns in the batch,No,No,No
+18505,after flip; y1 ends up right of y2,No,No,No
+18636,sampled values seems to be at around 0.6-0.75,No,No,No
+18648,SegmentationMapsOnImage and that's probably better that way,No,No,No
+18667,apparently on some systems there are small differences in what,No,No,No
+18669,go outside of the shape's area for some reason. XXX,No,No,No
+18676,needed for py3+qt4,No,No,No
+18686,needed for py3+qt4,No,No,No
+18688,Check the file name ends with txt,No,No,No
+18729,thought maybe I\/O bound; sometimes saving in parallel is faster,No,No,No
+18730,Add a spacer; return value is unused.,No,No,No
+18850,Select runids is needed + Order per time per runid group + correct time = Increment by previous runid,No,No,No
+18853,Plot runid separation lines if needed,No,No,No
+18896,Needed so that self[missing_item] does not raise KeyError,No,No,No
+18897,contexts.  Instead; we implement straight-addition.  Both the inputs,No,No,No
+18920,Directly load the _thread module (needed during bootstrap).,No,No,No
+18921,Directly load the _weakref module (needed during bootstrap).,No,No,No
+18933,Directly load the os module (needed during bootstrap).,No,No,No
+18934,Directly load the _thread module (needed during bootstrap).,No,No,No
+18936,Directly load the winreg module (needed during bootstrap).,No,No,No
+18948,Insert a '\/' unless the first part is empty or already ends in '\/'.,No,No,No
+18949,rest).  If the path ends in '\/'; tail will be empty.  If there is no,No,No,No
+18972,Not needed,No,No,No
+18981,Move the added items to the front of the path:,No,No,No
+18993,save image if needed,No,No,No
+19006,The convention in BERT is:,No,No,No
+19010,"What we really want to return is \""Steve Smith\"".",No,No,No
+19011,The convention in BERT is:,No,No,No
+19012,The convention in BERT is:,No,No,No
+19017,Moves where the played move is in top 5 (has complete information),No,No,No
+19020,join rank and move embeddings with move info,No,No,No
+19084,todo: how many block?,No,No,No
+19089,+2 because padding needed either side for forward and backward function,No,No,No
+19133,Find all crater names that ends with A - Z.,No,No,No
+19136,File format: text files; each line is an image record containing 6 columns; delimited by TAB.,No,No,No
+19137,Moving averages ends up in the trainable variables collection,No,No,No
+19138,Moving averages ends up in the trainable variables collection,No,No,No
+19147,Load last model if needed,No,No,No
+19227,Label 0 is reserved for an (unused) background class.,No,No,No
+19229,(used in GAN training). This is needed for a correct evaluation of the Inception\/FID score.,No,No,No
+19284,breakpoint features: discordant paired-ends + split-reads,No,No,No
+19335,return six columns: 'rule'; 'rule_lhs'; 'rule_rhs'; 'support'; 'confidence'; 'lift',No,No,No
+19348,Get the number of columns in the request,No,No,No
+19369,'attrs': {'global_pool': 'False'; 'kernel': '(3; 3)'; 'pad': '(1; 1)'; 'pool_type': 'max'; 'pooling_convention': 'valid'; 'stride': '(2; 2)'}},No,No,No
+19450,"'''MobileNet in PyTorch. || See the paper \""MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications\"" || for more details. || '''",No,No,No
+19454,decides if we are going to repeate some frames when needed for filling the desired,No,No,No
+19462,"print \""Move \""; i + 1; datetime.datetime.now() - start",No,No,No
+19520,Number of samples between successive frames e.g. columns if a spectrogram.,No,No,No
+19654,span_ends_list.append(span_end_list),No,No,No
+19655,span_ends_list[question_id].append(span_end),No,No,No
+19661,save the move in states,No,No,No
+19668,AI do move,No,No,No
+19672,Greedily select next move.,No,No,No
+19673,Greedily select next move.,No,No,No
+19725,sample_recent_articles_ids = tf.random_shuffle(articles_metadata_creation_date_past_only)[:recent_articles_samples_for_eval][:;self.articles_metadata_columns_dict['article_id']],No,No,No
+19741,Sort sessions by date MALTE: not needed,No,No,No
+19783,downloads available at http:\/\/tatoeba.org\/eng\/downloads - and better,No,No,No
+19787,passing custom keywords directly to the scipy differntial evolution algo,No,No,No
+19800,The convention in BERT is:,No,No,No
+19802,The convention in BERT is:,No,No,No
+19804,I think you want to sum on axis [0;1;2],No,No,No
+19813,Initialize app stack (create first empty Bottle app now deferred until needed),No,No,No
+19820,A crowd box in COCO is a bounding box around several instances. Exclude,No,No,No
+19911,Needed to maintain continuity of data across batches.,No,No,No
+19916,Needed to maintain continuity of data across batches.,No,No,No
+19917,Needed to maintain continuity of data across batches.,No,No,No
+19947,Hack,No,No,Yes
+19950,Hack,No,No,Yes
+19952,Hack,No,No,Yes
+19965,maybe pairs should also be transposed,No,No,No
+20046,If we have a 2d array with an even no. of columns; append the first column reversed at the right,No,No,No
+20050,Populated by 'check_backends()' when first needed.,No,No,No
+20071,Estimate the noise variance. This is needed for the covariance estimation step below.,No,No,Yes
+20090,Estimate the noise variance. This is needed for the covariance estimation step below.,No,No,Yes
+20106,mask_radius is of the form xxx.5,No,No,No
+20113,mask_radius is of the form xxx.5,No,No,No
+20117,To eliminate that; we require that det(G)=1+2abc-(a^2+b^2+c^2) is large.,No,No,No
+20128,Maybe it was trying to match aspire?,No,No,No
+20177,Estimate the noise variance. This is needed for the covariance estimation step below.,No,No,No
+20178,In real use; you would probably bring your own stack of images;,No,No,No
+20192,Upper Part(Columns),No,No,No
+20193,goal_pos_x = environment.description.configurable('GoalTransformX').observation,No,No,No
+20207,Upper Part(Columns),No,No,No
+20268,Mixin class containing columns common to PhotometryFlux and PhotometryMag,No,No,No
+20287,require at least 2 columns (wavelength; flux),No,No,No
+20292,set of columns; making the search for duplicates a O(log(n)) operation.,No,No,No
+20293,Support True\/False and true\/false convention,No,No,No
+20311,"\""\""\""Move weather data to separate table ||  || Revision ID: 8f086f8c0c21 || Revises: 3e1852612f34 || Create Date: 2021-03-30 10:30:39.368099 ||  || \""\""\""",No,No,No
+20390,Remove columns that are all NaN:,No,No,No
+20402,None \/ save_dir + 'xxx.pickle',No,No,No
+20405,save_dir + 'xxx.pickle',No,No,No
+20407,check for batch size when needed,No,No,No
+20436,loop_ data processing ends if -,No,No,No
+20447,corresponds to column 1). The partial charge is stored in columns 71-76 inclusive (in %6.3f format; i.e.,No,No,No
+20454,Columns,No,No,No
+20502,Extracting property and equity DataFrame columns,No,No,No
+20510,where the list ends (in_list.stop).,No,No,No
+20523,m columns where the entries are random numbers in (0; 1).,No,No,No
+20529,where the list ends (in_list.stop).,No,No,No

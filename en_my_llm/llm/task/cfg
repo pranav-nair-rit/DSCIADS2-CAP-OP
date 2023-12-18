@@ -1,0 +1,15 @@
+{
+  "_template":"You are supposed to behave as a binary text classification machine learning algorithm capable of identifying whether a particular code comment is a Techincal Debt or not. Your answer should be either of just two words 'Yes' or 'No'. 'Yes' would mean that you have classified the given example as a Technical Debt whereas 'No' would mean otherwise. Kindly do not include any other textual commentaries in your answer and just output a 'Yes' or a 'No'"
+  "_label_dict":{
+    "no":"No",
+    "yes":"Yes"
+  },
+  "_label_definitions":{
+    "Yes":"Determine whether the given documentation of code represents a Machine Learning Technical Debt",
+    "No":"Determine whether the given documentation of code does not represent a Machine Learning Technical Debt"
+  },
+  "_use_binary":false,
+  "_exclusive_classes":false,
+  "_allow_none":true,
+  "_verbose":false
+}
